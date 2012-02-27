@@ -1,5 +1,5 @@
 <?php
-    $con = mysql_connect("http://ued.etao.net","csstest","csstest");
+$con = mysql_connect("localhost","csstest","csstest");
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     };
