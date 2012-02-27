@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>E[attribute*=value]</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred, .defaultclean { background-color: #900; }
+			
+			.defaultred div[align*=left] {
+				background-color: #090;
+			}
+
+			.defaultgreen div[align*=left] {
+				background-color: #900;
+			}
+			
+			.defaultred div[title*=match] {
+				background-color: #090;
+			}
+
+			.defaultgreen div[title*=match] {
+				background-color: #900;
+			}
+
+			.defaultgreen div[id*=match] {
+				background-color: #900;
+			}	
+			
+			.defaultgreen label[for*=match] {
+				background-color: #900;
+			}	
+						
+			#test1 div[align *= left] {
+				background-color: #090;
+			}
+
+			#test2 div[align *=left] {
+				background-color: #090;
+			}
+
+			#test3 div[align*= left] {
+				background-color: #090;
+			}
+
+
+		-->
+		</style>		
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test required' align='left'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute has the correct value
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' align='LEFT'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='LEFT'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the align attribute should be case insensitive in a HTML document
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' ALIGN='left'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div ALIGN='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because attribute names should be case insensitive in a HTML document
+				</p>
+			</li>
+				
+			<li>
+				<div class='defaultred'>
+					<div class='test required' align='leftright'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='leftright'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute starts as expected
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test required' align='rightleft'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='rightleft'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute ends as expected
+				</p>
+			</li>	
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' align='rightleftcenter'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='rightleftcenter'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute contains the expected value
+				</p>
+			</li>				
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required' align='right'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align='right'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the align attribute is different
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' align=''></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div align=''&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the align attribute is empty
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div[align*=left] {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the align attribute does not exist
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultclean' id='test1'>
+					<div class='test' align='left'></div>
+				</div>
+				
+				<pre>div[align *= left] {
+}
+
+&lt;div align='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute has the correct value
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultclean' id='test2'>
+					<div class='test' align='left'></div>
+				</div>
+				
+				<pre>div[align *=left] {
+}
+
+&lt;div align='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute has the correct value
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultclean' id='test3'>
+					<div class='test' align='left'></div>
+				</div>
+				
+				<pre>div[align*= left] {
+}
+
+&lt;div align='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute has the correct value
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test' title='match'></div>
+				</div>
+				
+				<pre>div[title*=match] {
+}
+
+&lt;div title='match'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>title</code> attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' title='MATCH'></div>
+				</div>
+				
+				<pre>div[title*=match] {
+}
+
+&lt;div title='MATCH'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>title</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' id='MATCH'></div>
+				</div>
+				
+				<pre>div[id*=match] {
+}
+
+&lt;div id='MATCH'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>id</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<label class='test default' for='MATCH'></label>
+				</div>
+				
+				<pre>label[for*=match] {
+}
+
+&lt;label for='MATCH'&gt;&lt;/label&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>for</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+		</ol>
+	</body>
+</html>

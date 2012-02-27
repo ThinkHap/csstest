@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>E[attribute~=value]</title>
+
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred, .defaultclean { background-color: #900; }
+			
+			.defaultred a[rel~=match] {
+				background-color: #090;
+			}
+
+			.defaultred a[title~=match] {
+				background-color: #090;
+			}
+
+			.defaultgreen a[rel~=match] {
+				background-color: #900;
+			}	
+			
+			.defaultgreen a[title~=match] {
+				background-color: #900;
+			}
+
+			.defaultgreen div[id~=match] {
+				background-color: #900;
+			}	
+			
+			.defaultgreen label[for~=match] {
+				background-color: #900;
+			}	
+						
+			#test1 a[rel ~= match] {
+				background-color: #090;
+			}
+			
+			#test2 a[rel ~=match] {
+				background-color: #090;
+			}
+			
+			#test3 a[rel~= match] {
+				background-color: #090;
+			}
+			
+		-->
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<a class='test required' href='#' rel='match'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>rel</code> attribute is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<a class='test' href='#' REL='match'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' REL='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the case of the attribute name should not matter in a HTML document
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<a class='test' href='#' rel='MATCH'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='MATCH'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the case of the <code>rel</code> attribute value should not matter in a HTML document
+				</p>
+			</li>
+			
+			
+			<li>
+				<div class='defaultred'>
+					<a class='test required' href='#' rel='other match'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='other match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attibute value contains a space seperated list, of which one of the items is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<a class='test' href='#' rel='match other'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='match other'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attibute value contains a space seperated list, of which one of the items is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default' href='#'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attibute does not exist
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default' href='#' rel=''></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel=''&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attibute is empty
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default required' href='#' rel='other'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='other'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attibute does not contain an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default' href='#' rel='some other'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='some other'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attibute contains a space seperated list and none of its items is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default' href='#' rel='matchother'></a>
+				</div>
+				
+				<pre>a[rel~=match] {
+}
+
+&lt;a href='#' rel='matchother'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attibute is not an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultclean' id='test1'>
+					<a class='test' href='#' rel='match'></a>
+				</div>
+				
+				<pre>a[rel ~= match] {
+}
+
+&lt;a href='#' rel='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>rel</code> attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultclean' id='test1'>
+					<a class='test' href='#' rel='match'></a>
+				</div>
+				
+				<pre>a[rel ~=match] {
+}
+
+&lt;a href='#' rel='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>rel</code> attribute is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultclean' id='test1'>
+					<a class='test' href='#' rel='match'></a>
+				</div>
+				
+				<pre>a[rel~= match] {
+}
+
+&lt;a href='#' rel='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>rel</code> attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<a class='test' href='#' title='match'></a>
+				</div>
+				
+				<pre>a[title~=match] {
+}
+
+&lt;a href='#' title='match'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>title</code> attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<a class='test default' href='#' title='MATCH'></a>
+				</div>
+				
+				<pre>a[title~=match] {
+}
+
+&lt;a href='#' title='MATCH'&gt;&lt;/a&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>title</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' id='MATCH'></div>
+				</div>
+				
+				<pre>div[id~=match] {
+}
+
+&lt;div id='MATCH'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>id</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<label class='test default' for='MATCH'></label>
+				</div>
+				
+				<pre>label[for~=match] {
+}
+
+&lt;label for='MATCH'&gt;&lt;/label&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>for</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+		</ol>
+	</body>
+</html>
