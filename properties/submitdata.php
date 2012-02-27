@@ -7,7 +7,7 @@ $con = mysql_connect("localhost","csstest","csstest");
     $t = time();
     $time = date("Y-m-d H:i:s", $t);
 
-    mysql_select_db("test", $con);
+    mysql_select_db("csstest", $con);
     
     $sql="INSERT INTO css (time, browser, uastring, cssresult) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$_POST[cssresult]')";
     

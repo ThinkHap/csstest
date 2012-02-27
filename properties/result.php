@@ -372,7 +372,7 @@
                         die('Could not connect: ' . mysql_error());
                     }
                     
-                    mysql_select_db("test", $con);
+                    mysql_select_db("csstest", $con);
                     
                     $sql="SELECT * FROM css";
                     
