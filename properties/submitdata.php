@@ -9,7 +9,7 @@ $con = mysql_connect("localhost","csstest","csstest");
 
     mysql_select_db("csstest", $con);
     
-    $sql="INSERT INTO css (time, browser, uastring, cssresult) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$_POST[cssresult]')";
+    $sql="INSERT INTO cssproperties (time, browser, uastring, cssresult) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$_POST[cssresult]')";
     
     if (!mysql_query($sql,$con)) {
         die('Error: ' . mysql_error());

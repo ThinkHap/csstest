@@ -374,7 +374,7 @@
                     
                     mysql_select_db("csstest", $con);
                     
-                    $sql="SELECT * FROM css";
+                    $sql="SELECT * FROM cssproperties";
                     
                     $result = mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
