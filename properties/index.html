@@ -25,10 +25,10 @@
             .unsupport {background-color:#f00;}
 
         </style>
+        <script src="http://a.tbcdn.cn/s/kissy/1.1.6/kissy-min.js"></script>
     </head>
     <body>
         <h1>以下是你目前正在使用的浏览器对CSS属性的支持情况：</h1>
-        <h2>查看更多结果请点击：<a href="result.php" title="" target="_blank">CSS Properties Test Result</a></h2>
         <div id="result" class="result">
         
         </div>
@@ -424,7 +424,8 @@
 
             var cssresult = result.join("\r");
             var time = new Date();
-            var ua = navigator.userAgent;
+            //var ua = navigator.userAgent;
+            var ua = KISSY.UA;
             document.write(ua);
 
             fullresult.push('</table>');
