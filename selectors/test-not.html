@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>:not()</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+			
+			#test1 div:not(#id) {
+				background-color: #090;
+			}
+			
+			#test2 div:not(.class) {
+				background-color: #090;
+			}
+		
+			#test3 div:not(#id) {
+				background-color: #900;
+			}
+			
+			#test4 div:not(.class) {
+				background-color: #900;
+			}
+		
+		-->	
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred' id='test1'>
+					<div class='test required'></div>
+				</div>
+				
+				<pre>:not(#id) {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the div element, because it is not a match for the <code>#id</code> selector
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred' id='test2'>
+					<div class='test'></div>
+				</div>
+				
+				<pre>:not(.class) {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the div element, because it is not a match for the <code>.class</code> selector
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen' id='test3'>
+					<div id='id' class='test default required'></div>
+				</div>
+				
+				<pre>:not(#id) {
+}
+
+&lt;div id='id'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the div element, because it is a match for the <code>#id</code> selector
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen' id='test4'>
+					<div class='class test default'></div>
+				</div>
+				
+				<pre>:not(.class) {
+}
+
+&lt;div class='class'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the div element, because it is a match for the <code>.class</code> selector
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>

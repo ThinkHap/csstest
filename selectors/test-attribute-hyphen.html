@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>E[attribute|=value]</title>
+
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred, .defaultclean { background-color: #900; }
+			
+			.defaultred div[lang|=en] {
+				background-color: #090;
+			}
+
+			.defaultgreen div[lang|=en] {
+				background-color: #900;
+			}	
+
+			.defaultred div[title|=match] {
+				background-color: #090;
+			}
+
+			.defaultgreen div[title|=match] {
+				background-color: #900;
+			}	
+
+			.defaultgreen div[id|=match] {
+				background-color: #900;
+			}	
+			
+			.defaultgreen label[for|=match] {
+				background-color: #900;
+			}	
+						
+			#test1 div[lang |= en] {
+				background-color: #090;
+			}
+
+			#test2 div[lang |=en] {
+				background-color: #090;
+			}
+			
+			#test3 div[lang|= en] {
+				background-color: #090;
+			}
+
+		-->
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test required' lang='en'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attribute is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' lang='EN'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='EN'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the lang attribute should be case insensitive in a HTML document
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' LANG='en'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div LANG='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the case of the attribute name should not matter in a HTML document
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test required' lang='en-US'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='en-US'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value before the hyphen is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test' lang='en-Nonsense'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='en-Nonsense'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value before the hyphen is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute is not present
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<p lang='en'>
+						<div class='test default'></div>
+					</p>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;p lang='en'&gt;&lt;div&gt;&lt;/div&gt;&lt;/p&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute is not present and it should not match inherited properties
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang=''></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang=''&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute is empty
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required' lang='nl'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='nl'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute does not contain the correct value
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang='english'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='english'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute does not contain the correct value
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang='nl-en'></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang='nl-en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the part before the hyphen is not an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultclean' id='test1'>
+					<div class='test' lang='en'></div>
+				</div>
+				
+				<pre>div[lang |= en] {
+}
+
+&lt;div lang='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attribute is an exact match
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultclean' id='test2'>
+					<div class='test' lang='en'></div>
+				</div>
+				
+				<pre>div[lang |=en] {
+}
+
+&lt;div lang='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultclean' id='test3'>
+					<div class='test' lang='en'></div>
+				</div>
+				
+				<pre>div[lang|= en] {
+}
+
+&lt;div lang='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the attribute is an exact match
+				</p>
+			</li>
+
+
+			<li>
+				<div class='defaultred'>
+					<div class='test' title='match'></div>
+				</div>
+				
+				<pre>div[title|=match] {
+}
+
+&lt;div title='match'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the value of the <code>title</code> attribute is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' title='MATCH'></div>
+				</div>
+				
+				<pre>div[title|=match] {
+}
+
+&lt;div title='MATCH'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>title</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' id='MATCH'></div>
+				</div>
+				
+				<pre>div[id|=match] {
+}
+
+&lt;div id='MATCH'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>id</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<label class='test default' for='MATCH'></label>
+				</div>
+				
+				<pre>label[for|=match] {
+}
+
+&lt;label for='MATCH'&gt;&lt;/label&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because value of the <code>for</code> attribute should be compared in a case-sensitive way
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang=' en '></div>
+				</div>
+				
+				<pre>div[lang|=en] {
+}
+
+&lt;div lang=' en '&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the attribute does not contain the correct value - it is not allowed to strip whitespace in HTML documents
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>

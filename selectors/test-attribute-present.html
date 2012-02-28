@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>E[attribute]</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+			
+			.defaultred div[align] {
+				background-color: #090;
+			}
+
+			.defaultgreen div[align] {
+				background-color: #900;
+			}			
+			
+		-->
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+		
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test required' align='left'></div>
+				</div>
+				
+				<pre>div[align] {
+}
+
+&lt;div align='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute is present and contains a value
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' align=''></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div align=''&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute is present and is empty
+				</p>
+			</li>
+				
+			<li>
+				<div class='defaultred'>
+					<div class='test' align></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div align&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the align attribute is present
+				</p>
+			</li>
+				
+			<li>
+				<div class='defaultred'>
+					<div class='test' ALIGN='left'></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div ALIGN='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because attributes names are case insensitive in HTML documents
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' alignment='left'></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div alignment='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because it does not have the correct attribute
+				</p>
+			</li>
+			
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' verticalalign='left'></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div verticalalign='left'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because it does not have the correct attribute
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required'></div>
+				</div>
+
+				<pre>div[align] {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because it does not have the correct attribute
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>

@@ -1,0 +1,1198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>:nth-last-of-type()</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+
+			blockquote {
+				margin: 0;
+			}
+			
+			.red-first div:nth-last-of-type(1) {
+				background-color: #090;
+			}
+
+			.red-zero-n-first div:nth-last-of-type(0n+1) {
+				background-color: #090;
+			}
+			
+			.red-second div:nth-last-of-type(2) {
+				background-color: #090;
+			}
+
+			.red-zero-n-second div:nth-last-of-type(0n+2) {
+				background-color: #090;
+			}
+			
+			.red-n div:nth-last-of-type(n) {
+				background-color: #090;
+			}
+
+			.red-one-n div:nth-last-of-type(1n) {
+				background-color: #090;
+			}
+			
+			.red-n-first div:nth-last-of-type(n+1) {
+				background-color: #090;
+			}
+			
+			.red-one-n-first div:nth-last-of-type(1n+1) {
+				background-color: #090;
+			}
+			
+			.red-n-second div:nth-last-of-type(n+2) {
+				background-color: #090;
+			}
+
+			.red-one-n-second div:nth-last-of-type(1n+2) {
+				background-color: #090;
+			}
+
+			.red-even div:nth-last-of-type(even) {
+				background-color: #090;
+			}
+			
+			.red-odd div:nth-last-of-type(odd) {
+				background-color: #090;
+			}
+			
+			.red-two-n div:nth-last-of-type(2n) {
+				background-color: #090;
+			}
+			
+			.red-two-n-minus-one div:nth-last-of-type(2n-1) {
+				background-color: #090;
+			}
+			
+			.red-two-n-zero div:nth-last-of-type(2n+0) {
+				background-color: #090;
+			}
+			
+			.red-two-n-first div:nth-last-of-type(2n+1) {
+				background-color: #090;
+			}
+			
+			.red-two-n-second div:nth-last-of-type(2n+2) {
+				background-color: #090;
+			}
+
+			.red-three-n-first div:nth-last-of-type(3n+1) {
+				background-color: #090;
+			}
+			
+			.red-minus-n-second div:nth-last-of-type(-n+2) {
+				background-color: #090;
+			}
+
+
+			.green-zero div:nth-last-of-type(0) {
+				background-color: #900;
+			}
+			
+			.green-zero-n-zero div:nth-last-of-type(0n+0) {
+				background-color: #900;
+			}
+
+			.green-first div:nth-last-of-type(1) {
+				background-color: #900;
+			}
+
+			.green-zero-n-first div:nth-last-of-type(0n+1) {
+				background-color: #900;
+			}
+			
+			.green-second div:nth-last-of-type(2) {
+				background-color: #900;
+			}
+
+			.green-zero-n-second div:nth-last-of-type(0n+2) {
+				background-color: #900;
+			}
+
+			.green-n div:nth-last-of-type(n) {
+				background-color: #900;
+			}
+			
+			.green-one-n div:nth-last-of-type(1n) {
+				background-color: #900;
+			}
+			
+			.green-n-first div:nth-last-of-type(n+1) {
+				background-color: #900;
+			}
+			
+			.green-one-n-first div:nth-last-of-type(1n+1) {
+				background-color: #900;
+			}
+			
+			.green-n-second div:nth-last-of-type(n+2) {
+				background-color: #900;
+			}
+
+			.green-one-n-second div:nth-last-of-type(1n+2) {
+				background-color: #900;
+			}
+
+			.green-even div:nth-last-of-type(even) {
+				background-color: #900;
+			}
+			
+			.green-odd div:nth-last-of-type(odd) {
+				background-color: #900;
+			}
+			
+			.green-two-n div:nth-last-of-type(2n) {
+				background-color: #900;
+			}
+			
+			.green-two-n-minus-one div:nth-last-of-type(2n-1) {
+				background-color: #900;
+			}
+			
+			.green-two-n-zero div:nth-last-of-type(2n+0) {
+				background-color: #900;
+			}
+			
+			.green-two-n-first div:nth-last-of-type(2n+1) {
+				background-color: #900;
+			}
+			
+			.green-two-n-second div:nth-last-of-type(2n+2) {
+				background-color: #900;
+			}
+
+			.green-three-n-first div:nth-last-of-type(3n+1) {
+				background-color: #900;
+			}
+
+			.green-minus-n-second div:nth-last-of-type(-n+2) {
+				background-color: #900;
+			}
+
+
+		-->			
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred red-first'>
+					<div class='test required'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the last and only child of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-zero-n-first'>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the last and only child of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-first'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div class='test required'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the last child of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-zero-n-first'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the last child of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-second'>
+					<div></div>
+					<div></div>
+					<div class='test required'></div>
+					<blockquote></blockquote>
+					<div></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the second child from the bottom of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-zero-n-second'>
+					<div></div>
+					<div></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the marked element, because it is the second child from the bottom of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-one-n'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div class='test'></div>
+					<div class='test'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1n) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-n'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div class='test'></div>
+					<div class='test'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(n) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-n-first'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div class='test'></div>
+					<div class='test'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-one-n-first'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div class='test'></div>
+					<div class='test'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-n-second'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type before the second from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-one-n-second'>
+					<div class='test'></div>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+					<div></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every element of the correct type before the second from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-even'>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(even) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-odd'>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(odd) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-two-n'>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-two-n-minus-one'>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n-1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-two-n-zero'>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+0) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-two-n-first'>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-two-n-second'>
+					<div class='test'></div>
+					<div></div>
+					<div class='test'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-three-n-first'>
+					<div class='test'></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div></div>
+					<div class='test'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(3n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because every third element of the correct type should match counting from the first from bottom
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-minus-n-second'>
+					<div></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div class='test'></div>
+					<div class='test'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(-n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match all marked elements, because the last two elements of the correct type should match
+				</p>
+			</li>
+
+
+
+
+
+
+
+			<li>
+				<div class='defaultgreen green-zero'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should match no elements at all
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-zero-n-zero'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+0) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should match no elements at all
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-first'>
+					<div class='test default required'></div>
+					<div class='test default required'></div>
+					<div class='test default required'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should only match the last element of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-zero-n-first'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should only match the last element of the correct type
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-second'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should only match the second element of the correct type from the bottom
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-zero-n-second'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(0n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because it should only match the second element of the correct type from the bottom
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-n-second'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked element, because every element starting from the second of the correct type from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-one-n-second'>
+					<div></div>
+					<div></div>
+					<div></div>
+					<blockquote></blockquote>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(1n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked element, because every element starting from the second element of the correct type from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-even'>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(even) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-odd'>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(odd) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-two-n'>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-two-n-minus-one'>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n-1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-two-n-zero'>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+0) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-two-n-first'>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every odd element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-two-n-second'>
+					<div></div>
+					<div class='test default'></div>
+					<div></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(2n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every even element of the correct type counting from the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-three-n-first'>
+					<div></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+					<div class='test default'></div>
+					<div></div>
+				</div>
+				
+				<pre>div div:nth-last-of-type(3n+1) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because every third element of the correct type counting from the first of the bottom should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-minus-n-second'>
+					<div class='test default'></div>
+					<div class='test default'></div>
+					<blockquote></blockquote>
+					<div></div>
+					<div></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div div:nth-last-of-type(-n+2) {
+}
+
+&lt;div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;div&gt;Does this element match?&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;div&gt;&lt;/div&gt;
+   &lt;blockquote&gt;&lt;/blockquote&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the marked elements, because only the last two elements of the correct type should match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred red-first'>
+					<div id='insertAfter1'></div>
+				</div>
+
+				<script type="text/javascript">
+				<!--
+
+					var ib = document.getElementById('insertAfter1');
+					var el = document.createElement("div");
+					el.className = 'test';
+					ib.parentNode.appendChild(el);
+
+				
+				//-->
+				</script>
+				
+				<pre>div div:nth-last-of-type(1) {
+}
+
+&lt;div&gt;
+   &lt;div id='insertAfter'&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+var ib = document.getElementById('insertAfter');
+ib.parentElement.appendChild(document.createElement("div"));</pre>
+
+				<p>
+					The CSS selector should match the div element that is inserted by the Javascript code. 
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen green-first'>
+					<div id='insertAfter2' class='test default'></div>
+				</div>
+
+				<script type="text/javascript">
+				<!--
+
+					var ib = document.getElementById('insertAfter2');
+					ib.parentNode.appendChild(document.createElement("div"));
+				
+				//-->
+				</script>
+				
+				<pre>div div:nth-last-of-type(1) {
+}
+
+&lt;div&gt;
+   &lt;div id='insertAfter'&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+var ib = document.getElementById('insertAfter');
+ib.parentElement.appendChild(document.createElement("div"));</pre>
+
+				<p>
+					The original div element should not be a match for the :nth-last-of-type() selector.
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>

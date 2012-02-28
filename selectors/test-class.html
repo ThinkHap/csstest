@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>.class</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+			
+			.defaultred .test {
+				background-color: #090;
+			}
+			
+			.defaultred .first.second {
+				background-color: #090;
+			}
+			
+			.defaultred .third.fourth {
+				background-color: #090;
+			}
+			
+			.defaultred .third {
+				background-color: #900;
+			}
+			
+			.defaultgreen .class {
+				background-color: #900;
+			}
+			
+		-->
+		</style>
+	</head>
+
+	<body>
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test'></div>
+				</div>
+				
+				<pre>.class {
+}
+
+&lt;div class='class'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the class is an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='another test required'></div>
+				</div>
+				
+				<pre>.class {
+}
+
+&lt;div class='another class'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because the list classes contains an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test first second'></div>
+				</div>
+				
+				<pre>.first.second {
+}
+
+&lt;div class='first second'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment, both specified classes match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultred'>
+					<div class='test third fourth'></div>
+				</div>
+				
+				<pre>.third.fourth {
+}
+
+.third {
+}
+
+&lt;div class='third fourth'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The both CSS selectors should match the HTML fragment, but the first should take precendence over the second because
+					it is more specific. So the second should be able to define additional properties, but not overwrite properties from
+					the first.
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required classy'></div>
+				</div>
+				
+				<pre>.class {
+}
+
+&lt;div class='classy'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because the class does not contain an exact match
+				</p>
+			</li>
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default first'></div>
+				</div>
+				
+				<pre>.first.second {
+}
+
+&lt;div class='first'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because only one of the two specified classes matches
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>

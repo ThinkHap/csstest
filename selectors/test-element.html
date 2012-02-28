@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>E</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+			
+			blockquote {
+				background-color: #090;
+				margin: 0;
+			}
+			
+		-->
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+		
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<blockquote class='test required'></blockquote>
+				</div>
+				
+				<pre>blockquote {
+}
+
+&lt;blockquote&gt;&lt;/blockquote&gt;</pre>
+
+				<p>
+					The CSS selector should match the HTML fragment because it is the right type of element
+				</p>
+			</li>	
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required'></div>
+				</div>
+				
+				<pre>blockquote {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the HTML fragment because it is not the right type of element
+				</p>
+			</li>	
+		</ol>
+	</body>
+</html>

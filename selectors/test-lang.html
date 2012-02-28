@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>:lang()</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; padding: 0.75em; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+
+			.defaultred div:lang(en) {
+				background-color: #090;
+			}			
+			
+			.defaultgreen div:lang(en) {
+				background-color: #900;
+			}
+			
+			blockquote {
+				margin: 0;
+			}
+		
+		-->
+		</style>
+	</head>
+
+	<body>
+		
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test required' lang='en'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the element, because the language is an exact match
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test' lang='EN'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='EN'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the element, because the language is an exact match. The case of the language should not matter.
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultred'>
+					<div class='test required' lang='en-US'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='en-US'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should match the element, because the first component of the language is an exact match
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultred'>
+					<blockquote lang='en'>
+						<div class='test'></div>
+					</blockquote>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;blockquote lang='en'&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/blockquote&gt;</pre>
+
+				<p>
+					The CSS selector should match the inner element, because language is inherited and the language is an exact match
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultred'>
+					<blockquote lang='en-US'>
+						<div class='test'></div>
+					</blockquote>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;blockquote lang='en-US'&gt;
+   &lt;div&gt;&lt;/div&gt;
+&lt;/blockquote&gt;</pre>
+
+				<p>
+					The CSS selector should match the inner element, because language is inherited and the first component of the language is an exact match
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the element, because the language is not set
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang=''></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang=''&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the element, because the language is empty
+				</p>
+			</li>		
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default required' lang='nl'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='nl'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the element, because the language is different
+				</p>
+			</li>		
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang='nl-en'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='nl-en'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the element, because the first component is different.
+					The second component should	not be taken into account. 
+				</p>
+			</li>		
+
+			<li>
+				<div class='defaultgreen'>
+					<div class='test default' lang='enUS'></div>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='enUS'&gt;&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the element, because it does not match exactly. Because the hyphen
+					is missing we are only allowed to do an exact match. 
+				</p>
+			</li>		
+			
+			<li>
+				<div class='defaultgreen'>
+					<blockquote lang='en'>
+						<div class='test default' lang='nl'></div>
+					</blockquote>
+				</div>
+				
+				<pre>:lang(en) {
+}
+
+&lt;div lang='en'&gt;
+   &lt;div lang='nl'&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+				<p>
+					The CSS selector should not match the inner element, because the inherited language is overwritten
+				</p>
+			</li>		
+		</ol>
+	</body>
+</html>
