@@ -1,11 +1,5 @@
 <?php
-if (array_key_exists('browser', $_POST)) {
-    $con = mysql_connect("127.0.0.1","root","wanghao");
-    if (!$con) {
-        die('Could not connect: ' . mysql_error());
-    };
-        
-    $properties = array(
+$properties = array(
         'background',
         'background-attachment',
         'background-clip',
@@ -333,6 +327,12 @@ if (array_key_exists('browser', $_POST)) {
         'word-wrap',
         'writing-mode');
 
+if (array_key_exists('browser', $_POST)) {
+    $con = mysql_connect("127.0.0.1","root","wanghao");
+    if (!$con) {
+        die('Could not connect: ' . mysql_error());
+    };
+
     sort($properties);
     $prop = join("`, `", $properties);
 
@@ -393,7 +393,7 @@ if (array_key_exists('browser', $_POST)) {
         </div>
     </body>
         <script>
-/*
+            /*
             var properties = [
                 'background',
                 'background-attachment',
@@ -726,11 +726,12 @@ if (array_key_exists('browser', $_POST)) {
                 'word-wrap',
                 'writing-mode'
             ];
-*/
-<?php
-$p = join(", ", $properties);
-echo 'var properties = ['. $p .']';
-?>
+            */
+            <?php
+            $p = join("', '", $properties);
+            echo "var properties = ['$p'];";
+            print_r 
+            ?>
             cssProperties = properties.sort();
             
             var result = [];

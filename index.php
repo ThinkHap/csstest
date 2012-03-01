@@ -19,7 +19,7 @@ body {
     <p><strong>成员：</strong>阿大、何敏、俊毅、王浩</p>
     <h2>访问地址</h2>
     <ol>
-        <li><a href="properties/index.html">CSS Properties Test</a></li>
+        <li><a href="properties/index.php">CSS Properties Test</a></li>
         <li><a href="selectors/index.html">CSS Selectors Test</a></li>
     </ol>
     <h2>W3C Test</h2>
