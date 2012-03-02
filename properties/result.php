@@ -372,8 +372,8 @@ sort($properties);
                 </tr>
 
                 <?php
-                    //$con = mysql_connect("127.0.0.1","root","wanghao");
-                    $con = mysql_connect("localhost","csstest","csstest");
+                    $con = mysql_connect("127.0.0.1","root","wanghao");
+                    //$con = mysql_connect("localhost","csstest","csstest");
                     if (!$con) {
                         die('Could not connect: ' . mysql_error());
                     }
