@@ -345,11 +345,11 @@ if (array_key_exists('browser', $_POST)) {
     $res = join("', '", $results);
 
     $t = time();
-//    $time = date("Y-m-d H:i:s", $t);
+    $time = date("Y-m-d H:i:s", $t);
 
-    mysql_select_db("test", $con);
+    mysql_select_db("csstest", $con);
     
-    $sql="INSERT INTO newcss (`browser`, `uastring`, `$prop`) VALUES ('$_POST[browser]', '$_POST[uastring]', '$res')";
+    $sql="INSERT INTO cssproperties (`time`, `browser`, `uastring`, `$prop`) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$res')";
     
     if (!mysql_query($sql,$con)) {
         die('Error: ' . mysql_error());

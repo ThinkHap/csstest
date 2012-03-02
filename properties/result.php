@@ -378,9 +378,9 @@ sort($properties);
                         die('Could not connect: ' . mysql_error());
                     }
                     
-                    mysql_select_db("test", $con);
+                    mysql_select_db("csstest", $con);
                     
-                    $sql="SELECT * FROM newcss";
+                    $sql="SELECT * FROM cssproperties";
                     
                     $result = mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
