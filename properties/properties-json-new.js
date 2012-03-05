@@ -1,4 +1,4 @@
-var properties = {
+properties = {
     "background": {
         "background": {"version":1},
         "background-attachment": {"version":1},

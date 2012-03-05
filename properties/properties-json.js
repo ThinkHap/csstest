@@ -1,4 +1,4 @@
-properties = [
+properties = {
     "background": {
         "background": {"version":1},
         "background-attachment": {"version":1},
@@ -372,4 +372,4 @@ properties = [
     "word-wrap": {"version":3},
     "writing-mode": {"version":""}
     }
-];
+};
