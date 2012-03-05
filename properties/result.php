@@ -30,8 +30,8 @@
         <div class="result">
             <h1>CSS Properties Test Result</h1>
                 <?php
-                    $con = mysql_connect("127.0.0.1","root","wanghao");
-                    //$con = mysql_connect("localhost","csstest","csstest");
+                    //$con = mysql_connect("127.0.0.1","root","wanghao");
+                    $con = mysql_connect("localhost","csstest","csstest");
                     if (!$con) {
                         die('Could not connect: ' . mysql_error());
                     }
@@ -73,13 +73,9 @@
                         echo '<td><span class="ua-string">' . $row['uastring'] . '</span></td>';
                         echo "</tr>";
                     }
-                    
+                    echo "</table>";
                     mysql_close($con);
-                    
-                    
                 ?>
-                
-            </table>
         </div>    
     </body>
 </html>
