@@ -1,44 +1,9 @@
 properties = {
-    "background": {
-        "background": {"version":1, "value":[""]},
-        "background-attachment": {"version":1, "value":[""]},
-        "background-clip": {"version":3, "value":[""]},
-        "background-color": {"version":1, "value":[""]},
-        "background-image": {"version":1, "value":[""]},
-        "background-origin": {"version":3, "value":[""]},
-        "background-position": {"version":1, "value":[""]},
-        "background-position-x": {"version":"", "value":[""]},
-        "background-position-y": {"version":"", "value":[""]},
-        "background-repeat": {"version":1, "value":[""]},
-        "background-repeat-x": {"version":"", "value":[""]},
-        "background-repeat-y": {"version":"", "value":[""]}
-    },
-    "color": {
-        "color": {"version":1, "value":[""]},
-        "color-interpolation": {"version":"", "value":[""]},
-        "color-interpolation-filters": {"version":"", "value":[""]},
-        "color-profile": {"version":3, "value":[""]},
-        "color-rendering": {"version":"", "value":[""]},
-        "opacity": {"version":3, "value":[""]}
-    },
     "content": {
         "content": {"version":2, "value":[""]},
         "counter-increment": {"version":2, "value":[""]},
         "counter-reset": {"version":2, "value":[""]},
         "quotes": {"version":2, "value":[""]}
-    },
-    "font": {
-        "font": {"version":1, "value":[""]},
-        "font-effect": {"version":3, "value":[""]},
-        "font-emphasize": {"version":3, "value":[""]},
-        "font-emphasize-position": {"version":3, "value":[""]},
-        "font-emphasize-style": {"version":3, "value":[""]},
-        "font-family": {"version":1, "value":[""]},
-        "font-size": {"version":1, "value":[""]},
-        "font-stretch": {"version":"", "value":[""]},
-        "font-style": {"version":1, "value":[""]},
-        "font-variant": {"version":1, "value":[""]},
-        "font-weight": {"version":1, "value":[""]}
     },
     "list": {
         "lighting-color": {"version":"", "value":[""]},
@@ -60,7 +25,6 @@ properties = {
         "nav-left": {"version":3, "value":[""]},
         "cursor": {"version":2, "value":[""]},
         "zoom": {"version":"", "value":[""]},
-        "box-reflect": {"version":"", "value":["below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white))"]},
         "box-sizing": {"version":"", "value":["border-box"]},
         "resize": {"version":"", "value":[""]}
     },
@@ -363,7 +327,42 @@ properties = {
         "border-image-source": {"version":"", "value":["url(border.png)"]},
         "border-image-width": {"version":"", "value":["30 30"]},
         "box-shadow": {"version":3, "value":["none","5px 5px rgba(0,0,0,.6)","5px 5px 5px rgba(0,0,0,.6)","2px 2px 5px 1px rgba(0,0,0,.6) inset","0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6)"]},
+        "box-reflect": {"version":"", "value":["below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white))"]},
         "box-decoration-break": {"version":3, "value":[""]}
+    },
+    "背景(Background)": {
+        "background": {"version":1, "value":["#eee url(skin/p_103x196_1.jpg) no-repeat scroll 50px 30px"]},
+        "background-color": {"version":1, "value":["transparent","#eee"]},
+        "background-attachment": {"version":"1/3", "value":["scroll","fixed","local"]},
+        "background-image": {"version":"1/3", "value":["url('paper.gif')","-webkit-gradient(linear, 50% 0%, 50% 100%, from(#45B5DA)","url(1.jpg),url(2.jpg),url(3.jpg)"]},
+        "background-position": {"version":"1/3", "value":["top center","0 0","50% 50%"]},
+        "background-repeat": {"version":"1/3", "value":["no-repeat","repeat","repeat-x","repeat-y","round","space"]},
+        "background-clip": {"version":3, "value":["border-box","padding-box","content-box"]},
+        "background-origin": {"version":3, "value":["border-box","padding-box","content-box"]},
+        "background-size": {"version":3, "value":["auto","cover","contain","80px 60px"]}
+    },
+    "颜色(Color)": {
+        "color": {"version":1, "value":["#666"]},
+        "color-interpolation": {"version":"", "value":[""]},
+        "color-interpolation-filters": {"version":"", "value":[""]},
+        "color-profile": {"version":3, "value":["auto"]},
+        "color-rendering": {"version":"", "value":[""]},
+        "opacity": {"version":3, "value":["0.5"]},
+        "rendering-intent": {"version":3, "value":["auto"]}
+    },
+    "字体(Font)": {
+        "font": {"version":1, "value":["italic small-caps bold 18px/2 Simsun,arial,sans-serif"]},
+        "font-style": {"version":1, "value":["normal","italic","oblique"]},
+        "font-variant": {"version":1, "value":["small-caps"]},
+        "font-weight": {"version":1, "value":["normal","bold"]},
+        "font-size": {"version":1, "value":["12px","200%"]},
+        "font-family": {"version":1, "value":["Georgia,Serif"]},
+        "font-effect": {"version":3, "value":["none","emboss","engrave","outline","initial","inherit"]},
+        "font-emphasize": {"version":3, "value":[""]},
+        "font-emphasize-position": {"version":3, "value":[""]},
+        "font-emphasize-style": {"version":3, "value":[""]},
+        "font-size-adjust": {"version":3, "value":["none","0.58"]},
+        "font-stretch": {"version":"", "value":["wider","narrower","ultra-condensed","extra-condensed","condensed","semi-condensed","normal","semi-expanded","expanded","extra-expanded","ultra-expanded"]}
     },
 };
 
