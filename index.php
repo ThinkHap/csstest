@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="gbk">
-<title>CSS属性、选择器兼容性测试工具</title>
+<title>CSS兼容性参考手册与使用指南</title>
 <style>
 body {
     font: 12px/1.5 "微软雅黑",arial,sans-serif;
@@ -12,15 +12,20 @@ body {
 </style>
 </head>
 <body>
-    <h1>CSS属性、选择器兼容性测试工具</h1>
+    <h1>CSS兼容性参考手册与使用指南</h1>
     <h2>项目介绍</h2>
     <p><strong>CSS属性测试：</strong> 测试浏览器对CSS包含的大部分属性<不包含属性值>的支持情况，目前有333个属性。</p>
     <p><strong>CSS选择器测试：</strong> 测试浏览器对CSS包含的大部分选择器的支持情况，目前有50种选择器，574个测试用例。</p>
     <p><strong>成员：</strong>阿大、何敏、俊毅、王浩</p>
-    <h2>访问地址</h2>
+    <h2>Test Page</h2>
     <ol>
         <li><a href="properties/index.php">CSS Properties Test</a></li>
-        <li><a href="selectors/index.html">CSS Selectors Test</a></li>
+        <li><a href="selectors/index.php">CSS Selectors Test</a></li>
+    </ol>
+    <h2>Test Result</h2>
+    <ol>
+        <li><a href="selectors/report.php">CSS Selectors 测试结果</a></li>
+        <li><a href="selectors/result.php">CSS Selectors 测试结果集</a></li>
     </ol>
     <h2>W3C Test</h2>
     <ol>

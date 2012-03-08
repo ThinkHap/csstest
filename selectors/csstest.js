@@ -9,7 +9,7 @@ $(function(){
 
     function changeSrc() {
         var attr = testCase.shift(),
-            results = false;
+            result = true;
 
         var testBox = $('<iframe>', {
             'name': 'test-'+ attr,
@@ -20,19 +20,23 @@ $(function(){
         setTimeout(check, 200);
 
         function check() {
-            var testNum = 0,
+            var testTotal = 0,
                 testPassed = 0,
                 testFailed = 0,
+                requiredTotal = 0,
+                requiredPassed = 0,
                 baseColor = testBox.contents().find('.base').css('background-color');
+
             testBox.contents().find('.test').each(function() {
+                var res = false;
                 counter++;
-                testNum++;
+                testTotal++;
                 if ($(this).hasClass('float')) {
                     var f = $(this).css('float');
                     if ($(this).hasClass('default')) {
-                        results = f == 'none';
+                        res = f == 'none';
                     } else {
-                        results = f == 'right';
+                        res = f == 'right';
                     }
                 } else if ($(this).hasClass('height')) {
                     var h = $(this).height();
@@ -43,46 +47,72 @@ $(function(){
                         }
                         control = control.height();
                         if ($(this).hasClass('default')) {
-                            results = h == control;
+                            res = h == control;
                         } else {
-                            results = h > control;
+                            res = h > control;
                         }
                     } else {
                         if ($(this).hasClass('default')) {
-                            results = h == 0;
+                            res = h == 0;
                         } else {
-                            results = h > 0;
+                            res = h > 0;
                         }
                     }
                 } else {
                     var c = $(this).css('background-color');
                     if ($(this).hasClass('default')) {
-                        results = c == 'transparent' || c == 'rgba(0, 0, 0, 0)';
+                        res = c == 'transparent' || c == 'rgba(0, 0, 0, 0)';
                     } else {
-                        results = c == baseColor;
+                        res = c == baseColor;
                     }
                 }
-                if (results) {
+                if ($(this).hasClass('required')) {
+                    requiredTotal++;
+                    if (res) {
+                        requiredPassed++;
+                    }
+                }
+                if (res) {
                     testPassed++;
                 } else {
                     testFailed++;
                 }
+                result &= res;
             });
 
-            if (results) {
-                if (testPassed == testNum) {
-                    $('<li class="passed"><a href="test-'+ attr +'.html?t='+ +new Date +'#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a></li>').appendTo('#results');
+            if (result || (requiredTotal > 0 && requiredTotal == requiredPassed)) {
+                if (testPassed == testTotal) {
+                    $('<li class="passed" data-attr="'+ attr +'"><a href="test-'+ attr +'.html#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a></li>').appendTo('#results');
                 } else {
-                $('<li class="buggy"><a href="test-'+ attr +'.html?t='+ +new Date +'#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a><span>('+ testFailed +' out of '+ testNum +' failed)</span></li>').appendTo('#results');
+                    $('<li class="buggy" data-attr="'+ attr +'"><a href="test-'+ attr +'.html#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a><span>('+ testFailed +' out of '+ testTotal +' failed)</span></li>').appendTo('#results');
                 }
             } else {
-                $('<li class="failed"><a href="test-'+ attr +'.html?t='+ +new Date +'#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a><span>('+ testFailed +' out of '+ testNum +' failed)</span></li>').appendTo('#results');
+                $('<li class="failed" data-attr="'+ attr +'"><a href="test-'+ attr +'.html#'+ attr +'">'+ window.frames['test-'+ attr].document.title +'</a><span>('+ testFailed +' out of '+ testTotal +' failed)</span></li>').appendTo('#results');
             }
 
             if (testCase.length) {
                 setTimeout(changeSrc, 200);
             } else {
-                console.log(counter +'tests');
+                if ($.browser.version != '6.0') {
+                    console.log(counter +'tests');
+                }
+                var arrRes = [],
+                    ua = UA(),
+                    browser = ua['shell'],
+                    version = ua[browser],
+                    userAgent = navigator.userAgent,
+                    datetime = +new Date;
+
+                arrRes.push('browser='+ browser);
+                arrRes.push('version='+ version);
+                arrRes.push('userAgent='+ userAgent);
+                arrRes.push('datetime='+ datetime);
+                
+                $('#results li').each(function(){
+                    arrRes.push($(this).attr('data-attr') +'='+ $(this).attr('class'));
+                });
+
+                $.get('index.php?'+ arrRes.join('&'));
             }
 
             $('#test-'+ attr).remove();
@@ -95,26 +125,162 @@ $(function(){
 
 
 /*
-var CSSTest = {
-    init: function() {
-    },
-    create: function() {
-        var testBox = $('<iframe>', {
-            'name': 'test-iframe',
-            'id': 'test-iframe',
-            'src': 'test-'+ attr +'.html',
-            'width': '400px',
-            'height': '200px'
-        }).appendTo('body');
-    },
-    check: function() {
-    },
-    load: function() {
-        setTimeout(function(){this.check()}, 1);
-    },
-    destory: function() {
-    },
-    next: function() {
-    }
-}
+Copyright 2011, KISSY UI Library v1.30dev
+MIT Licensed
+build time: Dec 31 15:26
 */
+/**
+ * @fileOverview ua
+ * @author lifesinger@gmail.com
+ */
+function UA() {  
+    var ua = navigator.userAgent,
+        EMPTY = '', MOBILE = 'mobile',
+        core = EMPTY, shell = EMPTY, m,
+        IE_DETECT_RANGE = [6, 9], v, end,
+        VERSION_PLACEHOLDER = '{{version}}',
+        IE_DETECT_TPL = '<!--[if IE ' + VERSION_PLACEHOLDER + ']><s></s><![endif]-->',
+        div = document.createElement('div'), s,
+        o = {
+            // browser core type
+            //webkit: 0,
+            //trident: 0,
+            //gecko: 0,
+            //presto: 0,
+
+            // browser type
+            //chrome: 0,
+            //safari: 0,
+            //firefox:  0,
+            //ie: 0,
+            //opera: 0
+
+            //mobile: '',
+            //core: '',
+            //shell: ''
+        },
+        numberify = function(s) {
+            var c = 0;
+            // convert '1.2.3.4' to 1.234
+            return parseFloat(s.replace(/\./g, function() {
+                return (c++ === 0) ? '.' : '';
+            }));
+        };
+
+    // try to use IE-Conditional-Comment detect IE more accurately
+    // IE10 doesn't support this method, @ref: http://blogs.msdn.com/b/ie/archive/2011/07/06/html5-parsing-in-ie10.aspx
+    div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, '');
+    s = div.getElementsByTagName('s');
+
+    if (s.length > 0) {
+
+        shell = 'ie';
+        o[core = 'trident'] = 0.1; // Trident detected, look for revision
+
+        // Get the Trident's accurate version
+        if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
+            o[core] = numberify(m[1]);
+        }
+
+        // Detect the accurate version
+        // 注意：
+        //  o.shell = ie, 表示外壳是 ie
+        //  但 o.ie = 7, 并不代表外壳是 ie7, 还有可能是 ie8 的兼容模式
+        //  对于 ie8 的兼容模式，还要通过 documentMode 去判断。但此处不能让 o.ie = 8, 否则
+        //  很多脚本判断会失误。因为 ie8 的兼容模式表现行为和 ie7 相同，而不是和 ie8 相同
+        for (v = IE_DETECT_RANGE[0],end = IE_DETECT_RANGE[1]; v <= end; v++) {
+            div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, v);
+            if (s.length > 0) {
+                o[shell] = v;
+                break;
+            }
+        }
+
+    } else {
+
+        // WebKit
+        if ((m = ua.match(/AppleWebKit\/([\d.]*)/)) && m[1]) {
+            o[core = 'webkit'] = numberify(m[1]);
+
+            // Chrome
+            if ((m = ua.match(/Chrome\/([\d.]*)/)) && m[1]) {
+                o[shell = 'chrome'] = numberify(m[1]);
+            }
+            // Safari
+            else if ((m = ua.match(/\/([\d.]*) Safari/)) && m[1]) {
+                o[shell = 'safari'] = numberify(m[1]);
+            }
+
+            // Apple Mobile
+            if (/ Mobile\//.test(ua)) {
+                o[MOBILE] = 'apple'; // iPad, iPhone or iPod Touch
+            }
+            // Other WebKit Mobile Browsers
+            else if ((m = ua.match(/NokiaN[^\/]*|Android \d\.\d|webOS\/\d\.\d/))) {
+                o[MOBILE] = m[0].toLowerCase(); // Nokia N-series, Android, webOS, ex: NokiaN95
+            }
+        }
+        // NOT WebKit
+        else {
+            // Presto
+            // ref: http://www.useragentstring.com/pages/useragentstring.php
+            if ((m = ua.match(/Presto\/([\d.]*)/)) && m[1]) {
+                o[core = 'presto'] = numberify(m[1]);
+
+                // Opera
+                if ((m = ua.match(/Opera\/([\d.]*)/)) && m[1]) {
+                    o[shell = 'opera'] = numberify(m[1]); // Opera detected, look for revision
+
+                    if ((m = ua.match(/Opera\/.* Version\/([\d.]*)/)) && m[1]) {
+                        o[shell] = numberify(m[1]);
+                    }
+
+                    // Opera Mini
+                    if ((m = ua.match(/Opera Mini[^;]*/)) && m) {
+                        o[MOBILE] = m[0].toLowerCase(); // ex: Opera Mini/2.0.4509/1316
+                    }
+                    // Opera Mobile
+                    // ex: Opera/9.80 (Windows NT 6.1; Opera Mobi/49; U; en) Presto/2.4.18 Version/10.00
+                    // issue: 由于 Opera Mobile 有 Version/ 字段，可能会与 Opera 混淆，同时对于 Opera Mobile 的版本号也比较混乱
+                    else if ((m = ua.match(/Opera Mobi[^;]*/)) && m) {
+                        o[MOBILE] = m[0];
+                    }
+                }
+
+                // NOT WebKit or Presto
+            } else {
+                // MSIE
+                // 由于最开始已经使用了 IE 条件注释判断，因此落到这里的唯一可能性只有 IE10+
+                if ((m = ua.match(/MSIE\s([^;]*)/)) && m[1]) {
+                    o[core = 'trident'] = 0.1; // Trident detected, look for revision
+                    o[shell = 'ie'] = numberify(m[1]);
+
+                    // Get the Trident's accurate version
+                    if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
+                        o[core] = numberify(m[1]);
+                    }
+
+                    // NOT WebKit, Presto or IE
+                } else {
+                    // Gecko
+                    if ((m = ua.match(/Gecko/))) {
+                        o[core = 'gecko'] = 0.1; // Gecko detected, look for revision
+                        if ((m = ua.match(/rv:([\d.]*)/)) && m[1]) {
+                            o[core] = numberify(m[1]);
+                        }
+
+                        // Firefox
+                        if ((m = ua.match(/Firefox\/([\d.]*)/)) && m[1]) {
+                            o[shell = 'firefox'] = numberify(m[1]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    o.core = core;
+    o.shell = shell;
+    o._numberify = numberify;
+    return o;
+}
