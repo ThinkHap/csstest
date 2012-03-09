@@ -71,7 +71,7 @@
                     echo '<th><span class="ua-string">UA String</span></th>';
                     echo '</tr>';
                     
-                    $sql="SELECT * FROM cssproperties";
+                    $sql="SELECT * FROM properties";
                     
                     $result = mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
