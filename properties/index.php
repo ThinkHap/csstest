@@ -1,6 +1,6 @@
 <?php
-    //$con = mysql_connect("127.0.0.1","root","wanghao");
-    $con = mysql_connect("localhost","csstest","csstest");
+    $con = mysql_connect("127.0.0.1","root","wanghao");
+    //$con = mysql_connect("localhost","csstest","csstest");
 
     if (!$con) {
         die('Could not connect: ' . mysql_error());
@@ -15,11 +15,12 @@
         array_push($properties, $row['property']);
     }
     sort($properties);
-    
+
     if (!array_key_exists('browser', $_POST)) {
         mysql_close($con);
     }elseif (array_key_exists('browser', $_POST)) {
         sort($properties);
+        echo "test";
         $prop = join("`, `", $properties);
     
         $results = array();
@@ -34,7 +35,7 @@
     
         mysql_select_db("csstest", $con);
         
-        $sql="INSERT INTO cssproperties (`time`, `browser`, `uastring`, `$prop`) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$res')";
+        $sql="INSERT INTO properties (`time`, `browser`, `uastring`, `$prop`) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$res')";
         
         if (!mysql_query($sql,$con)) {
             die('Error: ' . mysql_error());
@@ -84,6 +85,7 @@
                 echo "var properties = ['$p'];";
             ?>
             cssProperties = properties.sort();
+            var cssProperties = properties;
             
             var result = [];
             var fullresult = ['<table>'];
@@ -134,11 +136,11 @@
             var time = new Date();
             var ua = navigator.userAgent;
             //var ua = KISSY.UA;
-            document.write(ua);
+            document.write(ua+"</br>");
+            //document.write(cssresult);
 
             fullresult.push('</table>');
             var resultHtml = fullresult.join("\r");
-            document.write(resultHtml);
 
 
             
@@ -174,9 +176,9 @@
                 }  
                 return version;  
             }  
-
             var browser = getBrowserVersion();
-
+            document.write(browser +"</br>");
+            document.write(resultHtml);
 
             function GetXmlHttpObject() {
                 var xmlHttp=null; 
@@ -193,6 +195,12 @@
                 };
                 return xmlHttp;
             };
+
+            //function submitData() { 
+            //    KISSY.IO.post('index.php' + '?browser='+ browser +'&uastring='+ ua +'&sid='+ Math.random(), function(result){
+            //        alert("Success");
+            //    });
+            //};
 
             function submitData() { 
                 xmlHttp=GetXmlHttpObject()
@@ -211,6 +219,7 @@
                 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") { 
                     //document.write(xmlHttp.responseText);
                     //document.write("request result");
+                    //alert("Success");
                 } 
             }
 

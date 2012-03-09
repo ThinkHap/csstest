@@ -24,54 +24,72 @@
             .support {background-color:#0f0;}
             .unsupport {background-color:#f00;}
             .time, .browser, .ua-string {white-space:nowrap;}
+
+            .background, .color, .dimension, .layout, .margin, .others, .positioning, .table, .user-interface {background-color:#fcc;}
+            .border, .content, .font, .list, .media-queries, .padding, .printing, .text {background-color:#ccf;}
         </style>
     </head>
     <body>
         <div class="result">
             <h1>CSS Properties Test Result</h1>
                 <?php
-                    //$con = mysql_connect("127.0.0.1","root","wanghao");
-                    $con = mysql_connect("localhost","csstest","csstest");
+                    $con = mysql_connect("127.0.0.1","root","wanghao");
+                    //$con = mysql_connect("localhost","csstest","csstest");
                     if (!$con) {
                         die('Could not connect: ' . mysql_error());
                     }
                     
                     mysql_select_db("csstest", $con);
 
-                    $sql_query = "SELECT * FROM prop";
-                    $prop = mysql_query($sql_query);
+                    $sql_query_group = "SELECT type FROM prop GROUP BY type";
+                    $prop_group = mysql_query($sql_query_group);
 
                     $properties = array();
-                    while($row = mysql_fetch_array($prop)) {
-                        array_push($properties, $row['property']);
+                    $prop = array();
+                    while($row_group = mysql_fetch_array($prop_group)) {
+                        $temp = array();
+                        $sql_query = "SELECT * FROM prop";
+                        $prop_query = mysql_query($sql_query);
+                        while($row = mysql_fetch_array($prop_query)) {
+                            if($row_group['type'] == $row['type']){
+                                array_push($temp, $row['property']);
+                            }
+                        }
+                        $properties[$row_group['type']] = $temp;
+                        array_push($prop, $row_group['type']); 
                     }
-                    sort($properties);
+                    //sort($properties);
                     echo '<table>';
                     echo '<tr>';
                     echo '<th><span class="time">Time</span></th>';
                     echo '<th><span class="browser">browser</span></th>';
-                    foreach($properties as $key=>$value){
-                        echo '<th><span class="css-property">'.$value.'</span></th>';
-                    }      
+                    foreach($prop as $key=>$value){
+                        foreach($properties[$value] as $val){
+                            echo '<th class="'.$value.'"><span class="css-property">'.$val.'</span></th>';
+                        }      
+                    }
                     echo '<th><span class="ua-string">UA String</span></th>';
                     echo '</tr>';
                     
-                    $sql="SELECT * FROM cssproperties";
+                    $sql="SELECT * FROM properties";
                     
                     $result = mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
                         echo "<tr>";
                         echo '<td><span class="time">' . $row['time'] . '</span></td>';
                         echo '<td><span class="browser">' . $row['browser'] . '</span></td>';
-                        foreach($properties as $key=>$value){
-                            if($row[$value] == "N"){
-                                echo '<td><span class="unsupport">' . $row[$value] . '</span></td>';
-                            }else {
-                                echo '<td><span class="support">' . $row[$value] . '</span></td>';
+                        foreach($prop as $key=>$value){
+                            foreach($properties[$value] as $val){
+                                if($row[$val] == "N"){
+                                    echo '<td class="'.$value.'"><span class="unsupport">' . $row[$val] . '</span></td>';
+                                }else {
+                                    echo '<td class="'.$value.'"><span class="support">' . $row[$val] . '</span></td>';
+                                }
                             }
                         }
                         echo '<td><span class="ua-string">' . $row['uastring'] . '</span></td>';
                         echo "</tr>";
+
                     }
                     echo "</table>";
                     mysql_close($con);
