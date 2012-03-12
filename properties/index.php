@@ -1,42 +1,49 @@
 <?php
-    //$con = mysql_connect("127.0.0.1","root","wanghao");
-    $con = mysql_connect("localhost","csstest","csstest");
+    $con = mysql_connect("127.0.0.1","root","wanghao");
+    //$con = mysql_connect("localhost","csstest","csstest");
 
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     };
     mysql_select_db("csstest", $con);
-
-    $sql_query = "SELECT * FROM prop";
-    $prop = mysql_query($sql_query);
-
-    $properties = array();
-    while($row = mysql_fetch_array($prop)) {
-        array_push($properties, $row['property']);
+    //$sql_query = "SELECT * FROM prop";
+    $sql_query = "SELECT * FROM prop GROUP BY type";
+    $sql_prop = mysql_query($sql_query);
+    $prop_name = array();
+    $prop_type = array();
+    $prop_ver = array();
+    $prop_ajax = array();
+    while($row = mysql_fetch_array($sql_prop)) {
+        $type = $row["type"];
+        $prop_name[$type] = array();
+        $prop_ver[$type] = array();
+        $prop_type[] = $type;
+        $sql_query_type = "SELECT * FROM prop WHERE type='$type'";
+        $sql_prop_type = mysql_query($sql_query_type);
+        while($row_prop = mysql_fetch_array($sql_prop_type)) {
+            $prop_name[$type][] = $row_prop['property'];
+            $prop_ver[$type][] = $row_prop['version'];
+            $prop_ajax[]=$row_prop['property'];
+        }
     }
-    sort($properties);
 
+    //ajax数据储存
     if (!array_key_exists('browser', $_POST)) {
         mysql_close($con);
     }elseif (array_key_exists('browser', $_POST)) {
-        sort($properties);
-        echo "test";
-        $prop = join("`, `", $properties);
-    
+        sort($prop_ajax);
+        print_r("test");
+        $prop = join("`, `", $prop_ajax);
         $results = array();
-        for ($i = 0; $i < count($properties); $i++) {
-            $post = $_POST[$properties[$i]];
+        for ($i = 0; $i < count($prop_ajax); $i++) {
+            $post = $_POST[$prop_ajax[$i]];
             array_push($results, $post);
         }
         $res = join("', '", $results);
-    
         $t = time();
         $time = date("Y-m-d H:i:s", $t);
-    
         mysql_select_db("csstest", $con);
-        
         $sql="INSERT INTO properties (`time`, `browser`, `uastring`, `$prop`) VALUES ('$time', '$_POST[browser]', '$_POST[uastring]', '$res')";
-        
         if (!mysql_query($sql,$con)) {
             die('Error: ' . mysql_error());
         };
@@ -62,87 +69,89 @@
 		    a:hover{text-decoration:underline;}
 		    a:active{}
 
-            h2 a {color:#f44;}
-            table {border-collapse: separate;}
-            table th, table td {border:1px solid #fff;padding:1px;background-color:#f4f4f4;} 
+            .wrap {width:800px;margin:0 auto;}
+            h1 a {color:#f44;}
+            .browser {font-weight:bold;color:#c00;}
+            table {line-height:24px;width:500px;border-collapse: separate;margin:10px 0 30px;}
+            table caption {line-height:30px;padding-left:10px;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
+            table th {color:#fff;background-color:#555;}
+            table th, table td {color:#fff;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
             table span {display:block;padding:2px;text-align:center;}
-            .css-property {background-color:#f4f4f4;}
-            .support {background-color:#0f0;}
-            .unsupport {background-color:#f00;}
-
+            .css-property {padding-left:20px;width:179px;background-color:#333;}
+            .support, .supp {background-color:#090;}
+            .unsupport, .unsupp {background-color:#b00;}
+            .compatibility {width:150px;text-align:center;}
+            .version {width:96px;text-align:center;}
         </style>
         <script src="http://a.tbcdn.cn/s/kissy/1.1.6/kissy-min.js"></script>
     </head>
     <body>
-        <h1>以下是你目前正在使用的浏览器对CSS属性的支持情况：</h1>
-        <div id="result" class="result">
-        
+        <div id="wrap" class="wrap">
+            <h1>CSS Properties Test</h1>
+            <div id="result" class="result">
+            </div>
         </div>
-    </body>
         <script>
             <?php
-                $p = join("', '", $properties);
-                echo "var properties = ['$p'];";
+                echo "var prop_name = ".json_encode($prop_name).";";
+                echo "var prop_ver = ".json_encode($prop_ver).";";
+                echo "var prop_type = ".json_encode($prop_type).";";
             ?>
-            cssProperties = properties.sort();
-            var cssProperties = properties;
-            
+
             var result = [];
-            var fullresult = ['<table>'];
+            var fullresult = [];
+
+            for(var i in prop_type) {
+                //document.write(prop_type[i] + '</br>');
+                var type = prop_type[i];
+                fullresult.push('<table>');
+                fullresult.push('<caption>' + type + '</caption>');
+                fullresult.push('<th>Properties</th><th>Compatibility</th><th>Version</th>');
+                for(var j in prop_name[type]){
+                    //document.write(cssProperties[type][j] + ' | ');
+                    cssResult(prop_name[type][j],prop_ver[type][j])
+                }
+                fullresult.push('</table>');
+            }        
             
-            var getStyleProperty = (function(){
+            function getStyleProperty(prop){
             	var prefixes = ['', '-ms-','-moz-', '-webkit-', '-khtml-', '-o-'];
             	var reg_cap = /-([a-z])/g;
-                var pre;
-            	function getStyle(css, el) {
-            	    el = el || document.documentElement;
-            	    var style = el.style,test;
-            	    for (var i=0, l=prefixes.length; i < l; i++) {
-                        var pre = prefixes[i];
-            		    test = (prefixes[i] + css).replace(reg_cap,function($0,$1){
-            		        return $1.toUpperCase();
-            		    });
-            		    if(test in style && pre == ""){
-            		        return true;
-            		    }else if(test in style){
-                            return pre;
-                        };
-            	    };
-            	    return false;
+            	var style = document.documentElement.style,test;
+            	for (var i=0, l=prefixes.length; i < l; i++) {
+                    var pre = prefixes[i];
+            	    test = (prefixes[i] + prop).replace(reg_cap,function($0,$1){
+            	        return $1.toUpperCase();
+            	    });
+            	    if(test in style && pre == ""){
+            	        return true;
+            	    }else if(test in style){
+                        return pre;
+                    };
             	};
-            	return getStyle;
-            })();
+            	return false;
+            };
             
-            for (var i = 0; i < cssProperties.length; i++) {
-                var _this = cssProperties[i],
+            function cssResult(ele,ver) {
+                var _this = ele,
                     getStyle = getStyleProperty(_this);
-                
-                // 0. origin results
                 if (getStyle == true){
-                    fullresult.push('<tr><td><span class="css-property">' + _this + '</span></td>' + '<td><span class="support">Y</span></td></tr>');
+                    fullresult.push('<tr><td class="css-property supp">' + _this + '</li>' + '<td class="compatibility support">Y</td><td class="version support">' + ver + '</td></tr>');
                     result.push(_this +'=Y');
                 }else if (getStyle) {
                     result.push(_this +'='+ getStyle);
-                    fullresult.push('<tr><td><span class="css-property">' + _this + '</span></td>' + '<td><span class="support">' + getStyle + '</span></td></tr>');
+                    fullresult.push('<tr><td class="css-property supp">' + _this + '</td>' + '<td class="compatibility support">' + getStyle + '</td><td class="version support">' + ver + '</td></tr>');
                 }else {
                     result.push(_this +'=N');
-                    fullresult.push('<tr><td><span class="css-property">' + _this + '</span></td>' + '<td><span class="unsupport">N</span></td></tr>');
+                    fullresult.push('<tr><td class="css-property unsupp">' + _this + '</td>' + '<td class="compatibility unsupport">N</td><td class="version unsupport">' + ver + '</td></tr>');
                 };
-
-            
-            };       
+            }
 
             var cssresult = result.join("&");
-            var time = new Date();
             var ua = navigator.userAgent;
             //var ua = KISSY.UA;
-            document.write(ua+"</br>");
-            //document.write(cssresult);
 
             fullresult.push('</table>');
-            var resultHtml = fullresult.join("\r");
-
-
             
             function getBrowserVersion() {  
                 var browser = {};  
@@ -156,8 +165,7 @@
                                         ? browser.chrome = s[1]  
                                         : (s = userAgent.match(/opera.([\d.]+)/))  
                                                 ? browser.opera = s[1]  
-                                                : (s = userAgent  
-                                                        .match(/version\/([\d.]+).*safari/))  
+                                                : (s = userAgent.match(/version\/([\d.]+).*safari/))  
                                                         ? browser.safari = s[1]  
                                                         : 0;  
                 var version = "";  
@@ -177,8 +185,10 @@
                 return version;  
             }  
             var browser = getBrowserVersion();
-            document.write(browser +"</br>");
-            document.write(resultHtml);
+
+            var resultHtml = "<p>以下是你目前正在使用的<span class='browser'>" + browser + "</span>浏览器对CSS属性的支持情况</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = resultHtml;
 
             function GetXmlHttpObject() {
                 var xmlHttp=null; 
@@ -195,13 +205,6 @@
                 };
                 return xmlHttp;
             };
-
-            //function submitData() { 
-            //    KISSY.IO.post('index.php' + '?browser='+ browser +'&uastring='+ ua +'&sid='+ Math.random(), function(result){
-            //        alert("Success");
-            //    });
-            //};
-
             function submitData() { 
                 xmlHttp=GetXmlHttpObject()
                 if (xmlHttp==null) {
@@ -214,7 +217,6 @@
                 xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlHttp.send("browser="+ browser +"&uastring="+ ua +"&"+ cssresult +"&sid="+ Math.random());
             }
-            
             function stateChanged() { 
                 if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete") { 
                     //document.write(xmlHttp.responseText);
@@ -222,9 +224,8 @@
                     //alert("Success");
                 } 
             }
-
             submitData();
-        
         </script>
+    </body>
 </html>
 

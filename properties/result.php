@@ -30,11 +30,12 @@
         </style>
     </head>
     <body>
-        <div class="result">
+        <div id="wrap" class="wrap">
             <h1>CSS Properties Test Result</h1>
+            <div id="result" class="result">
                 <?php
-                    //$con = mysql_connect("127.0.0.1","root","wanghao");
-                    $con = mysql_connect("localhost","csstest","csstest");
+                    $con = mysql_connect("127.0.0.1","root","wanghao");
+                    //$con = mysql_connect("localhost","csstest","csstest");
                     if (!$con) {
                         die('Could not connect: ' . mysql_error());
                     }
@@ -48,7 +49,8 @@
                     $prop = array();
                     while($row_group = mysql_fetch_array($prop_group)) {
                         $temp = array();
-                        $sql_query = "SELECT * FROM prop";
+                        $type = $row_group['type'];
+                        $sql_query = "SELECT * FROM prop WHERE prop.type='$type'";
                         $prop_query = mysql_query($sql_query);
                         while($row = mysql_fetch_array($prop_query)) {
                             if($row_group['type'] == $row['type']){
@@ -71,7 +73,7 @@
                     echo '<th><span class="ua-string">UA String</span></th>';
                     echo '</tr>';
                     
-                    $sql="SELECT * FROM properties";
+                    $sql="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";
                     
                     $result = mysql_query($sql);
                     while($row = mysql_fetch_array($result)) {
@@ -94,6 +96,7 @@
                     echo "</table>";
                     mysql_close($con);
                 ?>
+            </div>
         </div>    
     </body>
 </html>
