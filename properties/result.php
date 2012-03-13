@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="gbk" />
+        <meta charset="utf-8" />
         <title>CSS Properties Test Result</title>
         <style type="text/css">
             body, form, h1, h2, h3, h4, p, img, ul, li, ol, dl, dt, dd, a, span, input, tr, th, td{margin:0;padding:0;}
-		    body {font:normal 12px/1.5 "Arial","宋体","Simsun","Tahoma",sans-serif;}
+		    body {font:normal 12px/1.5 "Arial","瀹嬩綋","Simsun","Tahoma",sans-serif;}
 		    li{list-style:none;}
 		    img {border:0 none;vertical-align:top;}
 		    table {border-collapse:collapse;border-spacing:0;}
@@ -16,87 +16,120 @@
 		    a:hover{text-decoration:underline;}
 		    a:active{}
 
-
-            table {border-collapse: separate;}
-            table th, table td {border:1px solid #fff;padding:1px;background-color:#f4f4f4;} 
+            .wrap {width:990px;margin:0 auto;}
+            h1 {position:fixed;top:0;background-color:#fff;width:990px;}
+            .table-hd {position:fixed;top:36px;width:990px;margin:0;}
+            .result {margin-top:91px;}
+            .properties {text-align:center;width:179px;background-color:#333;}
+            .browser {font-weight:bold;background:#333;}
+            table {line-height:24px;border-collapse: separate;margin:10px 0 30px;}
+            table caption {line-height:30px;padding-left:10px;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
+            table th {color:#fff;background-color:#666;}
+            table th, table td {width:100px;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
+            table td {color:#fff;background:#666;} 
             table span {display:block;padding:2px;text-align:center;}
-            .css-property {background-color:#f4f4f4;}
-            .support {background-color:#0f0;}
-            .unsupport {background-color:#f00;}
-            .time, .browser, .ua-string {white-space:nowrap;}
-
-            .background, .color, .dimension, .layout, .margin, .others, .positioning, .table, .user-interface {background-color:#fcc;}
-            .border, .content, .font, .list, .media-queries, .padding, .printing, .text {background-color:#ccf;}
+            .property {padding-left:20px;width:179px;background-color:#666;}
+            .support, .supp {text-align:center;background-color:#090;}
+            .unsupport, .unsupp {text-align:center;background-color:#b00;}
         </style>
     </head>
     <body>
         <div id="wrap" class="wrap">
             <h1>CSS Properties Test Result</h1>
-            <div id="result" class="result">
-                <?php
-                    $con = mysql_connect("127.0.0.1","root","wanghao");
-                    //$con = mysql_connect("localhost","csstest","csstest");
-                    if (!$con) {
-                        die('Could not connect: ' . mysql_error());
+            <?php
+                //$con = mysql_connect("127.0.0.1","root","wanghao");
+                $con = mysql_connect("localhost","csstest","csstest");
+            
+                if (!$con) {
+                    die('Could not connect: ' . mysql_error());
+                };
+                mysql_select_db("csstest", $con);
+
+                $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";
+                $sql_prop = "SELECT * FROM prop GROUP BY type";
+                $query_brow = mysql_query($sql_brow);
+                $query_prop = mysql_query($sql_prop);
+                $prop_name = array();
+                //$prop_type = array();
+                $prop_brow = array();
+                $prop_brow_ua = array();
+                $prop_all = array();
+                $sum = 0;
+                echo '<table class="table-hd">';
+                echo '<tr>';
+                echo '<th class="properties property">Properties / Browser</th>';
+                echo '<th class="version">Version</th>';
+                while($row = mysql_fetch_array($query_brow)) {
+                    $prop_brow[] = $row['browser'];
+                    $prop_brow_ua[$row['browser']] = $row['uastring'];
+                    $prop_all[] = $row;
+                    $sum++;
+                }
+                sort($prop_brow);
+                foreach($prop_brow as $key=>$value){
+                    for($i=0;$i<$sum;$i++){
+                        $j=$i+1;
+                        $prop_col = 'prop_brow_'.$j;
+                        $$prop_col = $prop_col;
+                    }
+                    echo '<th class="browser">'.$value.'</th>';
+                }
+                echo '</tr>';
+                echo '</table>';
+                echo '<div id="result" class="result">';
+                while($row = mysql_fetch_array($query_prop)) {
+                    $type = $row["type"];
+                    $prop_name[$type] = array();
+                    $prop_ver[$type] = array();
+                    for ($i = 1; $i <= count; $i++) {
+                        $prop_browser = 'prop_brow_'.$i;
+                        $$prop_browser = array();
+                        ${$prop_browser}[$type] = array();
                     }
                     
-                    mysql_select_db("csstest", $con);
-
-                    $sql_query_group = "SELECT type FROM prop GROUP BY type";
-                    $prop_group = mysql_query($sql_query_group);
-
-                    $properties = array();
-                    $prop = array();
-                    while($row_group = mysql_fetch_array($prop_group)) {
-                        $temp = array();
-                        $type = $row_group['type'];
-                        $sql_query = "SELECT * FROM prop WHERE prop.type='$type'";
-                        $prop_query = mysql_query($sql_query);
-                        while($row = mysql_fetch_array($prop_query)) {
-                            if($row_group['type'] == $row['type']){
-                                array_push($temp, $row['property']);
-                            }
-                        }
-                        $properties[$row_group['type']] = $temp;
-                        array_push($prop, $row_group['type']); 
+                    //寰幆杈撳嚭灞炴�у悕鍙婂睘鎬х増鏈埌鏁扮粍
+                    $sql_query_type = "SELECT * FROM prop WHERE type='$type'";
+                    $sql_prop_type = mysql_query($sql_query_type);
+                    while($row_prop = mysql_fetch_array($sql_prop_type)) {
+                        $prop_name[$type][] = $row_prop['property'];
+                        $prop_ver[$type][] = $row_prop['version'];
+                        $properties_name = $row_prop['property'];
                     }
-                    //sort($properties);
+                }
+                foreach($prop_name as $key=>$value){
+                    $sum +=2;
                     echo '<table>';
                     echo '<tr>';
-                    echo '<th><span class="time">Time</span></th>';
-                    echo '<th><span class="browser">browser</span></th>';
-                    foreach($prop as $key=>$value){
-                        foreach($properties[$value] as $val){
-                            echo '<th class="'.$value.'"><span class="css-property">'.$val.'</span></th>';
-                        }      
-                    }
-                    echo '<th><span class="ua-string">UA String</span></th>';
-                    echo '</tr>';
-                    
-                    $sql="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";
-                    
-                    $result = mysql_query($sql);
-                    while($row = mysql_fetch_array($result)) {
-                        echo "<tr>";
-                        echo '<td><span class="time">' . $row['time'] . '</span></td>';
-                        echo '<td><span class="browser">' . $row['browser'] . '</span></td>';
-                        foreach($prop as $key=>$value){
-                            foreach($properties[$value] as $val){
-                                if($row[$val] == "N"){
-                                    echo '<td class="'.$value.'"><span class="unsupport">' . $row[$val] . '</span></td>';
-                                }else {
-                                    echo '<td class="'.$value.'"><span class="support">' . $row[$val] . '</span></td>';
+                    echo '<th colspan='.$sum.'>'.$key.'</th>';
+                    echo '<tr>';
+                    foreach($value as $k=>$val){
+                        echo '<tr>';
+                        echo '<td class="property">'.$val.'</td>';
+                        echo '<td class="version">'.$prop_ver[$key][$k].'</td>';
+                        foreach($prop_brow as $j=>$brow){
+                            $temp_ua = $prop_brow_ua[$brow];
+                            foreach($prop_all as $row){
+                                if($row['uastring']==$temp_ua){
+                                    if($row[$val] == 'N'){
+                                        echo '<td class="unsupport">'.$row[$val].'</td>';
+                                    }else{
+                                        echo '<td class="support">'.$row[$val].'</td>';
+                                    }
+                                    
                                 }
                             }
                         }
-                        echo '<td><span class="ua-string">' . $row['uastring'] . '</span></td>';
-                        echo "</tr>";
-
+                        echo '</tr>';
                     }
-                    echo "</table>";
-                    mysql_close($con);
-                ?>
-            </div>
+                    echo '</table>';
+                }
+
+            
+                echo '</div>';
+                mysql_close($con);
+                die;
+                //$sql="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";
+            ?>
         </div>    
     </body>
 </html>
