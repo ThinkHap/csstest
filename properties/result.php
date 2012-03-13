@@ -45,6 +45,7 @@
                 if (!$con) {
                     die('Could not connect: ' . mysql_error());
                 };
+                mysql_query("SET NAMES UTF8"); 
                 mysql_select_db("csstest", $con);
 
                 $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";

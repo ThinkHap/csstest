@@ -5,8 +5,9 @@
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     };
+    mysql_query("SET NAMES UTF8"); 
     mysql_select_db("csstest", $con);
-    //$sql_query = "SELECT * FROM prop";
+
     $sql_query = "SELECT * FROM prop GROUP BY type";
     $sql_prop = mysql_query($sql_query);
     $prop_name = array();
@@ -168,9 +169,11 @@
                                                 ? browser.opera = s[1]  
                                                 : (s = userAgent.match(/android ([\d.]+)/))  
                                                         ? browser.android = s[1]
-                                                        : (s = userAgent.match(/version\/([\d.]+).*safari/))  
-                                                            ? browser.safari = s[1]  
-                                                            : 0;  
+                                                        : (s = userAgent.match(/iphone os ([\d\w]+)/))  
+                                                                ? browser.iphone = s[1]
+                                                                : (s = userAgent.match(/version\/([\d.]+).*safari/))  
+                                                                    ? browser.safari = s[1]  
+                                                                    : 0;  
                 var version = "";  
                 if (browser.ie) {  
                     version = 'IE ' + browser.ie;  
@@ -182,6 +185,8 @@
                     version = 'Opera ' + browser.opera;  
                 } else if (browser.android) {  
                     version = 'Android ' + browser.android;  
+                } else if (browser.iphone) {  
+                    version = 'iPhone OS ' + browser.iphone;  
                 } else if (browser.safari) {  
                     version = 'Safari ' + browser.safari;  
                 } else {  
