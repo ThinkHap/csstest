@@ -17,25 +17,27 @@
 		    a:active{}
 
             .wrap {width:990px;margin:0 auto;}
-            h1 {position:fixed;top:0;background-color:#fff;width:990px;}
-            .table-hd {position:fixed;top:36px;width:990px;margin:0;}
-            .result {margin-top:91px;}
             .properties {text-align:center;width:179px;background-color:#333;}
-            .browser {font-weight:bold;background:#333;}
+            .browser {font-weight:bold;background:#666;}
             table {line-height:24px;border-collapse: separate;margin:10px 0 30px;}
-            table caption {line-height:30px;padding-left:10px;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
+            table caption {line-height:30px;padding-left:10px;border-bottom:1px solid #999;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
             table th {color:#fff;background-color:#666;}
             table th, table td {width:100px;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
             table td {color:#fff;background:#666;} 
             table span {display:block;padding:2px;text-align:center;}
             .property {padding-left:20px;width:179px;background-color:#666;}
+            .version {text-align:center;}
             .support, .supp {text-align:center;background-color:#090;}
             .unsupport, .unsupp {text-align:center;background-color:#b00;}
+
+            .ua-browser {width:150px;padding-left:20px;font-weight:bold;background:#666;}
+            .ua {width:820px;padding:0 20px;}
         </style>
     </head>
     <body>
         <div id="wrap" class="wrap">
             <h1>CSS Properties Test Result</h1>
+            <div id="result" class="result">
             <?php
                 //$con = mysql_connect("127.0.0.1","root","wanghao");
                 $con = mysql_connect("localhost","csstest","csstest");
@@ -54,11 +56,9 @@
                 $prop_brow = array();
                 $prop_brow_ua = array();
                 $prop_all = array();
+                $table_hd = array();
                 $sum = 0;
-                echo '<table class="table-hd">';
-                echo '<tr>';
-                echo '<th class="properties property">Properties / Browser</th>';
-                echo '<th class="version">Version</th>';
+                $table_hd[] = '<tr><th class="properties property">Properties / Browser</th><th class="version">Version</th>';
                 while($row = mysql_fetch_array($query_brow)) {
                     $prop_brow[] = $row['browser'];
                     $prop_brow_ua[$row['browser']] = $row['uastring'];
@@ -72,11 +72,10 @@
                         $prop_col = 'prop_brow_'.$j;
                         $$prop_col = $prop_col;
                     }
-                    echo '<th class="browser">'.$value.'</th>';
+                    $table_hd[] = '<th class="browser">'.$value.'</th>';
                 }
-                echo '</tr>';
-                echo '</table>';
-                echo '<div id="result" class="result">';
+                $table_hd[] = '</tr>';
+                $table_head = join('',$table_hd);
                 while($row = mysql_fetch_array($query_prop)) {
                     $type = $row["type"];
                     $prop_name[$type] = array();
@@ -99,9 +98,8 @@
                 foreach($prop_name as $key=>$value){
                     $sum +=2;
                     echo '<table>';
-                    echo '<tr>';
-                    echo '<th colspan='.$sum.'>'.$key.'</th>';
-                    echo '<tr>';
+                    echo '<caption>'.$key.'</caption>';
+                    echo $table_head;
                     foreach($value as $k=>$val){
                         echo '<tr>';
                         echo '<td class="property">'.$val.'</td>';
@@ -115,7 +113,6 @@
                                     }else{
                                         echo '<td class="support">'.$row[$val].'</td>';
                                     }
-                                    
                                 }
                             }
                         }
@@ -124,12 +121,20 @@
                     echo '</table>';
                 }
 
+                echo '<table>';
+                echo '<caption>对应浏览器的UA</caption>';
+                foreach($prop_brow as $key=>$value){
+                    echo '<tr>';
+                    echo '<td class="ua-browser">'.$value.'</td>';
+                    echo '<td class="ua">'.$prop_brow_ua[$value].'</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
             
-                echo '</div>';
                 mysql_close($con);
                 die;
-                //$sql="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";
             ?>
+            </div>
         </div>    
     </body>
 </html>

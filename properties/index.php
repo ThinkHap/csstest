@@ -27,7 +27,7 @@
         }
     }
 
-    //ajaxÊı¾İ´¢´æ
+    //ajaxæ•°æ®å‚¨å­˜
     if (!array_key_exists('browser', $_POST)) {
         mysql_close($con);
     }elseif (array_key_exists('browser', $_POST)) {
@@ -54,11 +54,11 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="gbk" />
-        <title>¼ì²âä¯ÀÀÆ÷ÑùÊ½Ö§³Ö</title>
+        <meta charset="utf-8" />
+        <title>æ£€æµ‹æµè§ˆå™¨æ ·å¼æ”¯æŒ</title>
         <style type="text/css">
             body, form, h1, h2, h3, h4, p, img, ul, li, ol, dl, dt, dd, a, span, input, tr, th, td{margin:0;padding:0;}
-		    body {font:normal 12px/1.5 "Arial","ËÎÌå","Simsun","Tahoma",sans-serif;}
+		    body {font:normal 12px/1.5 "Arial","å®‹ä½“","Simsun","Tahoma",sans-serif;}
 		    li{list-style:none;}
 		    img {border:0 none;vertical-align:top;}
 		    table {border-collapse:collapse;border-spacing:0;}
@@ -73,7 +73,7 @@
             h1 a {color:#f44;}
             .browser {font-weight:bold;color:#c00;}
             table {line-height:24px;width:500px;border-collapse: separate;margin:10px 0 30px;}
-            table caption {line-height:30px;padding-left:10px;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
+            table caption {line-height:30px;padding-left:10px;border-bottom:1px solid #999;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
             table th {color:#fff;background-color:#555;}
             table th, table td {color:#fff;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
             table span {display:block;padding:2px;text-align:center;}
@@ -117,7 +117,8 @@
             function getStyleProperty(prop){
             	var prefixes = ['', '-ms-','-moz-', '-webkit-', '-khtml-', '-o-'];
             	var reg_cap = /-([a-z])/g;
-            	var style = document.documentElement.style,test;
+                var style = document.documentElement.style,
+                    test;
             	for (var i=0, l=prefixes.length; i < l; i++) {
                     var pre = prefixes[i];
             	    test = (prefixes[i] + prop).replace(reg_cap,function($0,$1){
@@ -165,9 +166,11 @@
                                         ? browser.chrome = s[1]  
                                         : (s = userAgent.match(/opera.([\d.]+)/))  
                                                 ? browser.opera = s[1]  
-                                                : (s = userAgent.match(/version\/([\d.]+).*safari/))  
-                                                        ? browser.safari = s[1]  
-                                                        : 0;  
+                                                : (s = userAgent.match(/android ([\d.]+)/))  
+                                                        ? browser.android = s[1]
+                                                        : (s = userAgent.match(/version\/([\d.]+).*safari/))  
+                                                            ? browser.safari = s[1]  
+                                                            : 0;  
                 var version = "";  
                 if (browser.ie) {  
                     version = 'IE ' + browser.ie;  
@@ -177,16 +180,18 @@
                     version = 'Chrome ' + browser.chrome;  
                 } else if (browser.opera) {  
                     version = 'Opera ' + browser.opera;  
+                } else if (browser.android) {  
+                    version = 'Android ' + browser.android;  
                 } else if (browser.safari) {  
                     version = 'Safari ' + browser.safari;  
                 } else {  
-                    version = 'Î´Öªä¯ÀÀÆ÷';  
+                    version = 'æœªçŸ¥æµè§ˆå™¨';  
                 }  
                 return version;  
             }  
             var browser = getBrowserVersion();
 
-            var resultHtml = "<p>ÒÔÏÂÊÇÄãÄ¿Ç°ÕıÔÚÊ¹ÓÃµÄ<span class='browser'>" + browser + "</span>ä¯ÀÀÆ÷¶ÔCSSÊôĞÔµÄÖ§³ÖÇé¿ö</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
+            var resultHtml = "<p>ä»¥ä¸‹æ˜¯ä½ ç›®å‰æ­£åœ¨ä½¿ç”¨çš„<span class='browser'>" + browser + "</span>æµè§ˆå™¨å¯¹CSSå±æ€§çš„æ”¯æŒæƒ…å†µ</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
             var resultDiv = document.getElementById("result");
             resultDiv.innerHTML = resultHtml;
 
