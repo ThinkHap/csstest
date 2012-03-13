@@ -24,6 +24,7 @@ body {
     </ol>
     <h2>Test Result</h2>
     <ol>
+        <li><a href="properties/report.php">CSS Properties 测试结果</a></li>
         <li><a href="selectors/report.php">CSS Selectors 测试结果</a></li>
         <li><a href="selectors/result.php">CSS Selectors 测试结果集</a></li>
     </ol>
@@ -38,6 +39,7 @@ body {
         <li><a href="http://kb.cnblogs.com/a/925900/" target="_blank">CSS selectors: basic browser support</a></li>
         <li><a href="http://css3test.com/" target="_blank">CSS3Test</a></li>
         <li><a href="http://www.browserscope.org/browse?category=usertest_agt1YS1wcm9maWxlcnINCxIEVGVzdBidzawNDA" target="_blank">The CSS3Test Result</a></li>
+        <li><a href="http://www.w3schools.com/cssref/" target="_blank">CSS Reference</a></li>
     </ol>
 </body>
 </html>
