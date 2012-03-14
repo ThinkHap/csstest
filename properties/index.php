@@ -70,19 +70,19 @@
 		    a:hover{text-decoration:underline;}
 		    a:active{}
 
-            .wrap {width:800px;margin:0 auto;}
+            .wrap {width:990px;margin:0 auto;}
             h1 a {color:#f44;}
             .browser {font-weight:bold;color:#c00;}
-            table {line-height:24px;width:500px;border-collapse: separate;margin:10px 0 30px;}
+            table {line-height:24px;width:990px;border-collapse: separate;margin:10px 0 30px;}
             table caption {line-height:30px;padding-left:10px;border-bottom:1px solid #999;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
             table th {color:#fff;background-color:#555;}
             table th, table td {color:#fff;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
             table span {display:block;padding:2px;text-align:center;}
-            .css-property {padding-left:20px;width:179px;background-color:#333;}
+            .css-property {padding-left:20px;width:40%;background-color:#333;}
             .support, .supp {background-color:#090;}
             .unsupport, .unsupp {background-color:#b00;}
-            .compatibility {width:150px;text-align:center;}
-            .version {width:96px;text-align:center;}
+            .compatibility {width:30%;text-align:center;}
+            .version {width:30%;text-align:center;}
         </style>
         <script src="http://a.tbcdn.cn/s/kissy/1.1.6/kissy-min.js"></script>
     </head>
