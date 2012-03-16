@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<title>:first-of-type & :last-of-type & :only-of-type</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}</style>
+</head>
+<body>
+    <style>
+        div{width:300px;padding:5px 20px;border:2px solid #aecefe;}
+        p:first-of-type{color:#00f;font-weight:bold;}
+        p:last-of-type{color:#f00;font-weight:bold;}
+        p:only-of-type{color:#0a0;font-weight:bold;}
+    </style>
+    <div>
+        <p>Blue is Support :first-of-type</p>
+        <p>打酱油充数</p>
+        <p>Red is Support :last-of-type</p>
+    </div>
+    <p>Blue is Support :first-of-type</p>
+    <p>打酱油充数</p>
+    <p>Red is Support :last-of-type</p>
+    <div>
+        <p>Green is Support :only-of-type</p>
+    </div>
+<textarea cols="60" rows="19">
+<style>
+    div{width:300px;padding:5px 20px;border:2px solid #aecefe;}
+    p:first-of-type{color:#00f;font-weight:bold;}
+    p:last-of-type{color:#f00;font-weight:bold;}
+    p:only-of-type{color:#0a0;font-weight:bold;}
+</style>
+<div>
+    <p>Blue is Support :first-of-type</p>
+    <p>打酱油充数</p>
+    <p>Red is Support :last-of-type</p>
+</div>
+<p>Blue is Support :first-of-type</p>
+<p>打酱油充数</p>
+<p>Red is Support :last-of-type</p>
+<div>
+    <p>Green is Support :only-of-type</p>
+</div>
+</textarea>
+</body>
+</html>
