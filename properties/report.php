@@ -33,8 +33,11 @@
             .ua-browser {width:150px;padding-left:20px;font-weight:bold;background:#666;}
             .ua {width:820px;padding:0 20px;}
         </style>
+        <?php $ROOT = realpath('./.'); ?>
+        <?php require_once $ROOT."/uxcommon/assets.php" ?>
     </head>
     <body>
+        <?php require_once $ROOT."/uxcommon/header.php" ?>
         <div id="wrap" class="wrap">
             <h1>CSS Properties Test Result</h1>
             <div id="result" class="result">
@@ -132,5 +135,6 @@
             ?>
             </div>
         </div>    
+        <?php require_once $ROOT."/uxcommon/footer.php" ?>
     </body>
 </html>

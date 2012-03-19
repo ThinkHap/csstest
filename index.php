@@ -4,11 +4,15 @@
 <meta charset="gbk">
 <title>CSS兼容性参考手册与使用指南</title>
 <style>
-body {
-    font: 12px/1.5 "微软雅黑",arial,sans-serif;
-    background: #fff;
-    color: #333;
-}
+    body {
+        font: 12px/1.5 "微软雅黑",arial,sans-serif;
+        background: #fff;
+        color: #333;
+    }
+    .page_content {
+        width: 990px;
+        margin: 0 auto;
+    }
 </style>
 <?php include "uxcommon/assets.php" ?>
 </head>
