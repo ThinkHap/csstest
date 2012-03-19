@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>::after & ::before</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}</style>
+</head>
+<body>
+	<style>
+        #p1:before{color:#00f;font-weight:bold;content:':before';}
+        #p2::before{color:#f00;font-weight:bold;content:'::before';}
+        #p1:after{color:#00f;font-weight:bold;content:':after';}
+        #p2::after{color:#f00;font-weight:bold;content:'::after';}
+    </style>
+    <p id="p1"> Support </p>
+    <p id="p2"> Support </p>
+<textarea cols="70" rows="9">
+<style>
+    #p1:before{color:#00f;font-weight:bold;content:':before';}
+    #p2::before{color:#f00;font-weight:bold;content:'::before';}
+    #p1:after{color:#00f;font-weight:bold;content:':after';}
+    #p2::after{color:#f00;font-weight:bold;content:'::after';}
+</style>
+<p id="p1"> Support </p>
+<p id="p2"> Support </p>
+</textarea>
+</body>
+</html>
