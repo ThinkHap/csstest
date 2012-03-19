@@ -10,8 +10,11 @@ body {
     color: #333;
 }
 </style>
+<?php include "uxcommon/assets.php" ?>
 </head>
 <body>
+<?php include "uxcommon/header.php" ?>
+<div class="page_content">
     <h1>CSS兼容性参考手册与使用指南</h1>
     <h2>项目介绍</h2>
     <p><strong>CSS属性测试：</strong> 测试浏览器对CSS包含的大部分属性<不包含属性值>的支持情况，目前有收集366个属性。</p>
@@ -42,5 +45,7 @@ body {
         <li><a href="http://www.w3schools.com/cssref/" target="_blank">CSS Reference</a></li>
         <li><a href="http://css.doyoe.com/" target="_blank">CSS参考手册</a></li>
     </ol>
+</div>
+<?php include "uxcommon/footer.php" ?>
 </body>
 </html>
