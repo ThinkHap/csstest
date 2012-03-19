@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>:enabled & :disabled</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}</style>
+</head>
+<body>
+    <style>
+        input:enabled{border:2px solid #bedefe;}
+		input:disabled{border:2px solid #febebe;}
+    </style>
+    <div>
+        <input type="text" value="Blue border is Support :enabled"/>
+        <input type="text" disabled="disabled" value="Red border is Support :disabled"/>
+    </div>
+<textarea cols="90" rows="10">
+<style>
+    input:enabled{border:2px solid #bedefe;}
+    input:disabled{border:2px solid #febebe;}
+</style>
+<div>
+    <input type="text" value="Blue border is Support :enabled"/>
+    <input type="text" disabled="disabled" value="Red border is Support :disabled"/>
+</div>
+</textarea>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>css3 attribute selector</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}</style>
+</head>
+<body>
+    <style>
+        p{width:100px;text-align:center;}
+        p[class*='e']{background:#eee;}
+        p[class^='tobe']{color:#aaa;}
+        p[class$='w']{font-weight:bold;}
+    </style>
+    <p>2011.7月番</p>
+    <p>2011.10月番</p>
+    <p class="new">2012.1月番</p>
+    <p class="new tobe-1204">2012.4月番</p>
+    <p class="tobe-1207 new">2012.7月番</p>
+    <p class="tobe-1210">2012.10月番</p>
+    <p class="tobe13">2013.??</p>
+<textarea cols="50" rows="15">
+<style>
+    p{width:100px;text-align:center;}
+    p[class*='e']{background:#eee;}
+    p[class^='tobe']{color:#aaa;}
+    p[class$='w']{font-weight:bold;}
+</style>
+<p>2011.7月番</p>
+<p>2011.10月番</p>
+<p class="new">2012.1月番</p>
+<p class="new tobe-1204">2012.4月番</p>
+<p class="tobe-1207 new">2012.7月番</p>
+<p class="tobe-1210">2012.10月番</p>
+<p class="tobe13">2013.??</p>
+</textarea>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<title>:first-child & :last-child & :only-child</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}</style>
+</head>
+<body>
+    <style>
+        ul{width:300px;padding:10px 10px 10px 50px;border:2px solid #aecefe;}
+        ul li:first-child{color:#00f;font-weight:bold;}
+        ul li:last-child{color:#f00;font-weight:bold;}
+        ul li:only-child{color:#0a0;font-weight:bold;}
+    </style>
+    <ul>
+        <li>Blue is Support :first-child</li>
+        <li>路人甲</li>
+        <li>打酱油充数</li>
+        <li>Red is Support :last-child</li>
+    </ul>
+    <ul>
+        <li>Green is Support :only-child</li>
+    </ul>
+<textarea cols="50" rows="17">
+<style>
+    ul{width:300px;padding:10px 10px 10px 50px;border:2px solid #aecefe;}
+    ul li:first-child{color:#00f;font-weight:bold;}
+    ul li:last-child{color:#f00;font-weight:bold;}
+    ul li:only-child{color:#0a0;font-weight:bold;}
+</style>
+<ul>
+    <li>Blue is Support :first-child</li>
+    <li>路人甲</li>
+    <li>打酱油充数</li>
+    <li>Red is Support :last-child</li>
+</ul>
+<ul>
+    <li>Green is Support :only-child</li>
+</ul>
+</textarea>
+</body>
+</html>
