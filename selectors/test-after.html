@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>:after</title>
+		
+		<style type='text/css'>
+		<!--
+
+			body { background: #fff; color: 000; font-family: Arial, Helvetica, sans-serif; }
+			pre { clear: both; background: #fff; padding: 0.5em; }
+			li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
+			.test { display: block; }
+			.base, .defaultgreen { background-color: #090; }
+			.defaultred { background-color: #900; }
+			
+			.defaultred * {
+				float: left;
+			}
+
+			.defaultred div:after {
+				display: block;
+				background-color: #090;
+				color: #090;
+				padding: 0.75em;
+				content: '...';
+			}
+			
+			blockquote {
+				margin: 0;
+			}
+			
+		</style>		
+	</head>
+
+	<body>
+	
+		<div class='base'></div>
+	
+		<ol>
+			<li>
+				<div class='defaultred'>
+					<div class='test height required'></div>
+					<blockquote></blockquote>
+				</div>
+				
+				<pre>div:after {
+}
+
+&lt;div&gt;&lt;/div&gt;</pre>
+
+				<p>
+					This CSS selector should add generated content after the HTML fragment
+				</p>
+			</li>
+		</ol>
+	</body>
+</html>
