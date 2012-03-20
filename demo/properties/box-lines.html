@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>box-lines</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}ul,li{padding: 0;}li{list-style: none;}</style>
+</head>
+<body>
+    <style>
+        ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:100px;;padding:10px;border:1px solid #eee;}
+        ul li{width:50px;}
+        .b1{-webkit-box-lines:single;-moz-box-lines:single;-o-box-lines:single;-ms-box-lines:single;box-lines:single;}
+        .b2{-webkit-box-lines:multiple;-moz-box-lines:multiple;-o-box-lines:multiple;-ms-box-lines:multiple;box-lines:multiple;}
+    </style>
+    <h3>single</h3>
+    <ul class="b1">
+        <li>あ</li>
+        <li>い</li>
+        <li>う</li>
+        <li>え</li>
+        <li>お</li>
+    </ul>
+    <h3>multiple</h3>
+    <ul class="b2">
+        <li>あ</li>
+        <li>い</li>
+        <li>う</li>
+        <li>え</li>
+        <li>お</li>
+    </ul>
+</body>
+</html>
