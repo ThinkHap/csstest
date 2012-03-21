@@ -1,140 +1,111 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="gbk" />
         <title>CSS Properties Test Result</title>
-        <style type="text/css">
-            body, form, h1, h2, h3, h4, p, img, ul, li, ol, dl, dt, dd, a, span, input, tr, th, td{margin:0;padding:0;}
-		    body {font:normal 12px/1.5 "Arial","å®‹ä½“","Simsun","Tahoma",sans-serif;}
-		    li{list-style:none;}
-		    img {border:0 none;vertical-align:top;}
-		    table {border-collapse:collapse;border-spacing:0;}
-            .cf:after{display:block;visibility:hidden;font-size:0;line-height:0;clear:both;content:"";}  
-            .cf{zoom:1;}
-		    a{color:#000;text-decoration:none;}
-		    a:visited{}
-		    a:hover{text-decoration:underline;}
-		    a:active{}
-
-            .wrap {width:990px;margin:0 auto;}
-            .properties {text-align:center;width:179px;background-color:#333;}
-            .browser {font-weight:bold;background:#666;}
-            table {line-height:24px;border-collapse: separate;margin:10px 0 30px;}
-            table caption {line-height:30px;padding-left:10px;border-bottom:1px solid #999;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
-            table th {color:#fff;background-color:#666;}
-            table th, table td {width:100px;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
-            table td {color:#fff;background:#666;} 
-            table span {display:block;padding:2px;text-align:center;}
-            .property {padding-left:20px;width:179px;background-color:#666;}
-            .version {text-align:center;}
-            .support, .supp {text-align:center;background-color:#090;}
-            .unsupport, .unsupp {text-align:center;background-color:#b00;}
-
-            .ua-browser {width:150px;padding-left:20px;font-weight:bold;background:#666;}
-            .ua {width:820px;padding:0 20px;}
-        </style>
-        <?php $ROOT = realpath('./.'); ?>
-        <?php require_once $ROOT."/uxcommon/assets.php" ?>
+        <?php include "../uxcommon/assets.php" ?>
+        <link rel="stylesheet" type="text/css" href="../src/base.css" />
+        <link rel="stylesheet" type="text/css" href="../src/nav.css" />
+        <link rel="stylesheet" type="text/css" href="../src/properties/report.css" />
     </head>
     <body>
-        <?php require_once $ROOT."/uxcommon/header.php" ?>
-        <div id="wrap" class="wrap">
-            <h1>CSS Properties Test Result</h1>
-            <div id="result" class="result">
-            <?php
-                //$con = mysql_connect("127.0.0.1","root","wanghao");
-                $con = mysql_connect("localhost","csstest","csstest");
-            
-                if (!$con) {
-                    die('Could not connect: ' . mysql_error());
-                };
-                mysql_query("SET NAMES UTF8"); 
-                mysql_select_db("csstest", $con);
+        <?php include "../uxcommon/header.php" ?>
+        <div class="page_content">
+            <div id="wrap" class="wrap">
+                <div class="header">
+                    <h1>CSS Properties Test Result</h1>
+                    <a href="/csstest" title="" class="return">·µ»ØÊ×Ò³>></a>
+                </div>
+                <div id="result" class="result">
+                <?php
+                    $con = mysql_connect("127.0.0.1","root","wanghao");
+                    //$con = mysql_connect("localhost","csstest","csstest");
+                
+                    if (!$con) {
+                        die('Could not connect: ' . mysql_error());
+                    };
+                    mysql_query("SET NAMES 'GBK'"); 
+                    mysql_select_db("csstest", $con);
 
-                $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";//æ ¹æ®uaæ¥ç­›é€‰æœ€æ–°çš„ä¸€ç»„æ•°æ®
-                $sql_prop = "SELECT * FROM prop GROUP BY type";//ç­›é€‰æ‰€æœ‰typeç±»åˆ«
-                $query_brow = mysql_query($sql_brow);
-                $query_prop = mysql_query($sql_prop);
-                $prop_name = array();
-                $prop_brow = array();
-                $prop_brow_ua = array();
-                $prop_id = array();
-                $prop_all = array();
-                $table_hd = array();
-                $sum = 0;
-                $table_hd[] = '<tr><th class="properties property">Properties / Browser</th><th class="version">Version</th>';
-                while($row = mysql_fetch_array($query_brow)) {
-                    $prop_brow[] = $row['browser'];//å‚¨å­˜æµè§ˆå™¨ååˆ°æ•°ç»„
-                    $prop_brow_ua[] = $row['uastring'];//å‚¨å­˜å¯¹åº”æµè§ˆå™¨çš„UA
-                    $prop_id[] = $row['id'];//å‚¨å­˜å¯¹åº”æµè§ˆå™¨çš„UA
-                    $prop_all[] = $row;//å‚¨å­˜ç­›é€‰å‡ºæ¥çš„æ‰€æœ‰æµè§ˆå™¨æµ‹è¯•ç»“æœ
-                    $sum++;//ç»Ÿè®¡å·²è®°å½•çš„ä¸åŒæµè§ˆå™¨æ•°é‡ï¼Œå³ä¸åŒUAçš„æ•°æ®
-                }
-                //sort($prop_brow);//å¯¹æµè§ˆå™¨æ’åº 
-                foreach($prop_brow as $key=>$value){//è¾“å‡ºæµè§ˆå™¨è¡¨å¤´html
-                    //for($i=0;$i<$sum;$i++){
-                    //    $j=$i+1;
-                    //    $prop_col = 'prop_brow_'.$j;
-                    //    $$prop_col = $prop_col;
-                    //}
-                    $table_hd[] = '<th class="browser">'.$value.' ('.$prop_id[$key].')</th>';
-                }
-                $table_hd[] = '</tr>';
-                $table_head = join('',$table_hd);
-                while($row = mysql_fetch_array($query_prop)) {
-                    $type = $row["type"];
-                    $prop_name[$type] = array();
-                    $prop_ver[$type] = array();
-                    
-                    //æ ¹æ®å±æ€§åˆ†ç±»å¾ªç¯è¾“å‡ºå±æ€§ååŠå±æ€§ç‰ˆæœ¬åˆ°æ•°ç»„
-                    $sql_query_type = "SELECT * FROM prop WHERE type='$type'";
-                    $sql_prop_type = mysql_query($sql_query_type);
-                    while($row_prop = mysql_fetch_array($sql_prop_type)) {
-                        $prop_name[$type][] = $row_prop['property'];
-                        $prop_ver[$type][] = $row_prop['version'];
+                    $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";//¸ù¾İuaÀ´É¸Ñ¡×îĞÂµÄÒ»×éÊı¾İ
+                    $sql_prop = "SELECT * FROM prop GROUP BY type";//É¸Ñ¡ËùÓĞtypeÀà±ğ
+                    $query_brow = mysql_query($sql_brow);
+                    $query_prop = mysql_query($sql_prop);
+                    $prop_name = array();
+                    $prop_brow = array();
+                    $prop_brow_ua = array();
+                    $prop_id = array();
+                    $prop_all = array();
+                    $table_hd = array();
+                    $sum = 0;
+                    $table_hd[] = '<tr><th class="properties property">Properties / Browser</th><th class="version">Version</th>';
+                    while($row = mysql_fetch_array($query_brow)) {
+                        $prop_brow[] = $row['browser'];//´¢´æä¯ÀÀÆ÷Ãûµ½Êı×é
+                        $prop_brow_ua[] = $row['uastring'];//´¢´æ¶ÔÓ¦ä¯ÀÀÆ÷µÄUA
+                        $prop_id[] = $row['id'];//´¢´æ¶ÔÓ¦ä¯ÀÀÆ÷µÄUA
+                        $prop_all[] = $row;//´¢´æÉ¸Ñ¡³öÀ´µÄËùÓĞä¯ÀÀÆ÷²âÊÔ½á¹û
+                        $sum++;//Í³¼ÆÒÑ¼ÇÂ¼µÄ²»Í¬ä¯ÀÀÆ÷ÊıÁ¿£¬¼´²»Í¬UAµÄÊı¾İ
                     }
-                }
-                foreach($prop_name as $key=>$value){//keyå€¼ä¸ºå±æ€§åˆ†ç±»ï¼Œvalueå€¼ä¸ºè¯¥ç±»ä¸‹é¢çš„å±æ€§åæ•°ç»„
-                    $sum +=2;
-                    echo '<table>';
-                    echo '<caption>'.$key.'</caption>';
-                    echo $table_head;
-                    foreach($value as $k=>$val){//valå€¼ä¸ºè¯¥ç±»çš„å±æ€§å
-                        echo '<tr>';
-                        echo '<td class="property">'.$val.'</td>';
-                        echo '<td class="version">'.$prop_ver[$key][$k].'</td>';//æ ¹æ®å±æ€§åˆ†ç±»å’Œå±æ€§åé”®å€¼æŸ¥æ‰¾å¦ä¸€ç›¸åŒç»“æ„æ•°ç»„ä¸‹çš„å±æ€§ç‰ˆæœ¬å€¼
-                        foreach($prop_brow as $j=>$brow){//browå€¼ä¸ºæ’åºåè¦å±•ç¤ºçš„æµè§ˆå™¨åç§°
-                            $temp_ua = $prop_brow_ua[$j];
-                            foreach($prop_all as $row){
-                                if($row['uastring']==$temp_ua){
-                                    if($row[$val] == 'N'){
-                                        echo '<td class="unsupport">'.$row[$val].'</td>';
-                                    }else{
-                                        echo '<td class="support">'.$row[$val].'</td>';
+                    //sort($prop_brow);//¶Ôä¯ÀÀÆ÷ÅÅĞò 
+                    foreach($prop_brow as $key=>$value){//Êä³öä¯ÀÀÆ÷±íÍ·html
+                        $table_hd[] = '<th class="browser">'.$value.' ('.$prop_id[$key].')</th>';
+                    }
+                    $table_hd[] = '</tr>';
+                    $table_head = join('',$table_hd);
+                    while($row = mysql_fetch_array($query_prop)) {
+                        $type = $row["type"];
+                        $prop_name[$type] = array();
+                        $prop_ver[$type] = array();
+                        
+                        //¸ù¾İÊôĞÔ·ÖÀàÑ­»·Êä³öÊôĞÔÃû¼°ÊôĞÔ°æ±¾µ½Êı×é
+                        $sql_query_type = "SELECT * FROM prop WHERE type='$type'";
+                        $sql_prop_type = mysql_query($sql_query_type);
+                        while($row_prop = mysql_fetch_array($sql_prop_type)) {
+                            $prop_name[$type][] = $row_prop['property'];
+                            $prop_ver[$type][] = $row_prop['version'];
+                        }
+                    }
+                    foreach($prop_name as $key=>$value){//keyÖµÎªÊôĞÔ·ÖÀà£¬valueÖµÎª¸ÃÀàÏÂÃæµÄÊôĞÔÃûÊı×é
+                        $sum +=2;
+                        echo '<table>';
+                        echo '<caption>'.$key.'</caption>';
+                        echo $table_head;
+                        foreach($value as $k=>$val){//valÖµÎª¸ÃÀàµÄÊôĞÔÃû
+                            echo '<tr>';
+                            echo '<td class="property">'.$val.'</td>';
+                            echo '<td class="version">'.$prop_ver[$key][$k].'</td>';//¸ù¾İÊôĞÔ·ÖÀàºÍÊôĞÔÃû¼üÖµ²éÕÒÁíÒ»ÏàÍ¬½á¹¹Êı×éÏÂµÄÊôĞÔ°æ±¾Öµ
+                            foreach($prop_brow as $j=>$brow){//browÖµÎªÅÅĞòºóÒªÕ¹Ê¾µÄä¯ÀÀÆ÷Ãû³Æ
+                                $temp_ua = $prop_brow_ua[$j];
+                                foreach($prop_all as $row){
+                                    if($row['uastring']==$temp_ua){
+                                        if($row[$val] == 'N'){
+                                            echo '<td class="unsupport">'.$row[$val].'</td>';
+                                        }else{
+                                            echo '<td class="support">'.$row[$val].'</td>';
+                                        }
                                     }
                                 }
                             }
+                            echo '</tr>';
                         }
+                        echo '</table>';
+                    }
+
+                    echo '<table>';
+                    echo '<caption>¶ÔÓ¦ä¯ÀÀÆ÷µÄUA</caption>';
+                    foreach($prop_brow as $key=>$value){
+                        echo '<tr>';
+                        echo '<td class="ua-browser">'.$value.' ('.$prop_id[$key].')</td>';
+                        echo '<td class="ua">'.$prop_brow_ua[$key].'</td>';
                         echo '</tr>';
                     }
                     echo '</table>';
-                }
-
-                echo '<table>';
-                echo '<caption>å¯¹åº”æµè§ˆå™¨çš„UA</caption>';
-                foreach($prop_brow as $key=>$value){
-                    echo '<tr>';
-                    echo '<td class="ua-browser">'.$value.' ('.$prop_id[$key].')</td>';
-                    echo '<td class="ua">'.$prop_brow_ua[$key].'</td>';
-                    echo '</tr>';
-                }
-                echo '</table>';
-            
-                mysql_close($con);
-                die;
-            ?>
-            </div>
+                
+                    mysql_close($con);
+                ?>
+                </div>
+            </div>    
         </div>    
-        <?php require_once $ROOT."/uxcommon/footer.php" ?>
+        <?php include "../uxcommon/footer.php" ?>
     </body>
 </html>

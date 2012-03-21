@@ -1,0 +1,21 @@
+table {
+    margin: 0 auto;
+	font: 12px/1.5 Tahoma, Geneva, sans-serif;
+	border-collapse: collapse;
+}
+th {
+    color: #eee;
+    background-color: #333;
+}
+.passed { 
+    background-color: #090 !important; 
+    color: #fff; 
+}
+.failed { 
+    background-color: #900 !important; 
+    color: #fff; 
+}
+.buggy {
+    background-color: #f60 !important;
+    color: #fff;
+}
