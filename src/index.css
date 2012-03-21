@@ -35,7 +35,9 @@ body {
     line-height: 2em;
 }
 .result,
-.demo {
+.demo,
+.properties,
+.selectors {
     float: left;
     width: 460px;
 }

@@ -25,7 +25,7 @@
         </ol>
     </div>
     <div class="box clear-fix">
-        <h2>Test Result&Demo</h2>
+        <h2>Test Result & Demo</h2>
         <ol class="result">
             <li><a href="properties/report.php">CSS Properties 测试结果</a></li>
             <li><a href="selectors/report.php">CSS Selectors 测试结果</a></li>
@@ -34,6 +34,16 @@
         <ol class="demo">
             <li><a href="demo/properties/index.php">CSS Properties Demo</a></li>
             <li><a href="demo/selectors/index.php">CSS Selectors Demo</a></li>
+        </ol>
+    </div>
+    <div class="box clear-fix">
+        <h2>CSS属性说明文档 & CSS选择器说明文档</h2>
+        <ol class="properties">
+            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">弹性盒模型(Flexible Box)</a></li>
+            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">多栏(Multi-column)</a></li>
+        </ol>
+        <ol class="selectors">
+            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSS选择器说明文档</a></li>
         </ol>
     </div>
     <div class="box">
