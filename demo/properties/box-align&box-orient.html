@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>box-align</title>
+	<title>box-align & box-orient</title>
 	<style>body{font-size:12px;text-shadow:1px 1px #eee;}ul,li{padding: 0;}li{list-style: none;}</style>
 </head>
 <body>
     <style>
-        div{float:left;width:250px;}
-        ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:100px;height:70px;padding:0 20px;border:1px solid #eee;}
+        div{float:left;width:270px;}
+        ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:130px;height:70px;border:1px solid #eee;}
         ul li{background:#bedefe;}
+        .h ul{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-o-box-orient:horizontal;-ms-box-orient:horizontal;box-orient:horizontal;}
         .v ul{-webkit-box-orient:vertical;-moz-box-orient:vertical;-o-box-orient:vertical;-ms-box-orient:vertical;box-orient:vertical;}
         .b1{-webkit-box-align:start;-moz-box-align:start;-o-box-align:start;-ms-box-align:start;box-align:start;}
         .b2{-webkit-box-align:center;-moz-box-align:center;-o-box-align:center;-ms-box-align:center;box-align:center;}
@@ -16,8 +17,8 @@
         .b4{-webkit-box-align:baseline;-moz-box-align:baseline;-o-box-align:baseline;-ms-box-align:baseline;box-align:baseline;}
         .b5{-webkit-box-align:stretch;-moz-box-align:stretch;-o-box-align:stretch;-ms-box-align:stretch;box-align:stretch;}
     </style>
-    <div>
-        <h3>start</h3>
+    <div class="h">
+        <h3>start(box-orient:horizontal)</h3>
         <ul class="b1">
             <li>あ</li>
             <li>い</li>
@@ -25,7 +26,7 @@
             <li>え</li>
             <li>お</li>
         </ul>
-        <h3>center</h3>
+        <h3>center(box-orient:horizontal)</h3>
         <ul class="b2">
             <li>あ</li>
             <li>い</li>
@@ -33,7 +34,7 @@
             <li>え</li>
             <li>お</li>
         </ul>
-        <h3>end</h3>
+        <h3>end(box-orient:horizontal)</h3>
         <ul class="b3">
             <li>あ</li>
             <li>い</li>
@@ -41,7 +42,7 @@
             <li>え</li>
             <li>お</li>
         </ul>
-        <h3>baseline</h3>
+        <h3>baseline(box-orient:horizontal)</h3>
         <ul class="b4">
             <li>あ</li>
             <li>い</li>
@@ -49,7 +50,7 @@
             <li>え</li>
             <li>お</li>
         </ul>
-        <h3>stretch</h3>
+        <h3>stretch(box-orient:horizontal)</h3>
         <ul class="b5">
             <li>あ</li>
             <li>い</li>
