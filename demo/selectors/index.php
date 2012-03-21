@@ -12,7 +12,7 @@
     <?php include "../../uxcommon/header.php" ?>
     <div class="page_content">
         <div class="header">
-            <h1>CSS Properties Demo</h1>
+            <h1>CSS Selectors Demo</h1>
             <a href="../../" title="" class="return">·µ»ØÊ×Ò³</a>
         </div>
         <div class="box">
