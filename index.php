@@ -39,8 +39,8 @@
     <div class="box clear-fix">
         <h2>CSS属性说明文档 & CSS选择器说明文档</h2>
         <ol class="properties">
-            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">弹性盒模型(Flexible Box)</a></li>
-            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">多栏(Multi-column)</a></li>
+            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">CSS属性说明文档 - 弹性盒模型(Flexible Box)</a></li>
+            <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSS属性说明文档 - 多栏(Multi-column)</a></li>
         </ol>
         <ol class="selectors">
             <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSS选择器说明文档</a></li>

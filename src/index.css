@@ -22,6 +22,7 @@ body {
     background: -webkit-linear-gradient(top, #fff, #F3F3F3);
     background: -o-linear-gradient(top, #fff, #F3F3F3);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF, endColorstr=#FFF3F3f3);
+    box-shadow: 5px 5px 5px #c6c6c6;
 }
 .page_content .box h2 {
     font-size: 16px;

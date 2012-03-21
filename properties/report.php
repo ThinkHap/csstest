@@ -34,6 +34,7 @@
                     $prop_name = array();
                     $prop_brow = array();
                     $prop_brow_ua = array();
+                    $prop_brow_time = array();
                     $prop_id = array();
                     $prop_all = array();
                     $table_hd = array();
@@ -42,6 +43,7 @@
                     while($row = mysql_fetch_array($query_brow)) {
                         $prop_brow[] = $row['browser'];//储存浏览器名到数组
                         $prop_brow_ua[] = $row['uastring'];//储存对应浏览器的UA
+                        $prop_brow_time[] = $row['time'];//储存对应浏览器的UA
                         $prop_id[] = $row['id'];//储存对应浏览器的UA
                         $prop_all[] = $row;//储存筛选出来的所有浏览器测试结果
                         $sum++;//统计已记录的不同浏览器数量，即不同UA的数据
@@ -96,6 +98,7 @@
                     foreach($prop_brow as $key=>$value){
                         echo '<tr>';
                         echo '<td class="ua-browser">'.$value.' ('.$prop_id[$key].')</td>';
+                        echo '<td class="time">'.$prop_brow_time[$key].'</td>';
                         echo '<td class="ua">'.$prop_brow_ua[$key].'</td>';
                         echo '</tr>';
                     }
