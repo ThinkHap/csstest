@@ -24,12 +24,16 @@
             <li><a href="selectors/index.php">CSS Selectors Test</a></li>
         </ol>
     </div>
-    <div class="box">
-        <h2>Test Result</h2>
-        <ol>
+    <div class="box clear-fix">
+        <h2>Test Result&Demo</h2>
+        <ol class="result">
             <li><a href="properties/report.php">CSS Properties 测试结果</a></li>
             <li><a href="selectors/report.php">CSS Selectors 测试结果</a></li>
             <li><a href="selectors/result.php">CSS Selectors 测试结果集</a></li>
+        </ol>
+        <ol class="demo">
+            <li><a href="demo/properties/index.php">CSS Properties Demo</a></li>
+            <li><a href="demo/selectors/index.php">CSS Selectors Demo</a></li>
         </ol>
     </div>
     <div class="box">

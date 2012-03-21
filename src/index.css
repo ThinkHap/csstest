@@ -1,3 +1,7 @@
+body {
+    font-size: 12px;
+    text-shadow: 1px 1px #eee;
+}
 .page_content {
     width: 990px;
     margin: 0 auto;
@@ -20,9 +24,18 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF, endColorstr=#FFF3F3f3);
 }
 .page_content .box h2 {
+    font-size: 16px;
     margin-bottom: 10px;
+}
+.page_content .box li {
+    list-style: disc inside;
 }
 .page_content .box p,
 .page_content .box li {
     line-height: 2em;
+}
+.result,
+.demo {
+    float: left;
+    width: 460px;
 }

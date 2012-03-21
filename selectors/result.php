@@ -26,7 +26,7 @@
 <div class="page_content">
     <div class="header">
         <h1>CSS Selectors Report Table</h1>
-        <a href="/csstest" title="" class="return">返回首页>></a>
+        <a href="../" title="" class="return">返回首页>></a>
     </div>
     <table border="1" collapse="0" cellpadding="8">
         <tr>

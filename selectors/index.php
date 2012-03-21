@@ -50,7 +50,7 @@ if (array_key_exists('browser', $_GET)) {
     <div id="wrap">
         <div class="header">
             <h1>CSS Selectors Test</h1>
-            <a href="/csstest" title="" class="return">返回首页>></a>
+            <a href="../" title="" class="return">返回首页>></a>
         </div>
         <p>自动运行大量测试用例，以判断你的浏览器是否兼容这些CSS选择器。不兼容的特殊选择器，会被标记。你可以点击每一个选择器，查看一个包含示例和解释的结果页面。</p>
         <p>由于从技术上不可能模拟某些依赖于用户交互行为的选择器，因些本测试套件不包含以下选择器：:hover, :active, :foucs, :selection。</p>

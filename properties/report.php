@@ -14,7 +14,7 @@
             <div id="wrap" class="wrap">
                 <div class="header">
                     <h1>CSS Properties Test Result</h1>
-                    <a href="/csstest" title="" class="return">返回首页>></a>
+                    <a href="../" title="" class="return">返回首页>></a>
                 </div>
                 <div id="result" class="result">
                 <?php
