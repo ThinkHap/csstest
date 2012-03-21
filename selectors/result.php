@@ -5,16 +5,10 @@
     <title>CSS Selectors Report Table</title>
     <?php include "../uxcommon/assets.php" ?>
     <link rel="stylesheet" type="text/css" href="../src/nav.css" />
-    <link rel="stylesheet" type="text/css" href="../src/result.css" />
-<style>
-</style>
+    <link rel="stylesheet" type="text/css" href="../src/selectors/result.css" />
 </head>
 <body>
 <?php include "../uxcommon/header.php" ?>
-<div class="header">
-    <h1>CSS Selectors Report Table</h1>
-    <a href="/csstest" title="" class="return">返回首页>></a>
-</div>
 <?php
     // $linkId = mysql_connect('localhost', 'root', '0.00');
     $linkId = mysql_connect('localhost', 'csstest', 'csstest');
@@ -31,7 +25,7 @@
 ?>
 <div class="page_content">
     <div class="header">
-        <h1>CSS Selectors Test Results</h1>
+        <h1>CSS Selectors Report Table</h1>
         <a href="/csstest" title="" class="return">返回首页>></a>
     </div>
     <table border="1" collapse="0" cellpadding="8">
