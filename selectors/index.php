@@ -5,6 +5,7 @@ if (array_key_exists('browser', $_GET)) {
     header("Content-type:text/html;charset=gbk");
 
     // $linkId = mysql_connect('localhost', 'root', '0.00');
+    //$linkId = mysql_connect('127.0.0.1', 'root', 'wanghao');
     $linkId = mysql_connect('localhost', 'csstest', 'csstest');
     if (!$linkId) {
         echo "connect database failed.";

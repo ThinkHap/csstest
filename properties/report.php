@@ -39,7 +39,7 @@
                     $prop_all = array();
                     $table_hd = array();
                     $sum = 0;
-                    $table_hd[] = '<tr><th class="properties property">Properties / Browser</th><th class="version">Version</th>';
+                    $table_hd[] = '<tr><th class="properties"><span>Properties / Browser</span></th><th class="version"><span>Version</span></th>';
                     while($row = mysql_fetch_array($query_brow)) {
                         $prop_brow[] = $row['browser'];//储存浏览器名到数组
                         $prop_brow_ua[] = $row['uastring'];//储存对应浏览器的UA
@@ -50,7 +50,7 @@
                     }
                     //sort($prop_brow);//对浏览器排序 
                     foreach($prop_brow as $key=>$value){//输出浏览器表头html
-                        $table_hd[] = '<th class="browser">'.$value.' ('.$prop_id[$key].')</th>';
+                    $table_hd[] = '<th class="browser"><span>'.$value.' ('.$prop_id[$key].')</span></th>';
                     }
                     $table_hd[] = '</tr>';
                     $table_head = join('',$table_hd);

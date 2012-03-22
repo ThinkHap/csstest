@@ -97,14 +97,15 @@ $(function(){
                     console.log(counter +'tests');
                 }
                 var arrRes = [],
-                    ua = UA(),
-                    browser = ua['shell'],
-                    version = ua[browser],
+                    //ua = UA(),
+                    //browser = ua['shell'],
+                    //version = ua[browser],
+                    browser = getBrowserVersion();
                     userAgent = navigator.userAgent,
                     datetime = +new Date;
 
                 arrRes.push('browser='+ browser);
-                arrRes.push('version='+ version);
+                //arrRes.push('version='+ version);
                 arrRes.push('userAgent='+ userAgent);
                 arrRes.push('datetime='+ datetime);
                 
@@ -124,6 +125,47 @@ $(function(){
 });
 
 
+function getBrowserVersion() {  
+    var browser = {};  
+    var userAgent = navigator.userAgent.toLowerCase();  
+    var s;  
+    (s = userAgent.match(/msie ([\d.]+)/))  
+            ? browser.ie = s[1]  
+            : (s = userAgent.match(/firefox\/([\d.]+)/))  
+                    ? browser.firefox = s[1]  
+                    : (s = userAgent.match(/chrome\/([\d.]+)/))  
+                            ? browser.chrome = s[1]  
+                            : (s = userAgent.match(/opera.([\d.]+)/))  
+                                    ? browser.opera = s[1]  
+                                    : (s = userAgent.match(/android ([\d.]+)/))  
+                                            ? browser.android = s[1]
+                                            : (s = userAgent.match(/iphone os ([\d\w]+)/))  
+                                                    ? browser.iphone = s[1]
+                                                    : (s = userAgent.match(/version\/([\d.]+).*safari/))  
+                                                        ? browser.safari = s[1]  
+                                                        : 0;  
+    var version = "";  
+    if (browser.ie) {  
+        version = 'IE ' + browser.ie;  
+    } else if (browser.firefox) {  
+        version = 'Firefox ' + browser.firefox;  
+    } else if (browser.chrome) {  
+        version = 'Chrome ' + browser.chrome;  
+    } else if (browser.opera) {  
+        version = 'Opera ' + browser.opera;  
+    } else if (browser.android) {  
+        version = 'Android ' + browser.android;  
+    } else if (browser.iphone) {  
+        version = 'iPhone OS ' + browser.iphone;  
+    } else if (browser.safari) {  
+        version = 'Safari ' + browser.safari;  
+    } else {  
+        version = 'Î´Öªä¯ÀÀÆ÷';  
+    }  
+    return version;  
+}  
+var browser = getBrowserVersion();
+
 /*
 Copyright 2011, KISSY UI Library v1.30dev
 MIT Licensed
@@ -133,154 +175,154 @@ build time: Dec 31 15:26
  * @fileOverview ua
  * @author lifesinger@gmail.com
  */
-function UA() {  
-    var ua = navigator.userAgent,
-        EMPTY = '', MOBILE = 'mobile',
-        core = EMPTY, shell = EMPTY, m,
-        IE_DETECT_RANGE = [6, 9], v, end,
-        VERSION_PLACEHOLDER = '{{version}}',
-        IE_DETECT_TPL = '<!--[if IE ' + VERSION_PLACEHOLDER + ']><s></s><![endif]-->',
-        div = document.createElement('div'), s,
-        o = {
-            // browser core type
-            //webkit: 0,
-            //trident: 0,
-            //gecko: 0,
-            //presto: 0,
-
-            // browser type
-            //chrome: 0,
-            //safari: 0,
-            //firefox:  0,
-            //ie: 0,
-            //opera: 0
-
-            //mobile: '',
-            //core: '',
-            //shell: ''
-        },
-        numberify = function(s) {
-            var c = 0;
-            // convert '1.2.3.4' to 1.234
-            return parseFloat(s.replace(/\./g, function() {
-                return (c++ === 0) ? '.' : '';
-            }));
-        };
-
-    // try to use IE-Conditional-Comment detect IE more accurately
-    // IE10 doesn't support this method, @ref: http://blogs.msdn.com/b/ie/archive/2011/07/06/html5-parsing-in-ie10.aspx
-    div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, '');
-    s = div.getElementsByTagName('s');
-
-    if (s.length > 0) {
-
-        shell = 'ie';
-        o[core = 'trident'] = 0.1; // Trident detected, look for revision
-
-        // Get the Trident's accurate version
-        if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
-            o[core] = numberify(m[1]);
-        }
-
-        // Detect the accurate version
-        // æ³¨æ„ï¼š
-        //  o.shell = ie, è¡¨ç¤ºå¤–å£³æ˜¯ ie
-        //  ä½† o.ie = 7, å¹¶ä¸ä»£è¡¨å¤–å£³æ˜¯ ie7, è¿˜æœ‰å¯èƒ½æ˜¯ ie8 çš„å…¼å®¹æ¨¡å¼
-        //  å¯¹äº ie8 çš„å…¼å®¹æ¨¡å¼ï¼Œè¿˜è¦é€šè¿‡ documentMode å»åˆ¤æ–­ã€‚ä½†æ­¤å¤„ä¸èƒ½è®© o.ie = 8, å¦åˆ™
-        //  å¾ˆå¤šè„šæœ¬åˆ¤æ–­ä¼šå¤±è¯¯ã€‚å› ä¸º ie8 çš„å…¼å®¹æ¨¡å¼è¡¨ç°è¡Œä¸ºå’Œ ie7 ç›¸åŒï¼Œè€Œä¸æ˜¯å’Œ ie8 ç›¸åŒ
-        for (v = IE_DETECT_RANGE[0],end = IE_DETECT_RANGE[1]; v <= end; v++) {
-            div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, v);
-            if (s.length > 0) {
-                o[shell] = v;
-                break;
-            }
-        }
-
-    } else {
-
-        // WebKit
-        if ((m = ua.match(/AppleWebKit\/([\d.]*)/)) && m[1]) {
-            o[core = 'webkit'] = numberify(m[1]);
-
-            // Chrome
-            if ((m = ua.match(/Chrome\/([\d.]*)/)) && m[1]) {
-                o[shell = 'chrome'] = numberify(m[1]);
-            }
-            // Safari
-            else if ((m = ua.match(/\/([\d.]*) Safari/)) && m[1]) {
-                o[shell = 'safari'] = numberify(m[1]);
-            }
-
-            // Apple Mobile
-            if (/ Mobile\//.test(ua)) {
-                o[MOBILE] = 'apple'; // iPad, iPhone or iPod Touch
-            }
-            // Other WebKit Mobile Browsers
-            else if ((m = ua.match(/NokiaN[^\/]*|Android \d\.\d|webOS\/\d\.\d/))) {
-                o[MOBILE] = m[0].toLowerCase(); // Nokia N-series, Android, webOS, ex: NokiaN95
-            }
-        }
-        // NOT WebKit
-        else {
-            // Presto
-            // ref: http://www.useragentstring.com/pages/useragentstring.php
-            if ((m = ua.match(/Presto\/([\d.]*)/)) && m[1]) {
-                o[core = 'presto'] = numberify(m[1]);
-
-                // Opera
-                if ((m = ua.match(/Opera\/([\d.]*)/)) && m[1]) {
-                    o[shell = 'opera'] = numberify(m[1]); // Opera detected, look for revision
-
-                    if ((m = ua.match(/Opera\/.* Version\/([\d.]*)/)) && m[1]) {
-                        o[shell] = numberify(m[1]);
-                    }
-
-                    // Opera Mini
-                    if ((m = ua.match(/Opera Mini[^;]*/)) && m) {
-                        o[MOBILE] = m[0].toLowerCase(); // ex: Opera Mini/2.0.4509/1316
-                    }
-                    // Opera Mobile
-                    // ex: Opera/9.80 (Windows NT 6.1; Opera Mobi/49; U; en) Presto/2.4.18 Version/10.00
-                    // issue: ç”±äº Opera Mobile æœ‰ Version/ å­—æ®µï¼Œå¯èƒ½ä¼šä¸ Opera æ··æ·†ï¼ŒåŒæ—¶å¯¹äº Opera Mobile çš„ç‰ˆæœ¬å·ä¹Ÿæ¯”è¾ƒæ··ä¹±
-                    else if ((m = ua.match(/Opera Mobi[^;]*/)) && m) {
-                        o[MOBILE] = m[0];
-                    }
-                }
-
-                // NOT WebKit or Presto
-            } else {
-                // MSIE
-                // ç”±äºæœ€å¼€å§‹å·²ç»ä½¿ç”¨äº† IE æ¡ä»¶æ³¨é‡Šåˆ¤æ–­ï¼Œå› æ­¤è½åˆ°è¿™é‡Œçš„å”¯ä¸€å¯èƒ½æ€§åªæœ‰ IE10+
-                if ((m = ua.match(/MSIE\s([^;]*)/)) && m[1]) {
-                    o[core = 'trident'] = 0.1; // Trident detected, look for revision
-                    o[shell = 'ie'] = numberify(m[1]);
-
-                    // Get the Trident's accurate version
-                    if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
-                        o[core] = numberify(m[1]);
-                    }
-
-                    // NOT WebKit, Presto or IE
-                } else {
-                    // Gecko
-                    if ((m = ua.match(/Gecko/))) {
-                        o[core = 'gecko'] = 0.1; // Gecko detected, look for revision
-                        if ((m = ua.match(/rv:([\d.]*)/)) && m[1]) {
-                            o[core] = numberify(m[1]);
-                        }
-
-                        // Firefox
-                        if ((m = ua.match(/Firefox\/([\d.]*)/)) && m[1]) {
-                            o[shell = 'firefox'] = numberify(m[1]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    o.core = core;
-    o.shell = shell;
-    o._numberify = numberify;
-    return o;
-}
+//function UA() {  
+//    var ua = navigator.userAgent,
+//        EMPTY = '', MOBILE = 'mobile',
+//        core = EMPTY, shell = EMPTY, m,
+//        IE_DETECT_RANGE = [6, 9], v, end,
+//        VERSION_PLACEHOLDER = '{{version}}',
+//        IE_DETECT_TPL = '<!--[if IE ' + VERSION_PLACEHOLDER + ']><s></s><![endif]-->',
+//        div = document.createElement('div'), s,
+//        o = {
+//            // browser core type
+//            //webkit: 0,
+//            //trident: 0,
+//            //gecko: 0,
+//            //presto: 0,
+//
+//            // browser type
+//            //chrome: 0,
+//            //safari: 0,
+//            //firefox:  0,
+//            //ie: 0,
+//            //opera: 0
+//
+//            //mobile: '',
+//            //core: '',
+//            //shell: ''
+//        },
+//        numberify = function(s) {
+//            var c = 0;
+//            // convert '1.2.3.4' to 1.234
+//            return parseFloat(s.replace(/\./g, function() {
+//                return (c++ === 0) ? '.' : '';
+//            }));
+//        };
+//
+//    // try to use IE-Conditional-Comment detect IE more accurately
+//    // IE10 doesn't support this method, @ref: http://blogs.msdn.com/b/ie/archive/2011/07/06/html5-parsing-in-ie10.aspx
+//    div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, '');
+//    s = div.getElementsByTagName('s');
+//
+//    if (s.length > 0) {
+//
+//        shell = 'ie';
+//        o[core = 'trident'] = 0.1; // Trident detected, look for revision
+//
+//        // Get the Trident's accurate version
+//        if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
+//            o[core] = numberify(m[1]);
+//        }
+//
+//        // Detect the accurate version
+//        // ×¢Òâ£º
+//        //  o.shell = ie, ±íÊ¾Íâ¿ÇÊÇ ie
+//        //  µ« o.ie = 7, ²¢²»´ú±íÍâ¿ÇÊÇ ie7, »¹ÓĞ¿ÉÄÜÊÇ ie8 µÄ¼æÈİÄ£Ê½
+//        //  ¶ÔÓÚ ie8 µÄ¼æÈİÄ£Ê½£¬»¹ÒªÍ¨¹ı documentMode È¥ÅĞ¶Ï¡£µ«´Ë´¦²»ÄÜÈÃ o.ie = 8, ·ñÔò
+//        //  ºÜ¶à½Å±¾ÅĞ¶Ï»áÊ§Îó¡£ÒòÎª ie8 µÄ¼æÈİÄ£Ê½±íÏÖĞĞÎªºÍ ie7 ÏàÍ¬£¬¶ø²»ÊÇºÍ ie8 ÏàÍ¬
+//        for (v = IE_DETECT_RANGE[0],end = IE_DETECT_RANGE[1]; v <= end; v++) {
+//            div.innerHTML = IE_DETECT_TPL.replace(VERSION_PLACEHOLDER, v);
+//            if (s.length > 0) {
+//                o[shell] = v;
+//                break;
+//            }
+//        }
+//
+//    } else {
+//
+//        // WebKit
+//        if ((m = ua.match(/AppleWebKit\/([\d.]*)/)) && m[1]) {
+//            o[core = 'webkit'] = numberify(m[1]);
+//
+//            // Chrome
+//            if ((m = ua.match(/Chrome\/([\d.]*)/)) && m[1]) {
+//                o[shell = 'chrome'] = numberify(m[1]);
+//            }
+//            // Safari
+//            else if ((m = ua.match(/\/([\d.]*) Safari/)) && m[1]) {
+//                o[shell = 'safari'] = numberify(m[1]);
+//            }
+//
+//            // Apple Mobile
+//            if (/ Mobile\//.test(ua)) {
+//                o[MOBILE] = 'apple'; // iPad, iPhone or iPod Touch
+//            }
+//            // Other WebKit Mobile Browsers
+//            else if ((m = ua.match(/NokiaN[^\/]*|Android \d\.\d|webOS\/\d\.\d/))) {
+//                o[MOBILE] = m[0].toLowerCase(); // Nokia N-series, Android, webOS, ex: NokiaN95
+//            }
+//        }
+//        // NOT WebKit
+//        else {
+//            // Presto
+//            // ref: http://www.useragentstring.com/pages/useragentstring.php
+//            if ((m = ua.match(/Presto\/([\d.]*)/)) && m[1]) {
+//                o[core = 'presto'] = numberify(m[1]);
+//
+//                // Opera
+//                if ((m = ua.match(/Opera\/([\d.]*)/)) && m[1]) {
+//                    o[shell = 'opera'] = numberify(m[1]); // Opera detected, look for revision
+//
+//                    if ((m = ua.match(/Opera\/.* Version\/([\d.]*)/)) && m[1]) {
+//                        o[shell] = numberify(m[1]);
+//                    }
+//
+//                    // Opera Mini
+//                    if ((m = ua.match(/Opera Mini[^;]*/)) && m) {
+//                        o[MOBILE] = m[0].toLowerCase(); // ex: Opera Mini/2.0.4509/1316
+//                    }
+//                    // Opera Mobile
+//                    // ex: Opera/9.80 (Windows NT 6.1; Opera Mobi/49; U; en) Presto/2.4.18 Version/10.00
+//                    // issue: ÓÉÓÚ Opera Mobile ÓĞ Version/ ×Ö¶Î£¬¿ÉÄÜ»áÓë Opera »ìÏı£¬Í¬Ê±¶ÔÓÚ Opera Mobile µÄ°æ±¾ºÅÒ²±È½Ï»ìÂÒ
+//                    else if ((m = ua.match(/Opera Mobi[^;]*/)) && m) {
+//                        o[MOBILE] = m[0];
+//                    }
+//                }
+//
+//                // NOT WebKit or Presto
+//            } else {
+//                // MSIE
+//                // ÓÉÓÚ×î¿ªÊ¼ÒÑ¾­Ê¹ÓÃÁË IE Ìõ¼ş×¢ÊÍÅĞ¶Ï£¬Òò´ËÂäµ½ÕâÀïµÄÎ¨Ò»¿ÉÄÜĞÔÖ»ÓĞ IE10+
+//                if ((m = ua.match(/MSIE\s([^;]*)/)) && m[1]) {
+//                    o[core = 'trident'] = 0.1; // Trident detected, look for revision
+//                    o[shell = 'ie'] = numberify(m[1]);
+//
+//                    // Get the Trident's accurate version
+//                    if ((m = ua.match(/Trident\/([\d.]*)/)) && m[1]) {
+//                        o[core] = numberify(m[1]);
+//                    }
+//
+//                    // NOT WebKit, Presto or IE
+//                } else {
+//                    // Gecko
+//                    if ((m = ua.match(/Gecko/))) {
+//                        o[core = 'gecko'] = 0.1; // Gecko detected, look for revision
+//                        if ((m = ua.match(/rv:([\d.]*)/)) && m[1]) {
+//                            o[core] = numberify(m[1]);
+//                        }
+//
+//                        // Firefox
+//                        if ((m = ua.match(/Firefox\/([\d.]*)/)) && m[1]) {
+//                            o[shell = 'firefox'] = numberify(m[1]);
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    o.core = core;
+//    o.shell = shell;
+//    o._numberify = numberify;
+//    return o;
+//}

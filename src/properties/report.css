@@ -2,10 +2,12 @@
     width: 990px;
     margin: 0 auto;
 }
+.result {
+    width: 990px;    
+    overflow: scroll;
+}
 .properties {
     text-align: center;
-    width: 179px;
-    background-color: #333;
 }
 .browser {
     font-weight: bold;
@@ -15,6 +17,7 @@ table {
     line-height: 24px;
     border-collapse:  separate;
     margin: 10px 0 30px;
+    table-layout: fixed;
 }
 table caption {
     line-height: 30px;
@@ -42,8 +45,19 @@ table td {
 } 
 table span {
     display: block;
-    padding: 2px;
     text-align: center;
+}
+table th .property {
+    padding: 0;
+}
+.property span {
+    width: 100px;
+}
+.version span {
+    width: 60px;
+}
+.browser span {
+    width: 80px;
 }
 .property {
     padding-left: 20px;

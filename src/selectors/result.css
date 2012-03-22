@@ -1,3 +1,10 @@
+.wrap {
+    width: 990px;
+    margin: 0 auto;
+}
+.content {
+    overflow: scroll;
+}
 table {
     margin: 0 auto;
 	font: 12px/1.5 Tahoma, Geneva, sans-serif;
