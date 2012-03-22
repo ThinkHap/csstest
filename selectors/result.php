@@ -4,6 +4,7 @@
     <meta charset="gbk">
     <title>CSS Selectors Report Table</title>
     <?php include "../uxcommon/assets.php" ?>
+    <link rel="stylesheet" type="text/css" href="../src/base.css" />
     <link rel="stylesheet" type="text/css" href="../src/nav.css" />
     <link rel="stylesheet" type="text/css" href="../src/selectors/result.css" />
 </head>
@@ -30,7 +31,7 @@
             <h1>CSS Selectors Report Table</h1>
             <a href="../" title="" class="return">返回首页>></a>
         </div>
-        <div class="content">
+        <div id="result" class="result">
             <table border="1" collapse="0" cellpadding="8">
                 <tr>
                     <!--th>in</th-->
@@ -101,5 +102,12 @@
     </div>
 </div>
 <?php include "../uxcommon/footer.php" ?>
+<script>
+    var cH = document.documentElement.clientHeight || document.body.clientHeight,
+        result = document.getElementById('result');
+    var resultHeight = cH - 46 - 20 - 36 - 19 - 40;
+    result.style.height = resultHeight + 'px';
+    console.log(resultHeight);
+</script>
 </body>
 </html>

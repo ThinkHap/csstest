@@ -2,17 +2,31 @@
     width: 990px;
     margin: 0 auto;
 }
-.content {
+.result {
+    width: 980px;    
+    height: 700px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
     overflow: scroll;
+    box-shadow: 5px 5px 5px #999;
+    -moz-box-shadow: 5px 5px 5px #999;
+    -webkit-box-shadow: 5px 5px 5px #999;
+    -o-box-shadow: 5px 5px 5px #999;
 }
 table {
     margin: 0 auto;
 	font: 12px/1.5 Tahoma, Geneva, sans-serif;
 	border-collapse: collapse;
+    line-height: 24px;
 }
 th {
     color: #eee;
     background-color: #333;
+}
+th, td {
+    padding: 5px 8px;
+    text-align: center;
 }
 .passed { 
     background-color: #090 !important; 

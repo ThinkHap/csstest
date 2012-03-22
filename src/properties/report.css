@@ -3,8 +3,16 @@
     margin: 0 auto;
 }
 .result {
-    width: 990px;    
+    width: 980px;    
+    height: 700px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
     overflow: scroll;
+    box-shadow: 5px 5px 5px #999;
+    -moz-box-shadow: 5px 5px 5px #999;
+    -webkit-box-shadow: 5px 5px 5px #999;
+    -o-box-shadow: 5px 5px 5px #999;
 }
 .properties {
     text-align: center;

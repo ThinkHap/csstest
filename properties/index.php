@@ -213,7 +213,6 @@
                 xmlHttp.onreadystatechange=stateChanged;
                 xmlHttp.open("POST",url,true);
                 xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-/*
                 xmlHttp.send("browser="+ browser +"&uastring="+ ua +"&"+ cssresult +"&sid="+ Math.random());
             }
             function stateChanged() { 
