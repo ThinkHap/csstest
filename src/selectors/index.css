@@ -1,0 +1,41 @@
+#wrap {
+    width: 990px;
+    margin: 0 auto;
+}
+#results {
+    margin-top: 5px;
+    list-style: none;
+}
+#results li {
+    line-height: 28px;
+    text-indent: 10px;
+    margin: 0 0 3px 0;
+}
+.passed { 
+    background-color: #090 !important; 
+    color: #fff; 
+}
+.failed { 
+    background-color: #900 !important; 
+    color: #fff; 
+}
+.buggy {
+    background-color: #f60 !important;
+    color: #fff;
+}
+#results li span {
+    margin: 0 0 0 3em;
+    font-size: 0.8em;
+}	
+#results li a { 
+    color: #fff; 
+    font-size: 10px;
+    text-decoration: none;
+}
+iframe {
+    position: absolute;
+    top: -450px;
+    right: -450px;
+    width: 400px;
+    height: 200px;
+}

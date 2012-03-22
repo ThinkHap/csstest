@@ -1,0 +1,44 @@
+body {
+    font-size: 12px;
+    text-shadow: 1px 1px #eee;
+}
+.page_content {
+    width: 990px;
+    margin: 0 auto;
+}
+.page_content a {
+    color: #4183C4;
+}
+.page_content h1 {
+     font-size: 18px;
+     padding: 10px 20px;
+}
+.page_content .box {
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+    border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;
+    background: -moz-linear-gradient(top, #fff, #F3F3F3);
+    background: -webkit-linear-gradient(top, #fff, #F3F3F3);
+    background: -o-linear-gradient(top, #fff, #F3F3F3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF, endColorstr=#FFF3F3f3);
+    box-shadow: 5px 5px 5px #c6c6c6;
+}
+.page_content .box h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.page_content .box li {
+    list-style: disc inside;
+}
+.page_content .box p,
+.page_content .box li {
+    line-height: 2em;
+}
+.result,
+.demo,
+.properties,
+.selectors {
+    float: left;
+    width: 460px;
+}

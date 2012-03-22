@@ -5,7 +5,7 @@
     if (!$con) {
         die('Could not connect: ' . mysql_error());
     };
-    mysql_query("SET NAMES UTF8"); 
+    mysql_query("SET NAMES 'UTF8'"); 
     mysql_select_db("csstest", $con);
 
     $sql_query = "SELECT * FROM prop GROUP BY type";
@@ -28,7 +28,7 @@
         }
     }
 
-    //ajaxæ•°æ®å‚¨å­˜
+    //ajaxÊı¾İ´¢´æ
     if (!array_key_exists('browser', $_POST)) {
         mysql_close($con);
     }elseif (array_key_exists('browser', $_POST)) {
@@ -55,43 +55,27 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>æ£€æµ‹æµè§ˆå™¨æ ·å¼æ”¯æŒ</title>
-        <style type="text/css">
-            body, form, h1, h2, h3, h4, p, img, ul, li, ol, dl, dt, dd, a, span, input, tr, th, td{margin:0;padding:0;}
-		    body {font:normal 12px/1.5 "Arial","å®‹ä½“","Simsun","Tahoma",sans-serif;}
-		    li{list-style:none;}
-		    img {border:0 none;vertical-align:top;}
-		    table {border-collapse:collapse;border-spacing:0;}
-            .cf:after{display:block;visibility:hidden;font-size:0;line-height:0;clear:both;content:"";}  
-            .cf{zoom:1;}
-		    a{color:#000;text-decoration:none;}
-		    a:visited{}
-		    a:hover{text-decoration:underline;}
-		    a:active{}
-
-            .wrap {width:990px;margin:0 auto;}
-            h1 a {color:#f44;}
-            .browser {font-weight:bold;color:#c00;}
-            table {line-height:24px;width:990px;border-collapse: separate;margin:10px 0 30px;}
-            table caption {line-height:30px;padding-left:10px;border-bottom:1px solid #999;color:#eee;font-size:14px;font-weight: bold;text-align:left;background-color:#333;}
-            table th {color:#fff;background-color:#555;}
-            table th, table td {color:#fff;font-weight:bold;padding:3px;border-right:1px solid #999;border-bottom:1px solid #999;} 
-            table span {display:block;padding:2px;text-align:center;}
-            .css-property {padding-left:20px;width:40%;background-color:#333;}
-            .support, .supp {background-color:#090;}
-            .unsupport, .unsupp {background-color:#b00;}
-            .compatibility {width:30%;text-align:center;}
-            .version {width:30%;text-align:center;}
-        </style>
+        <meta charset="gbk" />
+        <title>¼ì²âä¯ÀÀÆ÷ÑùÊ½Ö§³Ö</title>
+        <?php include "../uxcommon/assets.php" ?>
+        <link rel="stylesheet" type="text/css" href="../src/base.css" />
+        <link rel="stylesheet" type="text/css" href="../src/nav.css" />
+        <link rel="stylesheet" type="text/css" href="../src/properties/index.css" />
         <script src="http://a.tbcdn.cn/s/kissy/1.1.6/kissy-min.js"></script>
     </head>
     <body>
-        <div id="wrap" class="wrap">
-            <h1>CSS Properties Test</h1>
-            <div id="result" class="result">
+        <?php include "../uxcommon/header.php" ?>
+        <div class="page_content">
+            <div class="wrap">
+                <div class="header">
+                    <h1>CSS Properties Test</h1>
+                    <a href="../" title="" class="return">·µ»ØÊ×Ò³>></a>
+                </div>
+                <div id="result" class="result">
+                </div>
             </div>
         </div>
+        <?php include "../uxcommon/footer.php" ?>
         <script>
             <?php
                 echo "var prop_name = ".json_encode($prop_name).";";
@@ -190,13 +174,13 @@
                 } else if (browser.safari) {  
                     version = 'Safari ' + browser.safari;  
                 } else {  
-                    version = 'æœªçŸ¥æµè§ˆå™¨';  
+                    version = 'Î´Öªä¯ÀÀÆ÷';  
                 }  
                 return version;  
             }  
             var browser = getBrowserVersion();
 
-            var resultHtml = "<p>ä»¥ä¸‹æ˜¯ä½ ç›®å‰æ­£åœ¨ä½¿ç”¨çš„<span class='browser'>" + browser + "</span>æµè§ˆå™¨å¯¹CSSå±æ€§çš„æ”¯æŒæƒ…å†µ</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
+            var resultHtml = "<p>ÒÔÏÂÊÇÄãÄ¿Ç°ÕıÔÚÊ¹ÓÃµÄ<span class='browser'>" + browser + "</span>ä¯ÀÀÆ÷¶ÔCSSÊôĞÔµÄÖ§³ÖÇé¿ö</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
             var resultDiv = document.getElementById("result");
             resultDiv.innerHTML = resultHtml;
 

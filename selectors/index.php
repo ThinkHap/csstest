@@ -2,7 +2,7 @@
 if (array_key_exists('browser', $_GET)) {
     session_start();
     error_reporting(E_ERROR | E_WARNING | E_PARSE);
-    header("Content-type:text/html;charset=utf-8");
+    header("Content-type:text/html;charset=gbk");
 
     // $linkId = mysql_connect('localhost', 'root', '0.00');
     $linkId = mysql_connect('localhost', 'csstest', 'csstest');
@@ -14,7 +14,7 @@ if (array_key_exists('browser', $_GET)) {
         echo "cannot use this database.";
         die;
     }
-    mysql_query("set names 'utf8'");
+    mysql_query("set names 'gbk'");
 
     $key = array();
     $val = array();
@@ -36,67 +36,28 @@ if (array_key_exists('browser', $_GET)) {
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<title>CSS Selectors Test</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<style>
-* { 
-    padding: 0;
-    margin: 0;
-}
-body {
-    font: 12px/1.5 Verdana, Arial, sans-serif;
-}
-#wrap {
-    width: 990px;
-    margin: 0 auto;
-}
-#results {
-    margin-top: 5px;
-    list-style: none;
-}
-#results li {
-    line-height: 28px;
-    text-indent: 10px;
-    margin: 0 0 3px 0;
-}
-.passed { 
-    background-color: #090 !important; 
-    color: #fff; 
-}
-.failed { 
-    background-color: #900 !important; 
-    color: #fff; 
-}
-.buggy {
-    background-color: #f60 !important;
-    color: #fff;
-}
-#results li span {
-    margin: 0 0 0 3em;
-    font-size: 0.8em;
-}	
-#results li a { 
-    color: #fff; 
-    font-size: 10px;
-    text-decoration: none;
-}
-iframe {
-    position: absolute;
-    top: -450px;
-    right: -450px;
-    width: 400px;
-    height: 200px;
-}
-</style>
+    <meta charset="gbk">
+    <title>CSS Selectors Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <?php include "../uxcommon/assets.php" ?>
+    <link rel="stylesheet" type="text/css" href="../src/base.css" />
+    <link rel="stylesheet" type="text/css" href="../src/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../src/selectors/index.css" />
 </head>
 <body>
-<div id="wrap">
-    <h1>CSS Selectors Test</h1>
-    <p>è‡ªåŠ¨è¿è¡Œå¤§é‡æµ‹è¯•ç”¨ä¾‹ï¼Œä»¥åˆ¤æ–­ä½ çš„æµè§ˆå™¨æ˜¯å¦å…¼å®¹è¿™äº›CSSé€‰æ‹©å™¨ã€‚ä¸å…¼å®¹çš„ç‰¹æ®Šé€‰æ‹©å™¨ï¼Œä¼šè¢«æ ‡è®°ã€‚ä½ å¯ä»¥ç‚¹å‡»æ¯ä¸€ä¸ªé€‰æ‹©å™¨ï¼ŒæŸ¥çœ‹ä¸€ä¸ªåŒ…å«ç¤ºä¾‹å’Œè§£é‡Šçš„ç»“æœé¡µé¢ã€‚</p>
-    <p>ç”±äºä»æŠ€æœ¯ä¸Šä¸å¯èƒ½æ¨¡æ‹ŸæŸäº›ä¾èµ–äºç”¨æˆ·äº¤äº’è¡Œä¸ºçš„é€‰æ‹©å™¨ï¼Œå› äº›æœ¬æµ‹è¯•å¥—ä»¶ä¸åŒ…å«ä»¥ä¸‹é€‰æ‹©å™¨ï¼š:hover, :active, :foucs, :selectionã€‚</p>
-    <ul id="results"></ul>
+<?php include "../uxcommon/header.php" ?>
+<div class="page_content">
+    <div id="wrap">
+        <div class="header">
+            <h1>CSS Selectors Test</h1>
+            <a href="../" title="" class="return">·µ»ØÊ×Ò³>></a>
+        </div>
+        <p>×Ô¶¯ÔËĞĞ´óÁ¿²âÊÔÓÃÀı£¬ÒÔÅĞ¶ÏÄãµÄä¯ÀÀÆ÷ÊÇ·ñ¼æÈİÕâĞ©CSSÑ¡ÔñÆ÷¡£²»¼æÈİµÄÌØÊâÑ¡ÔñÆ÷£¬»á±»±ê¼Ç¡£Äã¿ÉÒÔµã»÷Ã¿Ò»¸öÑ¡ÔñÆ÷£¬²é¿´Ò»¸ö°üº¬Ê¾ÀıºÍ½âÊÍµÄ½á¹ûÒ³Ãæ¡£</p>
+        <p>ÓÉÓÚ´Ó¼¼ÊõÉÏ²»¿ÉÄÜÄ£ÄâÄ³Ğ©ÒÀÀµÓÚÓÃ»§½»»¥ĞĞÎªµÄÑ¡ÔñÆ÷£¬ÒòĞ©±¾²âÊÔÌ×¼ş²»°üº¬ÒÔÏÂÑ¡ÔñÆ÷£º:hover, :active, :foucs, :selection¡£</p>
+        <ul id="results"></ul>
+    </div>	
 </div>	
+<?php include "../uxcommon/footer.php" ?>
 <script src="csstest.js"></script>
 <!--
 $(function() {
