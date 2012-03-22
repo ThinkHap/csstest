@@ -37,9 +37,9 @@
                 <li><a href="column-rule-width&column-rule-style&column-rule-color.html">column-rule-width & column-rule-style & column-rule-color</a></li>
                 <li><a href="column-span.html">column-span</a></li>
                 <li><a href="column-fill.html">column-fill</a></li>
-                <!--<li><a href="column-break-befor.html">column-break-before</a></li>-->
-                <!--<li><a href="column-break-after.html">column-break-after</a></li>-->
-                <!--<li><a href="column-break-inside.html">column-break-inside</a></li>-->
+                <li><a href="column-break-before.html">column-break-before</a></li>
+                <li><a href="column-break-after.html">column-break-after</a></li>
+                <li><a href="column-break-inside.html">column-break-inside</a></li>
             </ul>
         </div>
     </div>
