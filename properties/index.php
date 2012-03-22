@@ -155,9 +155,11 @@
                                                         ? browser.android = s[1]
                                                         : (s = userAgent.match(/iphone os ([\d\w]+)/))  
                                                                 ? browser.iphone = s[1]
-                                                                : (s = userAgent.match(/version\/([\d.]+).*safari/))  
-                                                                    ? browser.safari = s[1]  
-                                                                    : 0;  
+                                                                : (s = userAgent.match(/ipad.+os ([\d\w]+) like/))  
+                                                                        ? browser.ipad = s[1]
+                                                                        : (s = userAgent.match(/version\/([\d.]+).*safari/))  
+                                                                            ? browser.safari = s[1]  
+                                                                            : 0;  
                 var version = "";  
                 if (browser.ie) {  
                     version = 'IE ' + browser.ie;  
@@ -171,6 +173,8 @@
                     version = 'Android ' + browser.android;  
                 } else if (browser.iphone) {  
                     version = 'iPhone OS ' + browser.iphone;  
+                } else if (browser.ipad) {  
+                    version = 'iPad OS ' + browser.ipad;  
                 } else if (browser.safari) {  
                     version = 'Safari ' + browser.safari;  
                 } else {  
