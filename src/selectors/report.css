@@ -1,0 +1,28 @@
+.wrap {
+    width: 990px;
+    margin: 0 auto;
+}
+table {
+    width: 990px;
+	font: 12px/1.5 Tahoma, Geneva, sans-serif;
+	border-collapse: collapse;
+}
+th {
+    color: #eee;
+    background-color: #333;
+}
+th, td {
+    text-align:center;
+}
+.passed { 
+    background-color: #090 !important; 
+    color: #fff; 
+}
+.failed { 
+    background-color: #900 !important; 
+    color: #fff; 
+}
+.buggy {
+    background-color: #f60 !important;
+    color: #fff;
+}
