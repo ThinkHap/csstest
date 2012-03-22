@@ -19,7 +19,12 @@
     background: -o-linear-gradient(top, #f3f3f3, #fcfcfc);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF3F3F3, endColorstr=#FFFCFCFC);
     text-decoration: none;
+    transition: color .3s ease-in;
+    -moz-transition: color .3s ease-in;
+    -webkit-transition: color .3s ease-in;
+    -o-transition: color .3s ease-in,
 }
 .header .return:hover {
+    color: #f44;
     text-decoration: none;
 }

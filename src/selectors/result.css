@@ -4,11 +4,10 @@
 }
 .result {
     width: 980px;    
-    height: 700px;
     padding: 5px;
     border: 1px solid #ccc;
     margin-top: 10px;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: 5px 5px 5px #999;
     -moz-box-shadow: 5px 5px 5px #999;
     -webkit-box-shadow: 5px 5px 5px #999;
@@ -22,21 +21,47 @@ table {
 }
 th {
     color: #eee;
-    background-color: #333;
+    background-color: #666;
 }
 th, td {
-    padding: 5px 8px;
+    padding: 3px;
     text-align: center;
 }
-.passed { 
-    background-color: #090 !important; 
+th span {
+    display: block;
+    width: 60px;
+    word-break: break-all;
+}
+th.browser span {
+    width: 100px;
+    text-align: center;
+}
+th.ua span {
+    width: 600px;
+}
+td.ua {
+    color: #fff;
+    text-align: left;
+    padding-left: 10px;
+    background-color: #666;
+    line-height: 12px;
+}
+.browsers {
+    color: #fff;
+    padding: 0 20px;
+    background-color: #666;
+    font-weight: bold;
+    text-align: left;
+}
+.support { 
+    background-color: #090; 
     color: #fff; 
 }
-.failed { 
-    background-color: #900 !important; 
+.unsupport { 
+    background-color: #B00;
     color: #fff; 
 }
 .buggy {
-    background-color: #f60 !important;
+    background-color: #f60;
     color: #fff;
 }

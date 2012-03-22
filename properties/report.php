@@ -111,11 +111,11 @@
         </div>    
         <?php include "../uxcommon/footer.php" ?>
         <script>
-            var cH = document.documentElement.clientHeight || document.body.clientHeight,
-                result = document.getElementById('result');
-            var resultHeight = cH - 46 - 10 - 36 - 10 - 19 - 30;
-            result.style.height = resultHeight + 'px';
-            console.log(resultHeight);
+            //var cH = document.documentElement.clientHeight || document.body.clientHeight,
+            //    result = document.getElementById('result');
+            //var resultHeight = cH - 46 - 10 - 36 - 10 - 19 - 30;
+            //result.style.height = resultHeight + 'px';
+            //console.log(resultHeight);
         </script>
     </body>
 </html>

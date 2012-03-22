@@ -110,7 +110,13 @@ $(function(){
                 arrRes.push('datetime='+ datetime);
                 
                 $('#results li').each(function(){
-                    arrRes.push($(this).attr('data-attr') +'='+ $(this).attr('class'));
+                    if($(this).attr('class') == 'passed'){
+                        arrRes.push($(this).attr('data-attr') +'=Y');
+                    }else if($(this).attr('class') == 'failed'){
+                        arrRes.push($(this).attr('data-attr') +'=N');
+                    }else {
+                        arrRes.push($(this).attr('data-attr') +'='+ $(this).attr('class'));
+                    }
                 });
 
                 $.get('index.php?'+ arrRes.join('&'));

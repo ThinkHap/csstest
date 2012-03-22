@@ -4,11 +4,10 @@
 }
 .result {
     width: 980px;    
-    height: 700px;
     padding: 5px;
     border: 1px solid #ccc;
     margin-top: 10px;
-    overflow: scroll;
+    overflow: auto;
     box-shadow: 5px 5px 5px #999;
     -moz-box-shadow: 5px 5px 5px #999;
     -webkit-box-shadow: 5px 5px 5px #999;
@@ -24,8 +23,7 @@
 table {
     line-height: 24px;
     border-collapse:  separate;
-    margin: 10px 0 30px;
-    table-layout: fixed;
+    margin: 0 0 30px;
 }
 table caption {
     line-height: 30px;
@@ -62,10 +60,10 @@ table th .property {
     width: 100px;
 }
 .version span {
-    width: 60px;
+    width: 50px;
 }
 .browser span {
-    width: 80px;
+    width: 60px;
 }
 .property {
     padding-left: 20px;
