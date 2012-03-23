@@ -100,7 +100,7 @@
             }        
             
             function getStyleProperty(prop){
-            	var prefixes = ['', '-ms-','-moz-', '-webkit-', '-khtml-', '-o-'];
+            	var prefixes = ['', 'ms-','-moz-', '-webkit-', '-khtml-', '-o-'];
             	var reg_cap = /-([a-z])/g;
                 var style = document.documentElement.style,
                     test;
@@ -109,10 +109,17 @@
             	    test = (prefixes[i] + prop).replace(reg_cap,function($0,$1){
             	        return $1.toUpperCase();
             	    });
+                    if(prop == "transform"){
+                        console.log('transform:'+test);
+                    }
             	    if(test in style && pre == ""){
             	        return true;
             	    }else if(test in style){
-                        return pre;
+                        if(pre == 'ms-'){
+                            return '-'+pre;
+                        }else{
+                            return pre;
+                        }
                     };
             	};
             	return false;
