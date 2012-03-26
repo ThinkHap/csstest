@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>box-direction</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}ul,li{padding: 0;}li{list-style: none;}</style>
+</head>
+<body>
+    <style>
+        ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:100px;;padding:10px;border:1px solid #eee;}
+        .b1{-webkit-box-direction:normal;-moz-box-direction:normal;-o-box-direction:normal;-ms-box-direction:normal;box-direction:normal;}
+        .b2{-webkit-box-direction:reverse;-moz-box-direction:reverse;-o-box-direction:reverse;-ms-box-direction:reverse;box-direction:reverse;}
+    </style>
+    <h3>normal</h3>
+    <ul class="b1">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>reverse</h3>
+    <ul class="b2">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+<textarea cols="150" rows="25">
+<style>
+    ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:100px;;padding:10px;border:1px solid #eee;}
+    .b1{-webkit-box-direction:normal;-moz-box-direction:normal;-o-box-direction:normal;-ms-box-direction:normal;box-direction:normal;}
+    .b2{-webkit-box-direction:reverse;-moz-box-direction:reverse;-o-box-direction:reverse;-ms-box-direction:reverse;box-direction:reverse;}
+</style>
+<h3>normal</h3>
+<ul class="b1">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+</ul>
+<h3>reverse</h3>
+<ul class="b2">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+</ul>
+</textarea>
+</body>
+</html>

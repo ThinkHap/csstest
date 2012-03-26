@@ -1,0 +1,30 @@
+.header {
+    position: relative;
+    padding-left: 10px;
+}
+.header .return {
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 20px;
+    color: #3879D9;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    background: -moz-linear-gradient(top, #f3f3f3, #fcfcfc);
+    background: -webkit-linear-gradient(top, #f3f3f3, #fcfcfc);
+    background: -o-linear-gradient(top, #f3f3f3, #fcfcfc);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF3F3F3, endColorstr=#FFFCFCFC);
+    text-decoration: none;
+    transition: color .3s ease-in;
+    -moz-transition: color .3s ease-in;
+    -webkit-transition: color .3s ease-in;
+    -o-transition: color .3s ease-in,
+}
+.header .return:hover {
+    color: #f44;
+    text-decoration: none;
+}

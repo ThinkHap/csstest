@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>box-align & box-orient</title>
+	<style>body{font-size:12px;text-shadow:1px 1px #eee;}ul,li{padding: 0;}li{list-style: none;}</style>
+</head>
+<body>
+    <style>
+        div{float:left;width:270px;}
+        ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:130px;height:110px;border:1px solid #eee;}
+        ul li{background:#bedefe;}
+        .h ul{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-o-box-orient:horizontal;-ms-box-orient:horizontal;box-orient:horizontal;}
+        .v ul{-webkit-box-orient:vertical;-moz-box-orient:vertical;-o-box-orient:vertical;-ms-box-orient:vertical;box-orient:vertical;}
+        .b1{-webkit-box-pack:start;-moz-box-pack:start;-o-box-pack:start;-ms-box-pack:start;box-pack:start;}
+        .b2{-webkit-box-pack:center;-moz-box-pack:center;-o-box-pack:center;-ms-box-pack:center;box-pack:center;}
+        .b3{-webkit-box-pack:end;-moz-box-pack:end;-o-box-pack:end;-ms-box-pack:end;box-pack:end;}
+        .b4{-webkit-box-pack:justify;-moz-box-pack:justify;-o-box-pack:justify;-ms-box-pack:justify;box-pack:justify;}
+    </style>
+    <div class="h">
+        <h3>start(box-orient:horizontal)</h3>
+        <ul class="b1">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>center(box-orient:horizontal)</h3>
+        <ul class="b2">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>end(box-orient:horizontal)</h3>
+        <ul class="b3">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>justify(box-orient:horizontal)</h3>
+        <ul class="b4">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+    </div>
+    <div class="v">
+        <h3>start(box-orient:vertical)</h3>
+        <ul class="b1">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>center(box-orient:vertical)</h3>
+        <ul class="b2">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>end(box-orient:vertical)</h3>
+        <ul class="b3">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <h3>justify(box-orient:vertical)</h3>
+        <ul class="b4">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+    </div>
+<textarea cols="150" rows="80">
+<style>
+    div{float:left;width:270px;}
+    ul{display:-webkit-box;display:-moz-box;display:-o-box;display:-ms-box;display:box;width:130px;height:110px;border:1px solid #eee;}
+    ul li{background:#bedefe;}
+    .h ul{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-o-box-orient:horizontal;-ms-box-orient:horizontal;box-orient:horizontal;}
+    .v ul{-webkit-box-orient:vertical;-moz-box-orient:vertical;-o-box-orient:vertical;-ms-box-orient:vertical;box-orient:vertical;}
+    .b1{-webkit-box-pack:start;-moz-box-pack:start;-o-box-pack:start;-ms-box-pack:start;box-pack:start;}
+    .b2{-webkit-box-pack:center;-moz-box-pack:center;-o-box-pack:center;-ms-box-pack:center;box-pack:center;}
+    .b3{-webkit-box-pack:end;-moz-box-pack:end;-o-box-pack:end;-ms-box-pack:end;box-pack:end;}
+    .b4{-webkit-box-pack:justify;-moz-box-pack:justify;-o-box-pack:justify;-ms-box-pack:justify;box-pack:justify;}
+</style>
+<div class="h">
+    <h3>start(box-orient:horizontal)</h3>
+    <ul class="b1">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>center(box-orient:horizontal)</h3>
+    <ul class="b2">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>end(box-orient:horizontal)</h3>
+    <ul class="b3">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>justify(box-orient:horizontal)</h3>
+    <ul class="b4">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+</div>
+<div class="v">
+    <h3>start(box-orient:vertical)</h3>
+    <ul class="b1">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>center(box-orient:vertical)</h3>
+    <ul class="b2">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>end(box-orient:vertical)</h3>
+    <ul class="b3">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+    <h3>justify(box-orient:vertical)</h3>
+    <ul class="b4">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+</div>
+</textarea>
+</body>
+</html>
