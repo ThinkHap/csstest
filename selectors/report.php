@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="gbk">
-    <title>CSS Selectors 测试结果</title>
+    <meta charset="utf-8">
+    <title>CSS Selectors 娴嬭瘯缁撴灉</title>
     <?php include "../uxcommon/assets.php" ?>
     <link rel="stylesheet" type="text/css" href="../src/nav.css" />
     <link rel="stylesheet" type="text/css" href="../src/selectors/report.css" />
@@ -13,11 +13,11 @@
     <div class="wrap">
         <div class="header">
             <h1>CSS Selectors Test Report</h1>
-            <a href="../" title="" class="return">返回首页>></a>
+            <a href="../" title="" class="return">杩斿洖棣栭〉>></a>
         </div>
         <table border="1" collapse="0" cellpadding="8">
             <tr>
-                <th>选择器 \ 浏览器</th>
+                <th>閫夋嫨鍣� \ 娴忚鍣�</th>
                 <th>IE 6</th>
                 <th>IE 7</th>
                 <th>IE 8</th>

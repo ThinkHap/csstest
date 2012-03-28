@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="gbk" />
+    <meta charset="utf-8" />
 	<title>CSS Selectors Demo</title>
     <?php include "../../uxcommon/assets.php" ?>
     <link rel="stylesheet" type="text/css" href="../../src/base.css" />
@@ -14,14 +14,14 @@
         <div class="wrap">
             <div class="header">
                 <h1>CSS Selectors Demo</h1>
-                <a href="../../" title="" class="return">·µ»ØÊ×Ò³</a>
+                <a href="../../" title="" class="return">è¿”å›žé¦–é¡µ</a>
             </div>
             <div class="box">
                 <ul>
                     <li><a href="focus.html">:focus</a></li>
-                    <li><a href="css2.1attribute.html">CSS2.1ÊôÐÔÑ¡ÔñÆ÷</a></li>
-                    <li><a href="css3attribute.html">CSS3ÊôÐÔÑ¡ÔñÆ÷</a></li>
-                    <li><a href="css3element.html">CSS3µÄÍ¬¼¶ÔªËØÍ¨ÓÃÑ¡ÔñÆ÷</a></li>
+                    <li><a href="css2.1attribute.html">CSS2.1å±žæ€§é€‰æ‹©å™¨</a></li>
+                    <li><a href="css3attribute.html">CSS3å±žæ€§é€‰æ‹©å™¨</a></li>
+                    <li><a href="css3element.html">CSS3çš„åŒçº§å…ƒç´ é€šç”¨é€‰æ‹©å™¨</a></li>
                     <li><a href="lang.html">:lang</a></li>
                     <li><a href="after&before.html">::after & ::before</a></li>
                     <li><a href="first-letter.html">::first-letter</a></li>

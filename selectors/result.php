@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="gbk">
+    <meta charset="utf-8">
     <title>CSS Selectors Report Table</title>
     <?php include "../uxcommon/assets.php" ?>
     <link rel="stylesheet" type="text/css" href="../src/base.css" />
@@ -22,14 +22,14 @@
         echo "cannot use this database.";
         die;
     }
-    mysql_query("set names 'gbk'");
+    mysql_query("set names 'UTF8'");
     $sql = "SELECT * FROM selectors ";
 ?>
 <div class="page_content">
     <div class="wrap">
         <div class="header">
             <h1>CSS Selectors Report Table</h1>
-            <a href="../" title="" class="return">返回首页>></a>
+            <a href="../" title="" class="return">杩斿洖棣栭〉>></a>
         </div>
         <div id="result" class="result">
             <table border="1" collapse="0" cellpadding="8">

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="gbk" />
+    <meta charset="utf-8" />
 	<title>CSS Properties Demo</title>
     <?php include "../../uxcommon/assets.php" ?>
     <link rel="stylesheet" type="text/css" href="../../src/base.css" />
@@ -14,10 +14,10 @@
         <div class="wrap">
             <div class="header">
                 <h1>CSS Properties Demo</h1>
-                <a href="../../" title="" class="return">返回首页</a>
+                <a href="../../" title="" class="return">杩斿洖棣栭〉</a>
             </div>
             <div class="box">
-                <h2>弹性盒模型</h2>
+                <h2>寮规�х洅妯″瀷</h2>
                 <ul>
                     <li><a href="box-align&box-orient.html">box-align & box-orient</a></li>
                     <li><a href="box-direction.html">box-direction</a></li>
@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div class="box">
-                <h2>多栏</h2>
+                <h2>澶氭爮</h2>
                 <ul>
                     <li><a href="columns.html">columns</a></li>
                     <li><a href="column-width&column-count.html">column-width & column-count</a></li>

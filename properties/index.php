@@ -28,7 +28,7 @@
         }
     }
 
-    //ajaxÊı¾İ´¢´æ
+    //ajaxæ•°æ®å‚¨å­˜
     if (!array_key_exists('browser', $_POST)) {
         mysql_close($con);
     }elseif (array_key_exists('browser', $_POST)) {
@@ -55,8 +55,8 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="gbk" />
-        <title>¼ì²âä¯ÀÀÆ÷ÑùÊ½Ö§³Ö</title>
+        <meta charset="utf-8" />
+        <title>æ£€æµ‹æµè§ˆå™¨æ ·å¼æ”¯æŒ</title>
         <?php include "../uxcommon/assets.php" ?>
         <link rel="stylesheet" type="text/css" href="../src/base.css" />
         <link rel="stylesheet" type="text/css" href="../src/nav.css" />
@@ -69,7 +69,7 @@
             <div class="wrap">
                 <div class="header">
                     <h1>CSS Properties Test</h1>
-                    <a href="../" title="" class="return">·µ»ØÊ×Ò³>></a>
+                    <a href="../" title="" class="return">è¿”å›é¦–é¡µ>></a>
                 </div>
                 <div id="result" class="result">
                 </div>
@@ -185,13 +185,13 @@
                 } else if (browser.safari) {  
                     version = 'Safari ' + browser.safari;  
                 } else {  
-                    version = 'Î´Öªä¯ÀÀÆ÷';  
+                    version = 'æœªçŸ¥æµè§ˆå™¨';  
                 }  
                 return version;  
             }  
             var browser = getBrowserVersion();
 
-            var resultHtml = "<p>ÒÔÏÂÊÇÄãÄ¿Ç°ÕıÔÚÊ¹ÓÃµÄ<span class='browser'>" + browser + "</span>ä¯ÀÀÆ÷¶ÔCSSÊôĞÔµÄÖ§³ÖÇé¿ö</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
+            var resultHtml = "<p>ä»¥ä¸‹æ˜¯ä½ ç›®å‰æ­£åœ¨ä½¿ç”¨çš„<span class='browser'>" + browser + "</span>æµè§ˆå™¨å¯¹CSSå±æ€§çš„æ”¯æŒæƒ…å†µ</p>" + "<p>" + ua + "</p>" + fullresult.join("\r");
             var resultDiv = document.getElementById("result");
             resultDiv.innerHTML = resultHtml;
 

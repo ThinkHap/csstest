@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="gbk">
-<title>CSS¼æÈÝÐÔ²Î¿¼ÊÖ²áÓëÊ¹ÓÃÖ¸ÄÏ</title>
+<meta charset="utf-8">
+<title>CSSå…¼å®¹æ€§å‚è€ƒæ‰‹å†Œä¸Žä½¿ç”¨æŒ‡å—</title>
 <?php include "uxcommon/assets.php" ?>
 <link rel="stylesheet" type="text/css" href="src/base.css" />
 <link rel="stylesheet" type="text/css" href="src/index.css" />
@@ -11,12 +11,12 @@
 <?php include "uxcommon/header.php" ?>
 <div class="page_content">
     <div class="wrap">
-        <h1>CSS¼æÈÝÐÔ²Î¿¼ÊÖ²áÓëÊ¹ÓÃÖ¸ÄÏ</h1>
+        <h1>CSSå…¼å®¹æ€§å‚è€ƒæ‰‹å†Œä¸Žä½¿ç”¨æŒ‡å—</h1>
         <div class="box">
-            <h2>ÏîÄ¿½éÉÜ</h2>
-            <p><strong>CSSÊôÐÔ²âÊÔ£º</strong> ²âÊÔä¯ÀÀÆ÷¶ÔCSS°üº¬µÄ´ó²¿·ÖÊôÐÔ<²»°üº¬ÊôÐÔÖµ>µÄÖ§³ÖÇé¿ö£¬Ä¿Ç°ÓÐÊÕ¼¯366¸öÊôÐÔ¡£</p>
-            <p><strong>CSSÑ¡ÔñÆ÷²âÊÔ£º</strong> ²âÊÔä¯ÀÀÆ÷¶ÔCSS°üº¬µÄ´ó²¿·ÖÑ¡ÔñÆ÷µÄÖ§³ÖÇé¿ö£¬Ä¿Ç°ÓÐ50ÖÖÑ¡ÔñÆ÷£¬574¸ö²âÊÔÓÃÀý¡£</p>
-            <p><strong>³ÉÔ±£º</strong>°¢´ó¡¢ºÎÃô¡¢¿¡Òã¡¢ÍõºÆ¡¢Óñå¢¡¢ÇàÓ§</p>
+            <h2>é¡¹ç›®ä»‹ç»</h2>
+            <p><strong>CSSå±žæ€§æµ‹è¯•ï¼š</strong> æµ‹è¯•æµè§ˆå™¨å¯¹CSSåŒ…å«çš„å¤§éƒ¨åˆ†å±žæ€§<ä¸åŒ…å«å±žæ€§å€¼>çš„æ”¯æŒæƒ…å†µï¼Œç›®å‰æœ‰æ”¶é›†366ä¸ªå±žæ€§ã€‚</p>
+            <p><strong>CSSé€‰æ‹©å™¨æµ‹è¯•ï¼š</strong> æµ‹è¯•æµè§ˆå™¨å¯¹CSSåŒ…å«çš„å¤§éƒ¨åˆ†é€‰æ‹©å™¨çš„æ”¯æŒæƒ…å†µï¼Œç›®å‰æœ‰50ç§é€‰æ‹©å™¨ï¼Œ574ä¸ªæµ‹è¯•ç”¨ä¾‹ã€‚</p>
+            <p><strong>æˆå‘˜ï¼š</strong>é˜¿å¤§ã€ä½•æ•ã€ä¿Šæ¯…ã€çŽ‹æµ©ã€çŽ‰æ¾§ã€é’ç¼¨</p>
         </div>
         <div class="box">
             <h2>Test Page</h2>
@@ -28,9 +28,9 @@
         <div class="box clear-fix">
             <h2>Test Result & Demo</h2>
             <ol class="result">
-                <li><a href="properties/report.php">CSS Properties ²âÊÔ½á¹û</a></li>
-                <li><a href="selectors/report.php">CSS Selectors ²âÊÔ½á¹û</a></li>
-                <li><a href="selectors/result.php">CSS Selectors ²âÊÔ½á¹û¼¯</a></li>
+                <li><a href="properties/report.php">CSS Properties æµ‹è¯•ç»“æžœ</a></li>
+                <li><a href="selectors/report.php">CSS Selectors æµ‹è¯•ç»“æžœ</a></li>
+                <li><a href="selectors/result.php">CSS Selectors æµ‹è¯•ç»“æžœé›†</a></li>
             </ol>
             <ol class="demo">
                 <li><a href="demo/properties/index.php">CSS Properties Demo</a></li>
@@ -38,13 +38,13 @@
             </ol>
         </div>
         <div class="box clear-fix">
-            <h2>CSSÊôÐÔËµÃ÷ÎÄµµ & CSSÑ¡ÔñÆ÷ËµÃ÷ÎÄµµ</h2>
+            <h2>CSSå±žæ€§è¯´æ˜Žæ–‡æ¡£ & CSSé€‰æ‹©å™¨è¯´æ˜Žæ–‡æ¡£</h2>
             <ol class="properties">
-                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">CSSÊôÐÔËµÃ÷ÎÄµµ - µ¯ÐÔºÐÄ£ÐÍ(Flexible Box)</a></li>
-                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSSÊôÐÔËµÃ÷ÎÄµµ - ¶àÀ¸(Multi-column)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">CSSå±žæ€§è¯´æ˜Žæ–‡æ¡£ - å¼¹æ€§ç›’æ¨¡åž‹(Flexible Box)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSSå±žæ€§è¯´æ˜Žæ–‡æ¡£ - å¤šæ (Multi-column)</a></li>
             </ol>
             <ol class="selectors">
-                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSSÑ¡ÔñÆ÷ËµÃ÷ÎÄµµ</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSSé€‰æ‹©å™¨è¯´æ˜Žæ–‡æ¡£</a></li>
             </ol>
         </div>
         <div class="box">
@@ -56,13 +56,13 @@
         <div class="box">
             <h2>Other Test</h2>
             <ol>
-                <li><a href="http://labs.qianduan.net/css-selector/" target="_blank">CSSÑ¡ÔñÆ÷µÄä¯ÀÀÆ÷Ö§³Ö</a></li>
+                <li><a href="http://labs.qianduan.net/css-selector/" target="_blank">CSSé€‰æ‹©å™¨çš„æµè§ˆå™¨æ”¯æŒ</a></li>
                 <li><a href="http://tools.css3.info/selectors-test/test.html" target="_blank">CSS3 Selectors Test</a></li>
                 <li><a href="http://kb.cnblogs.com/a/925900/" target="_blank">CSS selectors: basic browser support</a></li>
                 <li><a href="http://css3test.com/" target="_blank">CSS3Test</a></li>
                 <li><a href="http://www.browserscope.org/browse?category=usertest_agt1YS1wcm9maWxlcnINCxIEVGVzdBidzawNDA" target="_blank">The CSS3Test Result</a></li>
                 <li><a href="http://www.w3schools.com/cssref/" target="_blank">CSS Reference</a></li>
-                <li><a href="http://css.doyoe.com/" target="_blank">CSS²Î¿¼ÊÖ²á</a></li>
+                <li><a href="http://css.doyoe.com/" target="_blank">CSSå‚è€ƒæ‰‹å†Œ</a></li>
             </ol>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="gbk" />
+        <meta charset="utf-8" />
         <title>CSS Properties Test Result</title>
         <?php include "../uxcommon/assets.php" ?>
         <link rel="stylesheet" type="text/css" href="../src/base.css" />
@@ -14,7 +14,7 @@
             <div id="wrap" class="wrap">
                 <div class="header">
                     <h1>CSS Properties Test Result</h1>
-                    <a href="../" title="" class="return">·µ»ØÊ×Ò³>></a>
+                    <a href="../" title="" class="return">è¿”å›é¦–é¡µ>></a>
                 </div>
                 <div id="result" class="result">
                 <?php
@@ -24,11 +24,11 @@
                     if (!$con) {
                         die('Could not connect: ' . mysql_error());
                     };
-                    mysql_query("SET NAMES 'GBK'"); 
+                    mysql_query("SET NAMES 'UTF8'"); 
                     mysql_select_db("csstest", $con);
 
-                    $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";//¸ù¾İuaÀ´É¸Ñ¡×îĞÂµÄÒ»×éÊı¾İ
-                    $sql_prop = "SELECT * FROM prop GROUP BY type";//É¸Ñ¡ËùÓĞtypeÀà±ğ
+                    $sql_brow="SELECT * FROM properties WHERE id IN (SELECT Max(id) FROM properties GROUP BY uastring)";//æ ¹æ®uaæ¥ç­›é€‰æœ€æ–°çš„ä¸€ç»„æ•°æ®
+                    $sql_prop = "SELECT * FROM prop GROUP BY type";//ç­›é€‰æ‰€æœ‰typeç±»åˆ«
                     $query_brow = mysql_query($sql_brow);
                     $query_prop = mysql_query($sql_prop);
                     $prop_name = array();
@@ -41,15 +41,15 @@
                     $sum = 0;
                     $table_hd[] = '<tr><th class="properties"><span>Properties / Browser</span></th><th class="version"><span>Version</span></th>';
                     while($row = mysql_fetch_array($query_brow)) {
-                        $prop_brow[] = $row['browser'];//´¢´æä¯ÀÀÆ÷Ãûµ½Êı×é
-                        $prop_brow_ua[] = $row['uastring'];//´¢´æ¶ÔÓ¦ä¯ÀÀÆ÷µÄUA
-                        $prop_brow_time[] = $row['time'];//´¢´æ¶ÔÓ¦ä¯ÀÀÆ÷µÄUA
-                        $prop_id[] = $row['id'];//´¢´æ¶ÔÓ¦ä¯ÀÀÆ÷µÄUA
-                        $prop_all[] = $row;//´¢´æÉ¸Ñ¡³öÀ´µÄËùÓĞä¯ÀÀÆ÷²âÊÔ½á¹û
-                        $sum++;//Í³¼ÆÒÑ¼ÇÂ¼µÄ²»Í¬ä¯ÀÀÆ÷ÊıÁ¿£¬¼´²»Í¬UAµÄÊı¾İ
+                        $prop_brow[] = $row['browser'];//å‚¨å­˜æµè§ˆå™¨ååˆ°æ•°ç»„
+                        $prop_brow_ua[] = $row['uastring'];//å‚¨å­˜å¯¹åº”æµè§ˆå™¨çš„UA
+                        $prop_brow_time[] = $row['time'];//å‚¨å­˜å¯¹åº”æµè§ˆå™¨çš„UA
+                        $prop_id[] = $row['id'];//å‚¨å­˜å¯¹åº”æµè§ˆå™¨çš„UA
+                        $prop_all[] = $row;//å‚¨å­˜ç­›é€‰å‡ºæ¥çš„æ‰€æœ‰æµè§ˆå™¨æµ‹è¯•ç»“æœ
+                        $sum++;//ç»Ÿè®¡å·²è®°å½•çš„ä¸åŒæµè§ˆå™¨æ•°é‡ï¼Œå³ä¸åŒUAçš„æ•°æ®
                     }
-                    //sort($prop_brow);//¶Ôä¯ÀÀÆ÷ÅÅĞò 
-                    foreach($prop_brow as $key=>$value){//Êä³öä¯ÀÀÆ÷±íÍ·html
+                    //sort($prop_brow);//å¯¹æµè§ˆå™¨æ’åº 
+                    foreach($prop_brow as $key=>$value){//è¾“å‡ºæµè§ˆå™¨è¡¨å¤´html
                     $table_hd[] = '<th class="browser"><span>'.$value.' ('.$prop_id[$key].')</span></th>';
                     }
                     $table_hd[] = '</tr>';
@@ -59,7 +59,7 @@
                         $prop_name[$type] = array();
                         $prop_ver[$type] = array();
                         
-                        //¸ù¾İÊôĞÔ·ÖÀàÑ­»·Êä³öÊôĞÔÃû¼°ÊôĞÔ°æ±¾µ½Êı×é
+                        //æ ¹æ®å±æ€§åˆ†ç±»å¾ªç¯è¾“å‡ºå±æ€§ååŠå±æ€§ç‰ˆæœ¬åˆ°æ•°ç»„
                         $sql_query_type = "SELECT * FROM prop WHERE type='$type'";
                         $sql_prop_type = mysql_query($sql_query_type);
                         while($row_prop = mysql_fetch_array($sql_prop_type)) {
@@ -67,16 +67,16 @@
                             $prop_ver[$type][] = $row_prop['version'];
                         }
                     }
-                    foreach($prop_name as $key=>$value){//keyÖµÎªÊôĞÔ·ÖÀà£¬valueÖµÎª¸ÃÀàÏÂÃæµÄÊôĞÔÃûÊı×é
+                    foreach($prop_name as $key=>$value){//keyå€¼ä¸ºå±æ€§åˆ†ç±»ï¼Œvalueå€¼ä¸ºè¯¥ç±»ä¸‹é¢çš„å±æ€§åæ•°ç»„
                         $sum +=2;
                         echo '<table>';
                         echo '<caption>'.$key.'</caption>';
                         echo $table_head;
-                        foreach($value as $k=>$val){//valÖµÎª¸ÃÀàµÄÊôĞÔÃû
+                        foreach($value as $k=>$val){//valå€¼ä¸ºè¯¥ç±»çš„å±æ€§å
                             echo '<tr>';
                             echo '<td class="property">'.$val.'</td>';
-                            echo '<td class="version">'.$prop_ver[$key][$k].'</td>';//¸ù¾İÊôĞÔ·ÖÀàºÍÊôĞÔÃû¼üÖµ²éÕÒÁíÒ»ÏàÍ¬½á¹¹Êı×éÏÂµÄÊôĞÔ°æ±¾Öµ
-                            foreach($prop_brow as $j=>$brow){//browÖµÎªÅÅĞòºóÒªÕ¹Ê¾µÄä¯ÀÀÆ÷Ãû³Æ
+                            echo '<td class="version">'.$prop_ver[$key][$k].'</td>';//æ ¹æ®å±æ€§åˆ†ç±»å’Œå±æ€§åé”®å€¼æŸ¥æ‰¾å¦ä¸€ç›¸åŒç»“æ„æ•°ç»„ä¸‹çš„å±æ€§ç‰ˆæœ¬å€¼
+                            foreach($prop_brow as $j=>$brow){//browå€¼ä¸ºæ’åºåè¦å±•ç¤ºçš„æµè§ˆå™¨åç§°
                                 $temp_ua = $prop_brow_ua[$j];
                                 foreach($prop_all as $row){
                                     if($row['uastring']==$temp_ua){
@@ -94,7 +94,7 @@
                     }
 
                     echo '<table>';
-                    echo '<caption>¶ÔÓ¦ä¯ÀÀÆ÷µÄUA</caption>';
+                    echo '<caption>å¯¹åº”æµè§ˆå™¨çš„UA</caption>';
                     foreach($prop_brow as $key=>$value){
                         echo '<tr>';
                         echo '<td class="ua-browser">'.$value.' ('.$prop_id[$key].')</td>';
