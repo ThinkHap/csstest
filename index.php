@@ -21,8 +21,8 @@
         <div class="box">
             <h2>Test Page</h2>
             <ol>
-                <li><a href="http://demo.ued.etao.net/csstest/properties/index.php">CSS Properties Test</a></li>
-                <li><a href="http://demo.ued.etao.net/csstest/selectors/index.php">CSS Selectors Test</a></li>
+                <li><a href="properties/index.php">CSS Properties Test</a></li>
+                <li><a href="selectors/index.php">CSS Selectors Test</a></li>
             </ol>
         </div>
         <div class="box clear-fix">

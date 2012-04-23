@@ -1,10 +1,6 @@
 $(function(){
-    var testCase = ['any', 'element', 'class', 'id', 'descendant', 'child', 'adjacent', 'attribute-present', 
-				'attribute-equal', 'attribute-space', 'attribute-hyphen', 'firstchild', 
-				'lang', 'before', 'before3', 'after', 'after3', 'firstletter', 'firstletter3', 'firstline', 
-				'firstline3', 'attribute-begin', 'attribute-end', 'attribute-contains', 'combine', 
-				'root', 'lastchild', 'onlychild', 'nthchild', 'nthlastchild', 'firsttype', 'lasttype', 'onlytype', 
-				'nthtype', 'nthlasttype', 'empty', 'not', 'target', 'enabled', 'disabled', 'checked' ], 
+    //var testCase = ['any', 'element', 'class', 'id', 'descendant', 'child', 'adjacent', 'attribute-present', 
+    var testCase = ['checked' ], 
         counter = 0;
 
     function changeSrc() {
@@ -31,16 +27,25 @@ $(function(){
                 var res = false;
                 counter++;
                 testTotal++;
-                if ($(this).hasClass('float')) {
+                if ($(this).hasClass('float1')) {
                     var f = $(this).css('float');
                     if ($(this).hasClass('default')) {
                         res = f == 'none';
+                        console.log(counter)
+                        console.log($(this))
+                        console.log('f1+'+f)
+                        console.log('f1+res:'+res)
                     } else {
                         res = f == 'right';
+                        console.log(counter)
+                        console.log($(this))
+                        console.log('f2+'+f)
+                        console.log('f2+res:'+res)
                     }
                 } else if ($(this).hasClass('height')) {
                     var h = $(this).height();
-                    if ($(this).nextUntil()) {
+                    console.log(h);
+                    if (!$(this).nextUntil()) {
                         var control = $(this).nextUntil();
                         while (control.nextUntil() && control[0].nodeType != 1) {
                             control = control.nextUntil();
@@ -60,10 +65,18 @@ $(function(){
                     }
                 } else {
                     var c = $(this).css('background-color');
+                    if(counter < 573){
                     if ($(this).hasClass('default')) {
                         res = c == 'transparent' || c == 'rgba(0, 0, 0, 0)';
                     } else {
                         res = c == baseColor;
+                    }
+                    }else{
+                        if ($(this).hasClass('default')) {
+                            res = c == 'transparent' || c == 'rgba(0, 0, 0, 0)';
+                        } else {
+                            res = c == baseColor;
+                        }
                     }
                 }
                 if ($(this).hasClass('required')) {
