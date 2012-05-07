@@ -1,4 +1,4 @@
-properties = {
+window.properties = {
     "动画(Animation)": {
         "animation": {"version":3, "value":["animations 2s ease-out"]},
         "animation-name": {"version":3, "value":["none","animation1"]},
