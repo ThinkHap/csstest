@@ -1,6 +1,11 @@
 $(function(){
-    //var testCase = ['any', 'element', 'class', 'id', 'descendant', 'child', 'adjacent', 'attribute-present', 
-    var testCase = ['checked' ], 
+    var testCase = ['any', 'element', 'class', 'id', 'descendant', 'child', 'adjacent', 'attribute-present', 
+				'attribute-equal', 'attribute-space', 'attribute-hyphen', 'firstchild', 
+				'lang', 'before', 'before3', 'after', 'after3', 'firstletter', 'firstletter3', 'firstline', 
+				'firstline3', 'attribute-begin', 'attribute-end', 'attribute-contains', 'combine', 
+				'root', 'lastchild', 'onlychild', 'nthchild', 'nthlastchild', 'firsttype', 'lasttype', 'onlytype', 
+				'nthtype', 'nthlasttype', 'empty', 'not', 'target', 'enabled', 'disabled', 'checked' ], 
+    //var testCase = ['checked' ], 
         counter = 0;
 
     function changeSrc() {
