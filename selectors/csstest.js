@@ -109,7 +109,7 @@ $(function(){
             }
 
             if (testCase.length) {
-                setTimeout(changeSrc, 200);
+                setTimeout(changeSrc, 50);
             } else {
                 if ($.browser.version != '6.0') {
                     console.log(counter +'tests');
