@@ -36,20 +36,20 @@ $(function(){
                     var f = $(this).css('float');
                     if ($(this).hasClass('default')) {
                         res = f == 'none';
-                        console.log(counter)
-                        console.log($(this))
-                        console.log('f1+'+f)
-                        console.log('f1+res:'+res)
+                        //console.log(counter)
+                        //console.log($(this))
+                        //console.log('f1+'+f)
+                        //console.log('f1+res:'+res)
                     } else {
                         res = f == 'right';
-                        console.log(counter)
-                        console.log($(this))
-                        console.log('f2+'+f)
-                        console.log('f2+res:'+res)
+                        //console.log(counter)
+                        //console.log($(this))
+                        //console.log('f2+'+f)
+                        //console.log('f2+res:'+res)
                     }
                 } else if ($(this).hasClass('height')) {
                     var h = $(this).height();
-                    console.log(h);
+                    //console.log(h);
                     if (!$(this).nextUntil()) {
                         var control = $(this).nextUntil();
                         while (control.nextUntil() && control[0].nodeType != 1) {
@@ -109,7 +109,7 @@ $(function(){
             }
 
             if (testCase.length) {
-                setTimeout(changeSrc, 50);
+                setTimeout(changeSrc, 100);
             } else {
                 if ($.browser.version != '6.0') {
                     console.log(counter +'tests');
