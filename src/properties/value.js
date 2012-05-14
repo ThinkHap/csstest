@@ -1,3 +1,6 @@
+var S = KISSY, D = S.DOM, E = S.Event;
+
+// get the browser info
 var ua = navigator.userAgent;  
 function getBrowserVersion() {  
     var browser = {};  
@@ -71,6 +74,9 @@ function getBrowserVersion() {
 }  
 var browser = getBrowserVersion();
 
-var resultHtml = "<p>以下是你目前正在使用的<span>" + browser + "</span>浏览器对CSS属性的支持情况。</p>" + "<p>" + ua + "</p>" ;
-var resultDiv = document.getElementById("browser");
-resultDiv.innerHTML = resultHtml;
+var browserInfo = "<p>以下是你目前正在使用的<span>" + browser + "</span>浏览器对CSS属性的支持情况。</p>" + "<p>" + ua + "</p>" ;
+var browserDiv = document.getElementById("browser");
+browserDiv.innerHTML = browserInfo;
+
+//start TEST
+

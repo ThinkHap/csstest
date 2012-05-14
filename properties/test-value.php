@@ -6,7 +6,6 @@
         <?php include "../uxcommon/assets.php" ?>
         <link rel="stylesheet" type="text/css" href="../src/base.css" />
         <link rel="stylesheet" type="text/css" href="../src/nav.css" />
-        <link rel="stylesheet" type="text/css" href="../src/properties/csstest.css" />
         <link rel="stylesheet" type="text/css" href="../src/properties/value.css" />
         <script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
     </head>

@@ -61,7 +61,7 @@ Specs = {
             "border-image-slice": {"version":3, "value":["50% 50%"]},
             "border-image-source": {"version":3, "value":["url(border.png)"]},
             "border-image-width": {"version":3, "value":["30 30"]},
-            "box-shadow": {"version":3, "value":["none","5px 5px rgba(0,0,0,.6)","5px 5px 5px rgba(0,0,0,.6)","2px 2px 5px 1px rgba(0,0,0,.6) inset","0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6)"]},
+            "box-shadow": {"version":3, "value":["none","5px 5px rgba(0, 0, 0, .6)","5px 5px 5px rgba(0, 0, 0, .6)","2px 2px 5px 1px rgba(0, 0, 0, .6) inset","0 0 5px 3px rgba(255, 0, 0, .6), 0 0 5px 6px rgba(0, 182, 0, .6), 0 0 5px 10px rgba(255, 255, 0, .6)"]},
             "box-reflect": {"version":3, "value":["below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white))"]},
             "box-decoration-break": {"version":3, "value":[""]}
         }
