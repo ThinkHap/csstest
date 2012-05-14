@@ -18,11 +18,13 @@
             <p><strong>CSS选择器测试：</strong> 测试浏览器对CSS包含的大部分选择器的支持情况，目前有50种选择器，574个测试用例。</p>
             <p><strong>成员：</strong>阿大、何敏、俊毅、王浩、玉澧、青缨</p>
         </div>
-        <div class="box">
+        <div class="box clear-fix">
             <h2>Test Page</h2>
-            <ol>
+            <ol class="properties">
                 <li><a href="properties/index.php">CSS Properties Test</a></li>
                 <li><a href="properties/test-value.php">CSS Property's Value Test</a></li>
+            </ol>
+            <ol class="selectors">
                 <li><a href="selectors/index.php">CSS Selectors Test</a></li>
             </ol>
         </div>
