@@ -22,6 +22,7 @@
             <h2>Test Page</h2>
             <ol>
                 <li><a href="properties/index.php">CSS Properties Test</a></li>
+                <li><a href="properties/test-value.php">CSS Property's Value Test</a></li>
                 <li><a href="selectors/index.php">CSS Selectors Test</a></li>
             </ol>
         </div>
