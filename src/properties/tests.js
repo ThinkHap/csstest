@@ -84,15 +84,15 @@ Specs = {
         "properties": {
 			//以下四行：http://www.w3.org/TR/css3-gcpm/
             "bookmark-label": {"version":3, "value":["attr(title,string)","content()","content(before)","string"]},
-            "bookmark-level": {"version":3, "value":["none","Integer"]},
-            "bookmark-target": {"version":3, "value":["none","uri","attr(href,url)"]},
+            "bookmark-level": {"version":3, "value":["none","5"]},
+            "bookmark-target": {"version":3, "value":["self","url(http://www.etao.com/)","attr(href,url)"]},
             "float-offset": {"version":3, "value":["25px 50px","0 0"]},
 			//以下五行：http://www.w3schools.com/cssref/default.asp
-            "hyphenate-after": {"version":3, "value":["integer","none"]},
-            "hyphenate-before": {"version":3, "value":["integer","none"]},
-            "hyphenate-character": {"version":3, "value":["string","none"]},
-            "hyphenate-lines": {"version":3, "value":["integer","none"]},
-            "hyphenate-resource": {"version":3, "value":["逗号分隔的列表的外部资源","none"]},
+            "hyphenate-after": {"version":3, "value":["5","auto"]},
+            "hyphenate-before": {"version":3, "value":["5","auto"]},
+            "hyphenate-character": {"version":3, "value":["string","auto"]},
+            "hyphenate-lines": {"version":3, "value":["5","auto"]},
+            "hyphenate-resource": {"version":3, "value":["url('hyph_da_DK.dic')","none"]},
 			//http://css.html.it/articoli/leggi/3972/css3-hyphens-controllare-la-sillabazione-dei-testi/
             "hyphens": {"version":3, "value":["auto","manual","none"]},
 			//https://developer.mozilla.org/En/CSS/Image-rendering
@@ -136,7 +136,7 @@ Specs = {
             "font-family": {"version":1, "value":["Georgia,Serif"]},
             "font-effect": {"version":3, "value":["none","emboss","engrave","outline","initial","inherit"]},
 			//http://webdesign.about.com/od/styleproperties/p/blspfontemphasi.htm
-            "font-emphasize": {"version":3, "value":["&lt;font-emphasisze-style&gt;","&lt;font-emphasize-position&gt;","initial","inherit"]},
+            "font-emphasize": {"version":3, "value":["&lt;font-emphasisze-style&gt;","&lt;font-emphasize-position&gt;","accent after","initial","inherit"]},
 			//http://webdesign.about.com/od/styleproperties/p/blspfontempos.htm
             "font-emphasize-position": {"version":3, "value":["before","after","initial","inherit"]},
 			//http://webdesign.about.com/od/styleproperties/p/blspfontemstyle.htm
@@ -174,7 +174,7 @@ Specs = {
         "title": "链接(Hyperlink)",
         "properties": {
 			//http://www.w3.org/TR/2004/WD-css3-hyperlinks-20040224/#target0
-            "target": {"version":3, "value":["&lg;target-name&gt &lt;target-new&gt; &lt;target-position&gt;"]},
+            "target": {"version":3, "value":["&lg;target-name&gt &lt;target-new&gt; &lt;target-position&gt;","new tab front"]},
 			//http://www.w3.org/TR/2004/WD-css3-hyperlinks-20040224/#target-name
             "target-name": {"version":3, "value":["current","root","parent","new","modal","other string"]},
 			//http://www.w3.org/TR/2004/WD-css3-hyperlinks-20040224/#target-new
