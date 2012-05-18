@@ -41,9 +41,11 @@
         <?php include "../uxcommon/footer.php" ?>
         <script src="../src/properties/tests.js"></script>
         <script src="../src/properties/value.js"></script>
-        <script src="../src/properties/utopia.js"></script>
         <script src="../src/properties/supports.js"></script>
+        <!--
+        <script src="../src/properties/utopia.js"></script>
         <script src="../src/properties/csstest.js"></script>
+        -->
         <!--
         <script>
         </script>

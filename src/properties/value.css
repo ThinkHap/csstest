@@ -1,5 +1,4 @@
 a {
-	color: hsl(200, 10%, 20%);
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -108,6 +107,10 @@ dt, dd[class] {
  dd small {
  	display: block;
  	opacity: .8;
+ }
+ 	
+ dl .unsupport {
+ 	background-color: #aaa;
  }
  	
  dl .pass,
