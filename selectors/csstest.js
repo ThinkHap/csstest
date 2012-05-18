@@ -32,7 +32,7 @@ $(function(){
                 var res = false;
                 counter++;
                 testTotal++;
-                if ($(this).hasClass('float1')) {
+                if ($(this).hasClass('float')) {
                     var f = $(this).css('float');
                     if ($(this).hasClass('default')) {
                         res = f == 'none';
