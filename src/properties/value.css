@@ -67,7 +67,8 @@ li .score {
 	font-weight: bold;
 }
 
-.all section {
+.all section,
+.all div {
     margin: 10px 0 30px;
 }
 .all section .properties {

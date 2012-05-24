@@ -45,6 +45,8 @@
             <ol class="properties">
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">CSS属性说明文档 - 弹性盒模型(Flexible Box)</a></li>
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSS属性说明文档 - 多栏(Multi-column)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transform" target="_blank">CSS属性说明文档 - 变形(transform)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transition" target="_blank">CSS属性说明文档 - 过渡(transition)</a></li>
             </ol>
             <ol class="selectors">
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSS选择器说明文档</a></li>
