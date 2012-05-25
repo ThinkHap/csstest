@@ -22,7 +22,7 @@
                         <div id="browser" class="browser"></div>
                         <div id="browser-score" class="browser-score">
 		                    <h2>Your browser scores <strong id="score">0%</strong></h2>
-		                    <h3>Determined by passing <strong id="passedTests"></strong> tests out of <strong id="totalTests"></strong> total for <strong id="total"></strong> Properties</h3>
+                            <h3>Determined by passing <strong id="passedTests"></strong> tests out of <strong id="totalTests"></strong> total for <strong id="passed"></strong>/<strong id="total"></strong> Properties</h3>
                         </div>
 	                    <div id="all" class="all"></div>
                     </div>

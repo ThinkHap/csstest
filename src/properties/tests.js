@@ -3,14 +3,14 @@ Specs = {
         "title": "动画(Animation)",
         "properties": {
             "animation": {"version":3, "value":["animations 2s ease-out", 'ease-out']},
-            //"animation-name": {"version":3, "value":["none","animation1"]},
-            //"animation-duration": {"version":3, "value":["2s"]},
-            //"animation-timing-function": {"version":3, "value":["linear","ease","ease-in","ease-out","ease-in-out"]},
-            //"animation-delay": {"version":3, "value":[".5s"]},
-            //"animation-iteration-count": {"version":3, "value":["infinite","1"]},
-            "animation-direction": {"version":3, "value":["normal","alternate"]}
-            //"transition-play-state": {"version":3, "value":["running","paused"]},
-            //"transition-fill-mode": {"version":3, "value":["none","forwards","backwards","both"]}
+            "animation-name": {"version":3, "value":["none","animation1"]},
+            "animation-duration": {"version":3, "value":["2s"]},
+            "animation-timing-function": {"version":3, "value":["linear","ease","ease-in","ease-out","ease-in-out"]},
+            "animation-delay": {"version":3, "value":[".5s"]},
+            "animation-iteration-count": {"version":3, "value":["infinite","1"]},
+            "animation-direction": {"version":3, "value":["normal","alternate"]},
+            "transition-play-state": {"version":3, "value":["running","paused"]},
+            "transition-fill-mode": {"version":3, "value":["none","forwards","backwards","both"]}
         }
     },
     "background": {
@@ -477,7 +477,7 @@ Specs = {
             "text-underline-width": {"version":3, "value":["5px"]}
         }
     },
-    "Transform)": {
+    "Transform": {
         "title": "2D/3D变形(2D/3D Transform)",
         "properties": {
             "transform": {"version":3, "value":["none","matrix(0,1,1,1,10,10)","translate(5%,10px)","translate(20px)","translateX(20px)","rotate(-15deg)","scale(.8)","skew(-5deg)","skew(-5deg,-5deg)"]},
@@ -521,7 +521,7 @@ Specs = {
             "ime-mode": {"version":3, "value":["auto","normal","active","inactive","disabled"]}
         }
     },
-    "OnlyIE":{
+    "onlyIE":{
         "title": "OnlyIE",
         "properties": {
             "filter": {"version":1, "value":["alpha(opacity=50)"]},

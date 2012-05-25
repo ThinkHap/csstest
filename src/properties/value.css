@@ -50,6 +50,7 @@ body h1 {
 
 .browser-score h2, 
 .browser-score h3 {
+    font-size: 14px;
     text-align: center;
     color: #2E3538;
     font-weight: bold;
@@ -58,7 +59,7 @@ body h1 {
     font-size: 2em;
 }
 
-.main section h2 {
+.main div h2 {
 }
 
 h2 .score,
@@ -67,11 +68,18 @@ li .score {
 	font-weight: bold;
 }
 
-.all section,
+h2 .score {
+    *margin-top: -34px;
+}
+
+li .score {
+    *margin-top: -26px;
+}
+
 .all div {
     margin: 10px 0 30px;
 }
-.all section .properties {
+.all div .properties {
     margin: 0;
 }
 .tests h3 {
@@ -84,98 +92,96 @@ li .score {
     font-size: 120%;
 }
 
-dt, dd[class] {
+dt, 
+dd {
  	padding: .5em;
  	background: gray;
  	color: white;
  	border-radius: .3em;
  	text-shadow: 0 -.05em .1em rgba(0,0,0,.5);
- }
- 
- dt {
- 	cursor: pointer;
- }
- 
- dd {
- 	margin: .3em 0 .3em 2em;
- 	font-size: 90%;
- }
- 
- dd dd {
- 	border: 1px solid white;
- }
- 
- dd small {
- 	display: block;
- 	opacity: .8;
- }
- 	
- dl .unsupport {
-    cursor: default;
-    background-color: #666;
- }
- dl .unsupport::before {
-    content: '';
- }
- 	
- dl .pass,
- #specsTested li.pass:before {
- 	background-color: #490;
- }
- 
- dl .almost-pass,
- #specsTested li.almost-pass:before {
- 	background-color: #8c0;
- }
- 
- dl .slightly-buggy,
- #specsTested li.slightly-buggy:before {
- 	background-color: #bb0;
- }
- 
- dl .buggy,
- #specsTested li.buggy:before {
- 	background-color: #e80;
- }
- 
- dl .very-buggy,
- #specsTested li.very-buggy:before {
- 	background-color: #e40;
- }
- 
- dl .fail,
- #specsTested li.fail:before {
- 	background-color: #e20;
- }
- 
- dl .epic-fail,
- #specsTested li.epic-fail:before {
- 	background-color: #b00;
- }
- 
- dt:before {
- 	content: '▶';
- 	display: inline-block;
- 	margin-right: .5em;
- 	font-size: 60%;
- 	opacity: .5;
- }
- 
- dl.open > dt:before {
- 	content: '▼';
- }
- 
- dl.open > .unsupport:before {
- 	content: '';
- }
- 
- dl > dd {
- 	display: none;
- }
- 
- dl.open > dd {
- 	display: block;
- }
+}
+
+dt {
+	cursor: pointer;
+}
+
+dd {
+	margin: .3em 0 .3em 2em;
+	font-size: 90%;
+}
+
+dd dd {
+	border: 1px solid white;
+}
+
+dd small {
+	display: block;
+	opacity: .8;
+}
+	
+dl .unsupport {
+   background-color: #666;
+}
+	
+dl .pass,
+#specsTested li.pass:before {
+	background-color: #490;
+}
+
+dl .almost-pass,
+#specsTested li.almost-pass:before {
+	background-color: #8c0;
+}
+
+dl .slightly-buggy,
+#specsTested li.slightly-buggy:before {
+	background-color: #bb0;
+}
+
+dl .buggy,
+#specsTested li.buggy:before {
+	background-color: #e80;
+}
+
+dl .very-buggy,
+#specsTested li.very-buggy:before {
+	background-color: #e40;
+}
+
+dl .fail,
+#specsTested li.fail:before {
+	background-color: #e20;
+}
+
+dl .epic-fail,
+#specsTested li.epic-fail:before {
+	background-color: #b00;
+}
+
+dl .unsupport,
+#specsTested li.unsupport:before {
+	background-color: #666;
+}
+
+dt:before {
+	content: '▶';
+	display: inline-block;
+	margin-right: .5em;
+	font-size: 60%;
+	opacity: .5;
+}
+
+dl.open > dt:before {
+	content: '▼';
+}
+
+dl dd {
+	display: none;
+}
+
+dl.open dd {
+	display: block;
+}
 
 
 
@@ -201,7 +207,7 @@ dt, dd[class] {
 .aside li {
  	list-style: none;
  	padding: .3em 0;
- 	border-bottom: 2px dotted rgba(0,0,0,.25);
+ 	border-bottom: 2px dotted #979797;
  	border-top: 2px dotted white;
 }
  

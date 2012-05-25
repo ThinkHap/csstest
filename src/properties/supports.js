@@ -63,12 +63,12 @@ var _ = Supports = {
 
     value: function(property, value) {
         property = _.property(property);
-        //console.log(property)
-        //console.log(value)
-        //console.log('inline:')
-        //console.log(inline)
         
         if(!property) { return false; }
+
+        property = property.replace(/-([a-z])/g,function($0,$1){
+            return $1.toUpperCase();
+        });
         
         //console.log('property: '+property)
         
@@ -82,7 +82,7 @@ var _ = Supports = {
         } catch(e) {};
 
 
-        //console.log(inline.cssText)
+        //console.log(property)
         //console.log(inline[property])
         
         
@@ -90,13 +90,27 @@ var _ = Supports = {
         for(var i=0; i<_.prefixes.length; i++) {
             var prefixed = _.prefixes[i] + value;
             
+            //console.log('test: '+prefixed)
             try {
                 inline[property] = prefixed;
             } catch(e) {};
             
+            //console.log('inline[property]: '+inline[property])
+            //console.log(_.prefixes[i])
+            //console.log(prefixed)
+            //console.log(inline.cssText)
+            //console.log(!!inline.cssText)
+            //console.log('-- next --')
             if(inline.length > 0) {
                 return prefixed;
-            }
+            };
+
+            // for ie6-8
+            if(S.UA.ie < 9){
+                if(inline.cssText){
+                    return prefixed;
+                }
+            };
         }
         
         return false;
@@ -118,8 +132,7 @@ var _ = Supports = {
 
 
 var Score = function(parent) {
-    this.passed = this.total =
-    this.passedTests = this.totalTests = 0;
+    this.passed = this.total = this.passedTests = this.totalTests = 0;
     
     this.parent = parent || null;
 };
@@ -132,7 +145,7 @@ Score.prototype = {
         this.totalTests += data.total;
         
         this.total++;
-        this.passed += data.passed / data.total;
+        this.passed += Math.round(data.passed / data.total);
         
         if(this.parent) {
             this.parent.update(data);
@@ -177,11 +190,16 @@ var Test = function (tests, spec, title) {
 
 
 
-    var score = D.create('<span class="score">', { text: this.score });
-    var h2 = D.create('<h2>', { text: this.title});
-    D.append(score, h2);
+    //var score = D.create('<span class="score">', { text: this.score });
+    //D.append(this.score, score);
+    //var h2 = D.create('<h2>', {text: this.title});
+    //D.append(this.title, h2);
+    //D.append(score, h2);
+    //console.log(h2)
+    var h2 = D.create('<h2>'+this.title+'<span class="score">'+this.score+'</span></h2>');
     this.section = D.create('<div class="tests">', { id: this.id});
     D.append(h2, this.section);
+    //D.append(score, h2);
     D.append(thisSection, this.section);
 
     D.append(this.section, '#all');
@@ -190,11 +208,11 @@ var Test = function (tests, spec, title) {
 
     // Add to list of tested specs
     var url = '#' + spec;
-    var testedA = D.create('<a>', { href: url, text: title });
-    var testedScore = D.create('<span class="score">', { text: this.score });
-    var testedSpecs = D.create('<li class="'+passclass({ passed: this.score.passed, total: this.score.total })+'">', { title: this.score + ' passed' });
-    D.append(testedA, testedSpecs);
-    D.append(testedScore, testedSpecs);
+    //var testedA = D.create('<a>', { href: url, text: title });
+    //var testedScore = D.create('<span class="score">', { text: this.score });
+    var testedSpecs = D.create('<li class="'+passclass({ passed: this.score.passed, total: this.score.total })+ '" title="'+ this.score + ' passed' + '"><a href="' + url + '">' + title + '</a><span class="score">' + this.score + '</span></li>');
+    //D.append(testedA, testedSpecs);
+    //D.append(testedScore, testedSpecs);
     D.append(testedSpecs, '#specsTested');
 
 }
@@ -220,13 +238,25 @@ Test.prototype = {
                 var dl = document.createElement('dl'),
                     dt = D.create('<dt class="unsupport">', {tabIndex: '0', text: feature});
                 D.append(dt, dl);
+
+                var passed = 0, tests = theseTests[feature].value;
+                tests = tests instanceof Array ? tests : [tests];
+                //console.log(tests.length)
+                for(var i=0, test; test = tests[i]; i++) {
+                    var dd = D.create('<dd class="unsupport">', { text: test });
+                    D.append(dd, dl);
+                };
+
+
+                this.score.update({passed: 0, total: tests.length });
+
                 D.append(dl, thisSection);
-                
                 continue;
             };
 
+            //console.log('results: '+ results)
             var dl = document.createElement('dl'),
-                dt = D.create('<dt>', {tabIndex: '0', text: feature});
+                dt = D.create('<dt>', {tabIndex: '0', text: results});
             D.append(dt, dl);
             
             var passed = 0, tests = theseTests[feature].value;
@@ -247,8 +277,12 @@ Test.prototype = {
                 if(typeof results === 'object') {
                     success = results.success;
                     note = results.note;
-                }
-                else { success = +!!results }
+                    if(results.value){
+                        test = results.value;
+                    }
+                } else { 
+                    success = +!!results 
+                };
                 
                 passed += +success;
                 //console.log('passed: '+passed)
@@ -286,22 +320,6 @@ Test.groups = {
     'values': function(property, value) {
         var failed = [];
         //console.log('groups:'+properties)
-    
-        //console.log(value)
-        //console.log(property)
-        //for(var j=0, property; property = properties[j]; j++) {
-            //if(!Supports.property(property)) {
-            //    properties.splice(--j, 1);
-            //    continue;
-            //}
-            
-        //    console.log(Supports.value(property, test))
-
-        //    if(!Supports.value(property, test)) {
-        //        failed.push(property);
-        //    }
-        //    console.log(Supports.value(property, test))
-        //}
 
         var resultValue = Supports.value(property, value)
         
@@ -315,7 +333,8 @@ Test.groups = {
         //console.log(success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : '111')
         return {
             success: success,
-            note: success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : ''
+            note: success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : '',
+            value: resultValue
         }
     },
 
@@ -338,9 +357,10 @@ function passclass(info) {
     }
     
     if (success === 1) { return 'pass' }
-    if (success === 0) { return 'epic-fail' }
+    if (success === 0) { return 'unsupport' }
     
     var classes = [
+        'epic-fail',
         'fail',
         'buggy',
         'very-buggy',
@@ -353,54 +373,12 @@ function passclass(info) {
     return classes[index];
 }
 
-S.Node.one('#all').delegate('click', 'dl', function(e){
+S.one('#all').delegate('click', 'dl', function(e){
+
     e.currentTarget.className = e.currentTarget.className === 'open'? '' : 'open';
 });
 
-Array.prototype.and = function(arr2, separator) {
-    separator = separator || ' ';
-    
-    var ret = [],
-        map = function(val) {
-            return val + separator + arr2[j]
-        };
-    
-    for(var j=0; j<arr2.length; j++) {
-        ret = ret.concat(this.map(map));
-    }
-    
-    return ret;
-};
 
-// [ x or y or z ]{min, max}
-Array.prototype.times = function(min, max, separator) {
-    separator = separator || ' ';
-
-    max = max || min;
-    
-    var ret = [];
-    
-    
-    if(min === max) {
-        if(min === 1) {
-            ret = this.slice(); // clone
-        }
-        else {
-            ret = this.and(this, separator);
-            
-            for(var i=2; i<min; i++) {
-                ret = this.and(ret, separator);
-            }
-        }
-    }
-    else if(min < max) {
-        for(var i=min; i<=max; i++) {
-            ret = ret.concat(this.times(i, i, separator));
-        }
-    }
-    
-    return ret;
-};
 
 onload = function() {
     var timeBefore = +new Date,
@@ -433,10 +411,12 @@ onload = function() {
             timeBefore = +new Date;
             
             // Output current score
-            score.textContent = mainScore + '';
-            passedTests.textContent = mainScore.passedTests;
-            totalTests.textContent = mainScore.totalTests;
-            total.textContent = mainScore.total;
+            //var score = D.get('#score');
+            D.text('#score', mainScore + '');
+            D.text('#passedTests', mainScore.passedTests);
+            D.text('#totalTests', mainScore.totalTests);
+            D.text('#passed', mainScore.passed);
+            D.text('#total', mainScore.total);
             
             // Schedule next test
             setTimeout(arguments.callee, 50)
@@ -445,7 +425,7 @@ onload = function() {
             // Done!
             
             // Display time taken
-            timeTaken.textContent = +new Date - timeBefore + 'ms';
+            D.text('#timeTaken', +new Date - timeBefore + 'ms');
             
             // Send to Browserscope
             //var testKey = 'agt1YS1wcm9maWxlcnINCxIEVGVzdBidzawNDA';
