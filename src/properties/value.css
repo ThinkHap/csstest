@@ -111,7 +111,11 @@ dt, dd[class] {
  }
  	
  dl .unsupport {
- 	background-color: #aaa;
+    cursor: default;
+    background-color: #666;
+ }
+ dl .unsupport::before {
+    content: '';
  }
  	
  dl .pass,
@@ -159,6 +163,10 @@ dt, dd[class] {
  
  dl.open > dt:before {
  	content: '▼';
+ }
+ 
+ dl.open > .unsupport:before {
+ 	content: '';
  }
  
  dl > dd {

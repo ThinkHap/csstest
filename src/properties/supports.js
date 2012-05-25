@@ -1,3 +1,31 @@
+/*! matchMedia() polyfill - Test a CSS media type/query in JS. 
+Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
+window.matchMedia = window.matchMedia || (function(doc, undefined){
+  
+  var bool,
+      docElem  = doc.documentElement,
+      refNode  = docElem.firstElementChild || docElem.firstChild,
+      // fakeBody required for <FF4 when executed in <head>
+      fakeBody = doc.createElement('body'),
+      div      = doc.createElement('div');
+  
+  div.id = 'mq-test-1';
+  div.style.cssText = "position:absolute;top:-100em";
+  fakeBody.appendChild(div);
+  
+  return function(q){
+    
+    div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
+    
+    docElem.insertBefore(fakeBody, refNode);
+    bool = div.offsetWidth == 42;  
+    docElem.removeChild(fakeBody);
+    
+    return { matches: bool, media: q };
+  };
+  
+})(document);
+
 /**
  * Setup dummy elements
  */
@@ -11,11 +39,12 @@ dummy.setAttribute('data-px', '1px');
 document.documentElement.appendChild(dummy);
 
 var _ = Supports = {
+    prefixes: ['', '-ms-', 'ms-','-moz-', '-webkit-', '-o-', '-khtml-'],
+
     property: function(property) {
-        var prefixes = ['', '-ms-', 'ms-','-moz-', '-webkit-', '-khtml-', '-o-'];
         var test;
-        for (var i=0, l=prefixes.length; i < l; i++) {
-            var pre = prefixes[i];
+        for (var i=0, l=_.prefixes.length; i < l; i++) {
+            var pre = _.prefixes[i];
             test = (pre + property).replace(/-([a-z])/g,function($0,$1){
                 return $1.toUpperCase();
             });
@@ -44,33 +73,46 @@ var _ = Supports = {
         //console.log('property: '+property)
         
         //console.log(inline)
+        //console.log(inline.length)
         //console.log(inline[property])
 
         inline.cssText = '';
-        inline[property] = '';
+        try {
+            inline[property] = '';
+        } catch(e) {};
 
 
         //console.log(inline.cssText)
         //console.log(inline[property])
         
-        //for(var i=0; i<_.prefixes.length; i++) {
-        //    var prefixed = _.prefixes[i] + value;
-        ////console.log(inline[property])
-        ////console.log(prefixed)
-        //    
-        //    //try {
-        //        inline[property] = prefixed;
-        //    //} catch(e) {}
-        ////console.log(inline[property])
-        //    
-        ////console.log(inline.length)
-        //    if(inline.length > 0) {
-        //        return prefixed;
-        //    }
-        //}
+        
+
+        for(var i=0; i<_.prefixes.length; i++) {
+            var prefixed = _.prefixes[i] + value;
+            
+            try {
+                inline[property] = prefixed;
+            } catch(e) {};
+            
+            if(inline.length > 0) {
+                return prefixed;
+            }
+        }
         
         return false;
-    }
+    },
+
+    mq: function(mq) {
+		if(window.matchMedia) {
+			return matchMedia(mq).media !== 'invalid';
+		}
+		else {
+			style.textContent = '@media ' + mq + '{ foo {} }';
+			
+			return style.sheet.cssRules.length > 0? mq : false;
+		}
+	}
+    
   
 };
 
@@ -121,24 +163,26 @@ var Test = function (tests, spec, title) {
 
 
     // Perform tests
-    for(var id in Test.groups) {
-        //console.log('id: '+id);
-        //console.log('Test.groups[id]: ');
-        //console.log(Test.groups[id]);
-        this.group(id, Test.groups[id]);
-    }
+    this.group();
+    //for(var id in Test.groups) {
+    //    //console.log('id: '+id);
+    //    //console.log('Test.groups[id]: ');
+    //    //console.log(Test.groups[id]);
+    //    this.group(id, Test.groups[id]);
+    //}
     
     // Add overall spec score to BrowserScope
     _bTestResults[this.id] = mainScore.percent();
-    console.log('bTestResult:' + _bTestResults[this.id])
+    //console.log('bTestResult:' + _bTestResults[this.id])
 
 
 
-    var score = D.create('<span>', { class: 'score', text: this.score });
+    var score = D.create('<span class="score">', { text: this.score });
     var h2 = D.create('<h2>', { text: this.title});
     D.append(score, h2);
-    this.section = D.create('<div>', { id: this.id, class: 'tests'});
+    this.section = D.create('<div class="tests">', { id: this.id});
     D.append(h2, this.section);
+    D.append(thisSection, this.section);
 
     D.append(this.section, '#all');
     //D.get('#all').appendChild(this.section);
@@ -147,8 +191,8 @@ var Test = function (tests, spec, title) {
     // Add to list of tested specs
     var url = '#' + spec;
     var testedA = D.create('<a>', { href: url, text: title });
-    var testedScore = D.create('<span>', { class: 'score', text: this.score });
-    var testedSpecs = D.create('<li>', { class: passclass({ passed: this.score.passed, total: this.score.total }), title: this.score + ' passed' });
+    var testedScore = D.create('<span class="score">', { text: this.score });
+    var testedSpecs = D.create('<li class="'+passclass({ passed: this.score.passed, total: this.score.total })+'">', { title: this.score + ' passed' });
     D.append(testedA, testedSpecs);
     D.append(testedScore, testedSpecs);
     D.append(testedSpecs, '#specsTested');
@@ -157,53 +201,49 @@ var Test = function (tests, spec, title) {
 
 
 Test.prototype = {
-    group: function(what, testCallback) {
-        console.log('what: '+what)
-        console.log('testCallback: '+testCallback)
-        var thisSection, theseTests = this.tests[what];
+    //group: function(what, testCallback) {
+    group: function() {
+        var theseTests = this.tests['properties'];
+        var h3 = D.create('<h3>', {text: 'properties'});
+        thisSection = D.create('<div class="tests properties">');
+        D.append(h3, thisSection);
+        //D.append(thisSection, this.section);
 
-        console.log('theseTests: '+theseTests)
-        
+
         for(var feature in theseTests) {
-            console.log('feature:'+feature)
 
-            var results = testCallback(feature);
-            console.log('results: '+ results)
+            var results = Test.groups['properties'](feature);
+            //console.log('results: '+ results)
 
-
-
-            if(feature === 'properties') {
+            //if the browser doesn't support this property, then skip to next property
+            if(!results){
+                var dl = document.createElement('dl'),
+                    dt = D.create('<dt class="unsupport">', {tabIndex: '0', text: feature});
+                D.append(dt, dl);
+                D.append(dl, thisSection);
+                
                 continue;
-            }
-            
-            if(thisSection){
-                thisSection = thisSection;
-            }else {
-                var h3 = D.create('<h3>', {text: what});
-                thisSection = D.create('<div>', {class: 'tests ' + what});
-                D.append(h3, thisSection);
-                D.append(thisSection, this.section);
-            }
-            //console.log(thisSection)
-            
+            };
+
             var dl = document.createElement('dl'),
                 dt = D.create('<dt>', {tabIndex: '0', text: feature});
             D.append(dt, dl);
             
             var passed = 0, tests = theseTests[feature].value;
-            console.log('tests: '+tests)
         
             tests = tests instanceof Array ? tests : [tests];
         
+            //console.log('tests: '+tests)
             for(var i=0, test; test = tests[i++];) {
-                console.log('test: '+test)
-                console.log('feature: '+feature)
-                console.log('theseTests: ')
-                console.log(theseTests)
-                var results = testCallback(test, feature, theseTests),
+                //console.log('test: '+test)
+                //console.log('feature: '+feature)
+                //console.log('theseTests: ')
+                //console.log(theseTests)
+                var results = Test.groups['values'](feature, test),
                     success, note;
                 
-                console.log('results: '+results)
+                //console.log('results: ')
+                //console.log(results)
                 if(typeof results === 'object') {
                     success = results.success;
                     note = results.note;
@@ -211,11 +251,11 @@ Test.prototype = {
                 else { success = +!!results }
                 
                 passed += +success;
-                console.log('passed: '+passed)
-                console.log('success: '+success)
+                //console.log('passed: '+passed)
+                //console.log('success: '+success)
                 
                 var notes = test + (note? '<small>' + note + '</small>' : '');
-                var dd = D.create('<dd>', {class: passclass({passed: Math.round(success * 10000), total: 10000 }), text: notes });
+                var dd = D.create('<dd class="'+ passclass({passed: Math.round(success * 10000), total: 10000 }) +'">', { text: notes });
                 //D.append(test, dd);
                 //D.append(notes, dd);
                 D.append(dd, dl);
@@ -228,6 +268,8 @@ Test.prototype = {
             //thisSection.appendChild(dl);
             D.append(dl, thisSection);
             //D.append(thisSection, this.section);
+            D.append(thisSection, this.section)
+            D.append(this.section, '#all')
             //console.log(thisSection)
             
             // Add to browserscope
@@ -241,29 +283,48 @@ Test.groups = {
         return Supports.property(property);
     },
 
-    'values': function(test, label, tests) {
-        var properties = tests.properties,
-            failed = [];
+    'values': function(property, value) {
+        var failed = [];
         //console.log('groups:'+properties)
     
-        for(var j=0, property; property = properties[j++];) {
-            if(!Supports.property(property)) {
-                properties.splice(--j, 1);
-                continue;
-            }
+        //console.log(value)
+        //console.log(property)
+        //for(var j=0, property; property = properties[j]; j++) {
+            //if(!Supports.property(property)) {
+            //    properties.splice(--j, 1);
+            //    continue;
+            //}
             
-            if(!Supports.value(property, test)) {
-                failed.push(property);
-            }
-        }
+        //    console.log(Supports.value(property, test))
+
+        //    if(!Supports.value(property, test)) {
+        //        failed.push(property);
+        //    }
+        //    console.log(Supports.value(property, test))
+        //}
+
+        var resultValue = Supports.value(property, value)
         
-        success = 1 - failed.length / properties.length;
+        //success = 1 - failed.length / properties.length;
+        //success = 1 - failed.length / (++j);
+        success = 1 - !resultValue;
+        //console.log(failed.length)  //0
+        //console.log(j) //2
+        //console.log(success) //1
         
+        //console.log(success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : '111')
         return {
             success: success,
             note: success > 0 && success < 1? 'Failed in: ' + failed.join(', ') : ''
         }
-    }
+    },
+
+    'Media queries': function(test) {
+		var matches = matchMedia(test);
+		return matches.media !== 'invalid' && matches.matches;
+	}
+    
+
 };
 
 function passclass(info) {
@@ -292,17 +353,9 @@ function passclass(info) {
     return classes[index];
 }
 
-document.onclick = function(evt) {
-    var target = evt.target;
-    
-    if(/^dt$/i.test(target.nodeName)) {
-        evt.stopPropagation();
-        
-        var dl = target.parentNode;
-        
-        dl.className = dl.className === 'open'? '' : 'open';
-    }
-}
+S.Node.one('#all').delegate('click', 'dl', function(e){
+    e.currentTarget.className = e.currentTarget.className === 'open'? '' : 'open';
+});
 
 Array.prototype.and = function(arr2, separator) {
     separator = separator || ' ';
