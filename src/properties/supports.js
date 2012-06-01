@@ -157,7 +157,7 @@ Score.prototype = {
     },
     
     percent: function() {
-        return Math.round(100 * this.passed / this.total);
+        return Math.round(1000 * this.passed / this.total) / 10;
     }
 };
 
@@ -178,10 +178,11 @@ var Test = function (tests, spec, title) {
     // Perform tests
     this.group();
     //for(var id in Test.groups) {
-    //    //console.log('id: '+id);
-    //    //console.log('Test.groups[id]: ');
-    //    //console.log(Test.groups[id]);
-    //    this.group(id, Test.groups[id]);
+        //console.log('id: '+id);
+        //console.log('Test.groups[id]: ');
+        //console.log(Test.groups[id]);
+        //this.group(id, Test.groups[id]);
+        //console.log(id);
     //}
     
     // Add overall spec score to BrowserScope
@@ -221,17 +222,34 @@ var Test = function (tests, spec, title) {
 Test.prototype = {
     //group: function(what, testCallback) {
     group: function() {
-        var theseTests = this.tests['properties'];
-        var h3 = D.create('<h3>', {text: 'properties'});
-        thisSection = D.create('<div class="tests properties">');
-        D.append(h3, thisSection);
-        //D.append(thisSection, this.section);
+        //console.log(this.tests['properties']);
+        var testType;
+        if(this.tests['properties']){
+            var flag = 0;
 
+            testType = 'properties';
+            var h3 = D.create('<h3>', {text: 'properties'});
+            thisSection = D.create('<div class="tests properties">');
+        }else if(this.tests['Media queries']){
+            var flag = 1;
+
+            testType = 'Media queries';
+            thisSection = D.create('<div class="tests mediaqueries">');
+        };
+
+        var theseTests = this.tests[testType];
+        var h3 = D.create('<h3>', {text: testType});
+        D.append(h3, thisSection);
 
         for(var feature in theseTests) {
-
-            var results = Test.groups['properties'](feature);
+            if(this.tests['properties']){
+                var results = Test.groups[testType](feature);
+            }else if(this.tests['Media queries']){
+                var results = feature;
+                //console.log(results);
+            };
             //console.log('results: '+ results)
+
 
             //if the browser doesn't support this property, then skip to next property
             if(!results){
@@ -241,7 +259,6 @@ Test.prototype = {
 
                 var passed = 0, tests = theseTests[feature].value;
                 tests = tests instanceof Array ? tests : [tests];
-                //console.log(tests.length)
                 for(var i=0, test; test = tests[i]; i++) {
                     var dd = D.create('<dd class="unsupport">', { text: test });
                     D.append(dd, dl);
@@ -254,7 +271,6 @@ Test.prototype = {
                 continue;
             };
 
-            //console.log('results: '+ results)
             var dl = document.createElement('dl'),
                 dt = D.create('<dt>', {tabIndex: '0', text: results});
             D.append(dt, dl);
@@ -263,17 +279,15 @@ Test.prototype = {
         
             tests = tests instanceof Array ? tests : [tests];
         
-            //console.log('tests: '+tests)
             for(var i=0, test; test = tests[i++];) {
-                //console.log('test: '+test)
-                //console.log('feature: '+feature)
-                //console.log('theseTests: ')
-                //console.log(theseTests)
-                var results = Test.groups['values'](feature, test),
-                    success, note;
+                if(flag === 0){
+                    var results = Test.groups['values'](feature, test);
+                }else if (flag === 1) {
+                    var results = Test.groups['Media queries'](test);
+                    //console.log(results);
+                };
+                var success, note;
                 
-                //console.log('results: ')
-                //console.log(results)
                 if(typeof results === 'object') {
                     success = results.success;
                     note = results.note;
@@ -283,32 +297,25 @@ Test.prototype = {
                 } else { 
                     success = +!!results 
                 };
-                
+
                 passed += +success;
-                //console.log('passed: '+passed)
-                //console.log('success: '+success)
-                
                 var notes = test + (note? '<small>' + note + '</small>' : '');
                 var dd = D.create('<dd class="'+ passclass({passed: Math.round(success * 10000), total: 10000 }) +'">', { text: notes });
-                //D.append(test, dd);
-                //D.append(notes, dd);
                 D.append(dd, dl);
             }
             
             this.score.update({passed: passed, total: tests.length });
             
             dt.className = passclass({ passed: passed, total: tests.length });
-            
-            //thisSection.appendChild(dl);
+
             D.append(dl, thisSection);
-            //D.append(thisSection, this.section);
             D.append(thisSection, this.section)
             D.append(this.section, '#all')
-            //console.log(thisSection)
             
             // Add to browserscope
             _bTestResults[this.id + ' / ' + feature.replace(/[,=]/g, '')] = Math.round(100 * passed / tests.length);
         }
+
     }
 }
 
@@ -340,6 +347,7 @@ Test.groups = {
 
     'Media queries': function(test) {
 		var matches = matchMedia(test);
+        //console.log(matches);
 		return matches.media !== 'invalid' && matches.matches;
 	}
     
@@ -373,9 +381,8 @@ function passclass(info) {
     return classes[index];
 }
 
-S.one('#all').delegate('click', 'dl', function(e){
-
-    e.currentTarget.className = e.currentTarget.className === 'open'? '' : 'open';
+S.one('#all').delegate('click', 'dt', function(e){
+    e.currentTarget.parentNode.className = e.currentTarget.parentNode.className === 'open'? '' : 'open';
 });
 
 

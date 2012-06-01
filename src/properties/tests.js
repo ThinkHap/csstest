@@ -273,20 +273,21 @@ Specs = {
     },
     "Media-queries": {
         "title": "媒介查询(Media-queries)",
-        "properties": {
-            "device-width": {"version":3, "value":["640px"]},
-            "device-height": {"version":3, "value":["960px"]},
-            "orientation": {"version":3, "value":["portrait | landscape"]},
-            "aspect-ratio": {"version":3, "value":["960/640"]},
-            "max-aspect-ratio": {"version":3, "value":["960/640"]},
-            "min-aspect-ratio": {"version":3, "value":["960/640"]},
-            "device-aspect-ratio": {"version":3, "value":["4/3"]},
-            "color-index": {"version":3, "value":["1"]},
-            "max-color-index": {"version":3, "value":["1"]},
-            "min-color-index": {"version":3, "value":["1"]},
-            "monochrome": {"version":3, "value":["0","10"]},
-            "resolution": {"version":3, "value":["96dpi"]}, 
-            "scan": {"version":3, "value":["progressive | interlace"]}
+        "Media queries": {
+			"negation": {"version":3, "value":["not print", "(not width:1px)"]},
+			"width": {"version":3, "value":["(width)", "(min-width:1px)", "(max-width: 1000000px)"]},
+			"height": {"version":3, "value":["(height)", "(min-height:1px)", "(max-height: 1000000px)"]},
+            "device-width": {"version":3, "value":["(device-width)", "(min-device-width:1px)", "(max-device-width:1000000px)"]},
+            "device-height": {"version":3, "value":["(device-height)", "(min-device-height:1px)", "(max-device-height:1000000px)"]},
+            "orientation": {"version":3, "value":["(orientation:portrait), (orientation:landscape)"]},
+            "aspect-ratio": {"version":3, "value":["(aspect-ratio)", "(min-aspect-ratio:1/1000000)", "(min-aspect-ratio:1 / 1000000)", "(max-aspect-ratio: 1000000/1)"]},
+            "device-aspect-ratio": {"version":3, "value":["(device-aspect-ratio)", "(min-device-aspect-ratio:1/1000000)", "(min-device-aspect-ratio:1 / 1000000)", "(max-device-aspect-ratio:1000000/1)"]},
+            "color": {"version":3, "value":["(color)", "(min-color: 0)", "(max-color: 100)"]},
+            "color-index": {"version":3, "value":["all, (color-index)", "(min-color-index: 0)", "(max-color-index: 1000000)"]},
+            "monochrome": {"version":3, "value":["all, (monochrome)","(min-monochrome: 0)", "(max-monochrome: 10000)"]},
+            "resolution": {"version":3, "value":["(resolution)", "(min-resolution: 1dpi)", "(max-resolution: 1000000dpi)", "(max-resolution: 1000000dpcm)"]}, 
+            "scan": {"version":3, "value":["not tv, (scan: progressive)", "not tv, (scan: interlace)"]},
+            "grid": {"version":3, "value":["all, (grid)", "(grid: 0), (grid: 1)"]}
         }
     },
     "Multi-column": {
@@ -555,7 +556,7 @@ Specs = {
 			//http://de.wikibooks.org/wiki/SVG/_Grafiken_formatieren#F.C3.BCll-Opazit.C3.A4t.2C_fill-opacity
             "flood-opacity": {"version":"3", "value":["0.5"]},
 			//http://de.wikibooks.org/wiki/SVG/_Grafiken_formatieren#F.C3.BCllung.2C_fill
-            "fill": {"version":"3", "value":["none","currentColor","inherit",""]},
+            "fill": {"version":"3", "value":["none","currentColor","inherit"]},
             "fill-opacity": {"version":"3", "value":["0.5"]},
 			//http://de.wikibooks.org/wiki/SVG/_Grafiken_formatieren#F.C3.BCllregel.2C_fill-rule
             "fill-rule": {"version":"3", "value":["nonzero","evenodd"]},
