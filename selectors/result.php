@@ -13,7 +13,7 @@
 <?php
     // $linkId = mysql_connect('localhost', 'root', '0.00');
     //$linkId = mysql_connect('127.0.0.1', 'root', 'wanghao');
-    $linkId = mysql_connect('localhost', 'csstest', 'csstest');
+    $linkId = mysql_connect('ux.etao.net', 'csstest', 'csstest');
     if (!$linkId) {
         echo "connect database failed.";
         die;

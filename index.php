@@ -18,11 +18,14 @@
             <p><strong>CSS选择器测试：</strong> 测试浏览器对CSS包含的大部分选择器的支持情况，目前有50种选择器，574个测试用例。</p>
             <p><strong>成员：</strong>阿大、何敏、俊毅、王浩、玉澧、青缨</p>
         </div>
-        <div class="box">
+        <div class="box clear-fix">
             <h2>Test Page</h2>
-            <ol>
-                <li><a href="http://demo.ued.etao.net/csstest/properties/index.php">CSS Properties Test</a></li>
-                <li><a href="http://demo.ued.etao.net/csstest/selectors/index.php">CSS Selectors Test</a></li>
+            <ol class="properties">
+                <li><a href="properties/index.php">CSS Properties Test</a></li>
+                <li><a href="properties/test-value.php">CSS Property's Value Test</a></li>
+            </ol>
+            <ol class="selectors">
+                <li><a href="selectors/index.php">CSS Selectors Test</a></li>
             </ol>
         </div>
         <div class="box clear-fix">
@@ -42,6 +45,8 @@
             <ol class="properties">
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_guide" target="_blank">CSS属性说明文档 - 弹性盒模型(Flexible Box)</a></li>
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSS属性说明文档 - 多栏(Multi-column)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transform" target="_blank">CSS属性说明文档 - 变形(transform)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transition" target="_blank">CSS属性说明文档 - 过渡(transition)</a></li>
             </ol>
             <ol class="selectors">
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSS选择器说明文档</a></li>

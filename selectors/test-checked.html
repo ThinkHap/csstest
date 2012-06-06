@@ -12,17 +12,21 @@
 			pre { background: #fff; padding: 0.5em; }
 				li { background: #aaa; padding: 1em; width: 80%; margin: 0 0 3em; }
 			.test { display: block; padding: 0.75em; }
-			.base, .defaultgreen { background-color: #090; }
-			.defaultred { background-color: #900; }
+			.base, .defaultgreen { background-color: #090;}
+			.defaultred { background-color: #900;}
+			.defaultred input {height: 16px;}
+
 			
 			.defaultred input:checked {
 				background-color: #090;
-				float: right;
+                height: 8em;
+                height: 100px;
+                float: right;
 			}
-
 			.defaultgreen input:checked {
 				background-color: #900;
-				float: right;
+                height: 100px;
+                float: right;
 			}
 
 		-->			
@@ -36,7 +40,7 @@
 		<ol>
 			<li>
 				<div class='defaultred'>
-					<input type='checkbox' class='test float required' checked>
+					<input type='checkbox' class='test height float required' checked>
 				</div>
 				
 				<pre>:checked {
@@ -51,7 +55,7 @@
 
 			<li>
 				<div class='defaultgreen'>
-					<input type='checkbox' class='test default float required'>
+					<input type='checkbox' class='test height default float required'>
 				</div>
 				
 				<pre>:checked {
