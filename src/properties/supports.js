@@ -2,27 +2,28 @@
 Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
 window.matchMedia = window.matchMedia || (function(doc, undefined){
   
-  var bool,
-      docElem  = doc.documentElement,
-      refNode  = docElem.firstElementChild || docElem.firstChild,
-      // fakeBody required for <FF4 when executed in <head>
-      fakeBody = doc.createElement('body'),
-      div      = doc.createElement('div');
+    var bool,
+        docElem  = doc.documentElement,
+        refNode  = docElem.firstElementChild || docElem.firstChild,
+        // fakeBody required for <FF4 when executed in <head>
+        fakeBody = doc.createElement('body'),
+        div      = doc.createElement('div');
+
   
-  div.id = 'mq-test-1';
-  div.style.cssText = "position:absolute;top:-100em";
-  fakeBody.appendChild(div);
-  
-  return function(q){
+    div.id = 'mq-test-1';
+    div.style.cssText = "position:absolute;top:-100em";
+    fakeBody.appendChild(div);
     
-    div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
-    
-    docElem.insertBefore(fakeBody, refNode);
-    bool = div.offsetWidth == 42;  
-    docElem.removeChild(fakeBody);
-    
-    return { matches: bool, media: q };
-  };
+    return function(q){
+      
+        div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
+        
+        docElem.insertBefore(fakeBody, refNode);
+        bool = div.offsetWidth == 42;  
+        docElem.removeChild(fakeBody);
+        
+        return { matches: bool, media: q };
+    };
   
 })(document);
 
@@ -70,37 +71,18 @@ var _ = Supports = {
             return $1.toUpperCase();
         });
         
-        //console.log('property: '+property)
-        
-        //console.log(inline)
-        //console.log(inline.length)
-        //console.log(inline[property])
-
         inline.cssText = '';
         try {
             inline[property] = '';
         } catch(e) {};
 
-
-        //console.log(property)
-        //console.log(inline[property])
-        
-        
-
         for(var i=0; i<_.prefixes.length; i++) {
             var prefixed = _.prefixes[i] + value;
-            
-            //console.log('test: '+prefixed)
+
             try {
                 inline[property] = prefixed;
             } catch(e) {};
             
-            //console.log('inline[property]: '+inline[property])
-            //console.log(_.prefixes[i])
-            //console.log(prefixed)
-            //console.log(inline.cssText)
-            //console.log(!!inline.cssText)
-            //console.log('-- next --')
             if(inline.length > 0) {
                 return prefixed;
             };
@@ -114,17 +96,18 @@ var _ = Supports = {
         }
         
         return false;
-    },
+    //},
 
-    mq: function(mq) {
-		if(window.matchMedia) {
-			return matchMedia(mq).media !== 'invalid';
-		}
-		else {
-			style.textContent = '@media ' + mq + '{ foo {} }';
-			
-			return style.sheet.cssRules.length > 0? mq : false;
-		}
+    //mq: function(mq) {
+    //    //console.log(mq);
+	//	if(window.matchMedia) {
+	//		return matchMedia(mq).media !== 'invalid';
+	//	}
+	//	else {
+	//		style.textContent = '@media ' + mq + '{ foo {} }';
+	//		
+	//		return style.sheet.cssRules.length > 0? mq : false;
+	//	}
 	}
     
   
@@ -157,7 +140,7 @@ Score.prototype = {
     },
     
     percent: function() {
-        return Math.round(1000 * this.passed / this.total) / 10;
+        return Math.round(1000 * this.passedTests / this.totalTests) / 10;
     }
 };
 
@@ -177,26 +160,10 @@ var Test = function (tests, spec, title) {
 
     // Perform tests
     this.group();
-    //for(var id in Test.groups) {
-        //console.log('id: '+id);
-        //console.log('Test.groups[id]: ');
-        //console.log(Test.groups[id]);
-        //this.group(id, Test.groups[id]);
-        //console.log(id);
-    //}
     
     // Add overall spec score to BrowserScope
     _bTestResults[this.id] = mainScore.percent();
-    //console.log('bTestResult:' + _bTestResults[this.id])
 
-
-
-    //var score = D.create('<span class="score">', { text: this.score });
-    //D.append(this.score, score);
-    //var h2 = D.create('<h2>', {text: this.title});
-    //D.append(this.title, h2);
-    //D.append(score, h2);
-    //console.log(h2)
     var h2 = D.create('<h2>'+this.title+'<span class="score">'+this.score+'</span></h2>');
     this.section = D.create('<div class="tests">', { id: this.id});
     D.append(h2, this.section);
@@ -209,11 +176,7 @@ var Test = function (tests, spec, title) {
 
     // Add to list of tested specs
     var url = '#' + spec;
-    //var testedA = D.create('<a>', { href: url, text: title });
-    //var testedScore = D.create('<span class="score">', { text: this.score });
     var testedSpecs = D.create('<li class="'+passclass({ passed: this.score.passed, total: this.score.total })+ '" title="'+ this.score + ' passed' + '"><a href="' + url + '">' + title + '</a><span class="score">' + this.score + '</span></li>');
-    //D.append(testedA, testedSpecs);
-    //D.append(testedScore, testedSpecs);
     D.append(testedSpecs, '#specsTested');
 
 }
@@ -264,7 +227,6 @@ Test.prototype = {
                     D.append(dd, dl);
                 };
 
-
                 this.score.update({passed: 0, total: tests.length });
 
                 D.append(dl, thisSection);
@@ -283,6 +245,7 @@ Test.prototype = {
                 if(flag === 0){
                     var results = Test.groups['values'](feature, test);
                 }else if (flag === 1) {
+                //console.log(test);
                     var results = Test.groups['Media queries'](test);
                     //console.log(results);
                 };
@@ -304,6 +267,10 @@ Test.prototype = {
                 D.append(dd, dl);
             }
             
+            //console.log('passed: ');
+            //console.log(passed);
+            //console.log('total: ');
+            //console.log(tests.length);
             this.score.update({passed: passed, total: tests.length });
             
             dt.className = passclass({ passed: passed, total: tests.length });
@@ -348,6 +315,7 @@ Test.groups = {
     'Media queries': function(test) {
 		var matches = matchMedia(test);
         //console.log(matches);
+        //console.log((matches.media !== 'invalid') && matches.matches);
 		return matches.media !== 'invalid' && matches.matches;
 	}
     
@@ -365,10 +333,9 @@ function passclass(info) {
     }
     
     if (success === 1) { return 'pass' }
-    if (success === 0) { return 'unsupport' }
+    if (success === 0) { return 'epic-fail' }
     
     var classes = [
-        'epic-fail',
         'fail',
         'buggy',
         'very-buggy',

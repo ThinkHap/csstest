@@ -19,7 +19,7 @@ Specs = {
             "background": {"version":1, "value":["#eee url(skin/p_103x196_1.jpg) no-repeat scroll 50px 30px"]},
             "background-color": {"version":1, "value":["transparent","#eee"]},
             "background-attachment": {"version":"1/3", "value":["scroll","fixed","local"]},
-            "background-image": {"version":"1/3", "value":["url('paper.gif')","gradient(linear, 50% 0%, 50% 100%, from(#45B5DA), to(#0382AD))","url(1.jpg),url(2.jpg),url(3.jpg)"]},
+            "background-image": {"version":"1/3", "value":["url('paper.gif')", "linear-gradient(left, #45B5DA, #0382AD)", "radial-gradient(left top, circle, #45B5DA, #0382AD)","gradient(linear, 50% 0%, 50% 100%, from(#45B5DA), to(#0382AD))","gradient(radial, 50% 0%, 40, 50% 100%, 80, from(#45B5DA), to(#0382AD))","url(1.jpg),url(2.jpg),url(3.jpg)"]},
             "background-position": {"version":"1/3", "value":["top center","0 0","50% 50%"]},
             "background-repeat": {"version":"1/3", "value":["no-repeat","repeat","repeat-x","repeat-y","round","space"]},
             "background-clip": {"version":3, "value":["border-box","padding-box","content-box"]},
@@ -264,7 +264,7 @@ Specs = {
 			//http://www.cssportal.com/css-properties/marquee-direction.htm
             "marquee-direction": {"version":3, "value":["forward","reverse"]},
 			//http://www.cssportal.com/css-properties/marquee-play-count.htm
-            "marquee-play-count": {"version":3, "value":["&lt;non-negative-integer&gt;","infinite"]},
+            "marquee-play-count": {"version":3, "value":["non-negative-integer","infinite"]},
 			//http://www.cssportal.com/css-properties/marquee-speed.htm
             "marquee-speed": {"version":3, "value":["slow","normal","fast"]},
 			//http://www.cssportal.com/css-properties/marquee-style.htm
@@ -430,7 +430,7 @@ Specs = {
             "letter-spacing": {"version":1, "value":["normal","2px"]},
             "line-height": {"version":1, "value":["200%"]},
             "text-align": {"version":1, "value":["center","left","right"]},
-            "text-decoration": {"version":"1/3", "value":["overline","line-through","underline","blink","#f00 dotted underline"]},
+            "text-decoration": {"version":"1/3", "value":["none", "overline","line-through","underline","blink","#f00 dotted underline"]},
             "text-decoration-line": {"version":3, "value":["overline","line-through","underline","none"]},
             "text-decoration-color": {"version":3, "value":["#f00"]},
             "text-decoration-style": {"version":3, "value":["solid","double","dotted","dashed","wavy"]},
@@ -568,7 +568,7 @@ Specs = {
             "marker-mid": {"version":"3", "value":[""]},
             "marker-end": {"version":"3", "value":[""]},
             "marker-start": {"version":"3", "value":[""]},
-            "mask": {"version":"3", "value":[""]},
+            "mask": {"version":"3", "value":["gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))", "linear-gradient(left, #45B5DA, #0382AD)"]},
             "pointer-events": {"version":"3", "value":["auto","none","visiblePainted","visibleFill","visibleStroke","visible","painted","fill","stroke","all","inherit"]},
 			//http://www.cssportal.com/css-properties/pause.htm
             "pause": {"version":2, "value":["250ms 300ms","50% 50%","inherit"]},

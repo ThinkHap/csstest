@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>检测浏览器样式支持</title>
+        <title>浏览器样式属性及属性值测试</title>
         <?php include "../uxcommon/assets.php" ?>
         <link rel="stylesheet" type="text/css" href="../src/base.css" />
         <link rel="stylesheet" type="text/css" href="../src/nav.css" />
@@ -42,14 +42,6 @@
         <script src="../src/properties/tests.js"></script>
         <script src="../src/properties/value.js"></script>
         <script src="../src/properties/supports.js"></script>
-        <!--
-        <script src="../src/properties/utopia.js"></script>
-        <script src="../src/properties/csstest.js"></script>
-        -->
-        <!--
-        <script>
-        </script>
-        -->
     </body>
 </html>
 
