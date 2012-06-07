@@ -159,7 +159,7 @@ function getBrowserVersion() {
                     ? browser.firefox = s[1]  
                     : (s = userAgent.match(/chrome\/([\d.]+)/))  
                             ? browser.chrome = s[1]  
-                            : (s = userAgent.match(/opera.([\d.]+)/))  
+                            : (s = userAgent.match(/opera.+version\/([\d.]+)/))  
                                     ? browser.opera = s[1]  
                                     : (s = userAgent.match(/android ([\d.]+)/))  
                                             ? browser.android = s[1]

@@ -8,9 +8,7 @@ Specs = {
             "animation-timing-function": {"version":3, "value":["linear","ease","ease-in","ease-out","ease-in-out"]},
             "animation-delay": {"version":3, "value":[".5s"]},
             "animation-iteration-count": {"version":3, "value":["infinite","1"]},
-            "animation-direction": {"version":3, "value":["normal","alternate"]},
-            "transition-play-state": {"version":3, "value":["running","paused"]},
-            "transition-fill-mode": {"version":3, "value":["none","forwards","backwards","both"]}
+            "animation-direction": {"version":3, "value":["normal","alternate"]}
         }
     },
     "background": {
@@ -19,7 +17,7 @@ Specs = {
             "background": {"version":1, "value":["#eee url(skin/p_103x196_1.jpg) no-repeat scroll 50px 30px"]},
             "background-color": {"version":1, "value":["transparent","#eee"]},
             "background-attachment": {"version":"1/3", "value":["scroll","fixed","local"]},
-            "background-image": {"version":"1/3", "value":["url('paper.gif')", "linear-gradient(left, #45B5DA, #0382AD)", "radial-gradient(left top, circle, #45B5DA, #0382AD)","gradient(linear, 50% 0%, 50% 100%, from(#45B5DA), to(#0382AD))","gradient(radial, 50% 0%, 40, 50% 100%, 80, from(#45B5DA), to(#0382AD))","url(1.jpg),url(2.jpg),url(3.jpg)"]},
+            "background-image": {"version":"1/3", "value":["url('paper.gif')", "linear-gradient(left, #45B5DA, #0382AD)", "radial-gradient(left top, circle, #45B5DA, #0382AD)","gradient(linear, 50% 0%, 50% 100%, from(#45B5DA), to(#0382AD))","gradient(radial, 50% 0%, 40, 50% 100%, 80, from(#45B5DA), to(#0382AD))", "repeating-linear-gradient(top,#f00,#ff0 10%,#f00 15%)", "url(1.jpg),url(2.jpg),url(3.jpg)"]},
             "background-position": {"version":"1/3", "value":["top center","0 0","50% 50%"]},
             "background-repeat": {"version":"1/3", "value":["no-repeat","repeat","repeat-x","repeat-y","round","space"]},
             "background-clip": {"version":3, "value":["border-box","padding-box","content-box"]},
@@ -496,7 +494,9 @@ Specs = {
             "transition-property": {"version":3, "value":["all","border-color"]},
             "transition-duration": {"version":3, "value":[".5s"]},
             "transition-timing-function": {"version":3, "value":["linear","ease","ease-in","ease-out","ease-in-out"]},
-            "transition-delay": {"version":3, "value":[".1s"]}
+            "transition-delay": {"version":3, "value":[".1s"]},
+            "transition-play-state": {"version":3, "value":["running","paused"]},
+            "transition-fill-mode": {"version":3, "value":["none","forwards","backwards","both"]}
         }
     },
     "UserInterface": {
