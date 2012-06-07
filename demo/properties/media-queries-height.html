@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: height</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (height) {
+                .mq1 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (min-height:600px) {
+                .mq2 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (max-height:800px) {
+                .mq3 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (min-height: 600px) and (max-height:800px) {
+                .mq4 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+        </style>
+
+        <h3>(height)</h3>
+        <div class="mq1">
+            <p>当前浏览器窗口有高度时，本段落背景色为绿色。</p>
+        </div>
+        
+        <h3>(min-height:600px)</h3>
+        <div class="mq2">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>当前浏览器窗口高度 >= 最小值600px时，本段落背景色为绿色。</p>
+            <p>当窗口高度 =< 最小值600px, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-height:800px)</h3>
+        <div class="mq3">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>当前浏览器窗口高度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>当窗口高度 >= 最大值800px, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-height: 600px) and (max-height:800px)</h3>
+        <div class="mq4">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>最小值600px =< 当前浏览器窗口高度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>其它高度, 本段落无背景色</p>
+        </div>
+
+        <textarea rows="50" cols="80">
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (height) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media screen and (min-height:600px) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media screen and (max-height:800px) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media screen and (min-height: 600px) and (max-height:800px) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(height)</h3>
+        <div class="mq1">
+            <p>当前浏览器窗口有高度时，本段落背景色为绿色。</p>
+        </div>
+        
+        <h3>(min-height:600px)</h3>
+        <div class="mq2">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>当前浏览器窗口高度 >= 最小值600px时，本段落背景色为绿色。</p>
+            <p>当窗口高度 =< 最小值600px, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-height:800px)</h3>
+        <div class="mq3">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>当前浏览器窗口高度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>当窗口高度 >= 最大值800px, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-height: 600px) and (max-height:800px)</h3>
+        <div class="mq4">
+            你可以调整下你的浏览器窗口高度以查看效果：
+            <p>最小值600px =< 当前浏览器窗口高度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>其它高度, 本段落无背景色</p>
+        </div>
+        </textarea>
+    </body>
+</html>

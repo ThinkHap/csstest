@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: width</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (width) {
+                .mq1 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (min-width:400px) {
+                .mq2 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (max-width:800px) {
+                .mq3 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+
+            @media screen and (min-width: 400px) and (max-width:800px) {
+                .mq4 {
+                    color:#fff;
+                    background:green;
+                }
+            }
+        </style>
+
+        <h3>(width)</h3>
+        <div class="mq1">
+            <p>当前浏览器窗口有宽度时，本段落背景色为绿色。</p>
+        </div>
+        
+        <h3>(min-width:400px)</h3>
+        <div class="mq2">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>当前浏览器窗口宽度 >= 最小值400px时，本段落背景色为绿色。</p>
+            <p>当窗口宽度 =< 最小值400px, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-width:800px)</h3>
+        <div class="mq3">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>当前浏览器窗口宽度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>当窗口宽度 >= 最大值800px, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-width: 400px) and (max-width:800px)</h3>
+        <div class="mq4">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>最小值400px =< 当前浏览器窗口宽度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>其它宽度, 本段落无背景色</p>
+        </div>
+
+        <textarea rows="50" cols="80">
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (width) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media screen and (min-width:400px) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media screen and (max-width:800px) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media screen and (min-width: 400px) and (max-width:800px) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(width)</h3>
+        <div class="mq1">
+            <p>当前浏览器窗口有宽度时，本段落背景色为绿色。</p>
+        </div>
+        
+        <h3>(min-width:400px)</h3>
+        <div class="mq2">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>当前浏览器窗口宽度 >= 最小值400px时，本段落背景色为绿色。</p>
+            <p>当窗口宽度 =< 最小值400px, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-width:800px)</h3>
+        <div class="mq3">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>当前浏览器窗口宽度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>当窗口宽度 >= 最大值800px, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-width: 400px) and (max-width:800px)</h3>
+        <div class="mq4">
+            你可以调整下你的浏览器窗口宽度以查看效果：
+            <p>最小值400px =< 当前浏览器窗口宽度 =< 最大值800px时，本段落背景色为绿色。</p>
+            <p>其它宽度, 本段落无背景色</p>
+        </div>
+        </textarea>
+    </body>
+</html>

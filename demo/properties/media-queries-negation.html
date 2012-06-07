@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: negation</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+
+            div {margin-bottom: 50px;}
+
+            
+            @media not print {
+                .mq1 {
+                    color:#fff;
+                    background:green;
+                    border:1px solid #000;
+                }
+            }
+
+            @media (not width:100px) {
+                .mq2 {
+                    background:green;
+                }
+            }
+        </style>
+
+        <h3>not print</h3>
+        <div class="mq1">
+            <p>如果你是用电脑屏幕中显示本页话的话，本段话背景是绿色的, 并且有1px的边框。</p>
+            <p>另外请ctrl + P 检查，此段文字在打印机中将不会有背景色，也不会有边框。</p>
+        </div>
+        
+        <h3>(not width:1px)</h3>
+        <div class="mq2">
+            (not width:1px)  是什么意思？
+        </div>
+        
+        <textarea rows="35" cols="92">
+        <style type="text/css">
+	        body{font-size:12px;text-shadow:1px 1px #eee;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+
+            div {margin-bottom: 50px;}
+
+            
+            @media not print {
+                .mq1 {
+                    background:green;
+                    border:1px solid #000;
+                }
+            }
+
+            @media (not width:100px) {
+                .mq2 {
+                    background:green;
+                }
+            }
+        </style>
+
+        <h3>not print</h3>
+        <div class="mq1">
+            <p>如果你是用电脑屏幕中显示本页话的话，本段话背景是绿色的, 并且有1px的边框。</p>
+            <p>另外请ctrl + P 检查，此段文字在打印机中将不会有背景色，也不会有边框。</p>
+        </div>
+        
+        <h3>(not width:1px)</h3>
+        <div class="mq2">
+            (not width:1px)  是什么意思？
+        </div>
+
+        </textarea>
+    </body>
+</html>

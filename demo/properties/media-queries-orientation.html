@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: orientation</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (orientation:portrait) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media screen and (orientation:landscape) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media screen and (orientation:portrait),(orientation:landscape) {
+                .mq3 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(orientation:portrait)</h3>
+        <div class="mq1">
+            <p>当您的浏览器窗口横向宽度值 >= 纵向高度值时，本段落背景色为绿色。</p>
+            <p>否则，本段落无背景色。</p>
+        </div>
+
+        <h3>(orientation:landscape)</h3>
+        <div class="mq2">
+            <p>当您的浏览器窗口横向宽度值 < 纵向高度值时，本段落背景色为绿色。</p>
+            <p>否则，本段落无背景色。</p>
+        </div>
+
+        <h3>(orientation:portrait),(orientation:landscape)</h3>
+        <div class="mq3">
+            <p>不管当前浏览器窗口横向宽度值 和 纵向高度值时哪个大，本段落背景色都为绿色。</p>
+        </div>
+
+        <textarea rows="38" cols="80">
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media screen and (orientation:portrait) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media screen and (orientation:landscape) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media screen and (orientation:portrait),(orientation:landscape) {
+                .mq3 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(orientation:portrait)</h3>
+        <div class="mq1">
+            <p>当您的浏览器窗口横向宽度值 > 纵向高度值时，本段落背景色为绿色。</p>
+            <p>否则，本段落无背景色。</p>
+        </div>
+
+        <h3>(orientation:landscape)</h3>
+        <div class="mq2">
+            <p>当您的浏览器窗口横向宽度值 < 纵向高度值时，本段落背景色为绿色。</p>
+            <p>否则，本段落无背景色。</p>
+        </div>
+
+        <h3>(orientation:portrait),(orientation:landscape)</h3>
+        <div class="mq3">
+            <p>不管当前浏览器窗口横向宽度值 和 纵向高度值时哪个大，本段落背景色都为绿色。</p>
+        </div>
+        </textarea>
+    </body>
+</html>
