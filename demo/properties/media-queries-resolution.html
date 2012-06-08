@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: resolution</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (resolution) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:18dpcm) {
+                .mq1-2 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:96dpi) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (max-resolution:300dpi) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:96dpi) and (max-resolution:300dpi) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(resolution)</h3>
+        <div class="mq1">
+            <p>定义设备的分辨率。如：96dpi, 300dpi, 118dpcm。</p>
+            <p>用整数值来定义。不允许负值</p>
+            <p>当您的输出设备支持resolution时，本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(min-resolution:18dpcm)</h3>
+        <div class="mq1-2">
+            <p>当您的输出设备的分辨率 >= 18dpcm 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-resolution:96dpi)</h3>
+        <div class="mq2">
+            <p>当您的输出设备的分辨率 >= 96dpi 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-resolution:300dpi)</h3>
+        <div class="mq3">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 <= 300dpi时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(min-resolution:96dpi) and (max-resolution:300dpi)</h3>
+        <div class="mq4">
+            <p>当 96dpi <= 您的输出设备的单色帧缓冲器中每像素的位数 <= 300dpi 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+
+        <textarea rows="60" cols="90">
+             <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (resolution) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:18dpcm) {
+                .mq1-2 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:96dpi) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (max-resolution:300dpi) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media all and (min-resolution:96dpi) and (max-resolution:300dpi) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(resolution)</h3>
+        <div class="mq1">
+            <p>定义设备的分辨率。如：96dpi, 300dpi, 118dpcm。</p>
+            <p>用整数值来定义。不允许负值</p>
+            <p>当您的输出设备支持resolution时，本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(min-resolution:18dpcm)</h3>
+        <div class="mq1-2">
+            <p>当您的输出设备的分辨率 >= 18dpcm 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+
+        <h3>(min-resolution:96dpi)</h3>
+        <div class="mq2">
+            <p>当您的输出设备的分辨率 >= 96dpi 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-resolution:300dpi)</h3>
+        <div class="mq3">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 <= 300dpi时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(min-resolution:96dpi) and (max-resolution:300dpi)</h3>
+        <div class="mq4">
+            <p>当 96dpi <= 您的输出设备的单色帧缓冲器中每像素的位数 <= 300dpi 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        </textarea>
+    </body>
+</html>

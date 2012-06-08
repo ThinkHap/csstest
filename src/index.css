@@ -28,7 +28,11 @@ body {
     font-size: 16px;
     margin-bottom: 10px;
 }
+.page_content .box ul{
+}
 .page_content .box li {
+    float: left;
+    width: 460px;
     list-style: disc inside;
 }
 .page_content .box p,

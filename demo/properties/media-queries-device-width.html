@@ -45,19 +45,19 @@
         
         <h3>(min-device-width:400px)</h3>
         <div class="mq2">
-            <p>当您的设备分辨率设置宽度 > 最小值400px时，本段落背景色为绿色。</p>
+            <p>当您的设备分辨率设置宽度 => 最小值400px时，本段落背景色为绿色。</p>
             <p>当您的设备分辨率设置宽度 < 最小值400px, 本段落无背景色</p>
         </div>
         
         <h3>(max-device-width:800px)</h3>
         <div class="mq3">
-            <p>当您的设备分辨率设置宽度 < 最大值800px时，本段落背景色为绿色。</p>
+            <p>当您的设备分辨率设置宽度 <= 最大值800px时，本段落背景色为绿色。</p>
             <p>当您的设备分辨率设置宽度 > 最大值800px, 本段落无背景色</p>
         </div>
 
         <h3>(min-device-width: 400px) and (max-device-width:800px)</h3>
         <div class="mq4">
-            <p>最小值400px < 您的设备分辨率设置宽度 < 最大值800px时，本段落背景色为绿色。</p>
+            <p>最小值400px <= 您的设备分辨率设置宽度 <= 最大值800px时，本段落背景色为绿色。</p>
             <p>其它宽度, 本段落无背景色</p>
         </div>
 
@@ -70,6 +70,10 @@
             
             @media screen and (device-width) {
                 .mq1 { color:#fff; background:green; }
+            }
+
+            @media screen and (device-width:1680px) {
+                .mq1-2 { color:#fff; background:green; }
             }
 
             @media screen and (min-device-width:400px) {
@@ -87,27 +91,29 @@
 
         <h3>(device-width)</h3>
         <div class="mq1">
-            <p>当前浏览器窗口有宽度时，本段落背景色为绿色。</p>
+            <p>当您的设备分辨率有宽度时，本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(device-width:1680px)</h3>
+        <div class="mq1-2">
+            <p>当您的设备分辨率宽度 = 1680px时，本段落背景色为绿色。</p>
         </div>
         
         <h3>(min-device-width:400px)</h3>
         <div class="mq2">
-            你可以调整下你的浏览器窗口宽度以查看效果：
-            <p>当前浏览器窗口宽度 > 最小值400px时，本段落背景色为绿色。</p>
-            <p>当窗口宽度 < 最小值400px, 本段落无背景色</p>
+            <p>当您的设备分辨率设置宽度 => 最小值400px时，本段落背景色为绿色。</p>
+            <p>当您的设备分辨率设置宽度 < 最小值400px, 本段落无背景色</p>
         </div>
         
         <h3>(max-device-width:800px)</h3>
         <div class="mq3">
-            你可以调整下你的浏览器窗口宽度以查看效果：
-            <p>当前浏览器窗口宽度 < 最大值800px时，本段落背景色为绿色。</p>
-            <p>当窗口宽度 > 最大值800px, 本段落无背景色</p>
+            <p>当您的设备分辨率设置宽度 <= 最大值800px时，本段落背景色为绿色。</p>
+            <p>当您的设备分辨率设置宽度 > 最大值800px, 本段落无背景色</p>
         </div>
 
         <h3>(min-device-width: 400px) and (max-device-width:800px)</h3>
         <div class="mq4">
-            你可以调整下你的浏览器窗口宽度以查看效果：
-            <p>最小值400px < 当前浏览器窗口宽度 < 最大值800px时 并，本段落背景色为绿色。</p>
+            <p>最小值400px <= 您的设备分辨率设置宽度 <= 最大值800px时，本段落背景色为绿色。</p>
             <p>其它宽度, 本段落无背景色</p>
         </div>
         </textarea>

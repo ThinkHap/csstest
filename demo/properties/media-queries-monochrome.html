@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: monochrome</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (monochrome) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (min-monochrome:1) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (max-monochrome:8) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media all and (min-monochrome:1) and (max-monochrome:100) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(monochrome)</h3>
+        <div class="mq1">
+            <p>定义在单色帧缓冲器中每像素的位数。如果不是单色设备，则值等于0。</p>
+            <p>用整数值来定义。不允许负值</p>
+            <p>当您的输出设备当你的输出设备是单色的（黑白色），本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(min-monochrome:1)</h3>
+        <div class="mq2">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 >= 1时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-monochrome:8)</h3>
+        <div class="mq3">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 <= 8时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(min-monochrome:1) and (max-monochrome:8)</h3>
+        <div class="mq4">
+            <p>当 1 <= 您的输出设备的单色帧缓冲器中每像素的位数 <= 8 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+
+        <textarea rows="50" cols="90">
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (monochrome) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (min-monochrome:1) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (max-monochrome:8) {
+                .mq3 { color:#fff; background:green; }
+            }
+
+            @media all and (min-monochrome:1) and (max-monochrome:100) {
+                .mq4 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(monochrome)</h3>
+        <div class="mq1">
+            <p>定义在单色帧缓冲器中每像素的位数。如果不是单色设备，则值等于0。</p>
+            <p>用整数值来定义。不允许负值</p>
+            <p>当您的输出设备当你的输出设备是单色的（黑白色），本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(min-monochrome:1)</h3>
+        <div class="mq2">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 >= 1时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(max-monochrome:8)</h3>
+        <div class="mq3">
+            <p>当您的输出设备的单色帧缓冲器中每像素的位数 <= 8时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(min-monochrome:1) and (max-monochrome:8)</h3>
+        <div class="mq4">
+            <p>当 1 <= 您的输出设备的单色帧缓冲器中每像素的位数 <= 8 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        </textarea>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="hap" />
+        <title>media-queries: scan</title>
+    </head>
+    <body>
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (scan) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (scan:progressive) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (scan:interlace) {
+                .mq3 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(scan)</h3>
+        <div class="mq1">
+            <p>定义电视机类型设备的扫描方式。只能指定两种值：progressive表示逐行扫描和interlace表示隔行扫描</p>
+            <p>当您的输出设备支持scan时，本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(scan:progressive)</h3>
+        <div class="mq2">
+            <p>当您的TV设备的扫描方式为 progressive 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(scan:interlace)</h3>
+        <div class="mq3">
+            <p>当您的TV设备的扫描方式为 interlace 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <textarea rows="40" cols="90">
+        <style type="text/css">
+	        body{font-size:12px;}
+            ul,li{padding: 0;}
+            li{list-style: none;}
+            div {margin-bottom: 50px;}
+            
+            @media all and (scan) {
+                .mq1 { color:#fff; background:green; }
+            }
+
+            @media all and (scan:progressive) {
+                .mq2 { color:#fff; background:green; }
+            }
+
+            @media all and (scan:interlace) {
+                .mq3 { color:#fff; background:green; }
+            }
+        </style>
+
+        <h3>(scan)</h3>
+        <div class="mq1">
+            <p>定义电视机类型设备的扫描方式。只能指定两种值：progressive表示逐行扫描和interlace表示隔行扫描</p>
+            <p>当您的输出设备支持scan时，本段落背景色为绿色。</p>
+        </div>
+
+        <h3>(scan:progressive)</h3>
+        <div class="mq2">
+            <p>当您的TV设备的扫描方式为 progressive 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        
+        <h3>(scan:interlace)</h3>
+        <div class="mq3">
+            <p>当您的TV设备的扫描方式为 interlace 时，本段落背景色为绿色。</p>
+            <p>否则, 本段落无背景色</p>
+        </div>
+        </textarea>
+    </body>
+</html>
