@@ -272,7 +272,7 @@ Specs = {
     "Media-queries": {
         "title": "媒介查询(Media-queries)",
         "Media queries": {
-			"negation": {"version":3, "value":["not print", "not screen and (color)"]},
+			"negation": {"version":3, "value":["not print", "not tv and (color)"]},
 			"width": {"version":3, "value":["(width)", "(min-width:1px)", "(max-width: 1000000px)"]},
 			"height": {"version":3, "value":["(height)", "(min-height:1px)", "(max-height: 1000000px)"]},
             "device-width": {"version":3, "value":["(device-width)", "(min-device-width:1px)", "(max-device-width:1000000px)"]},
