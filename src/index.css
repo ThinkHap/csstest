@@ -30,7 +30,7 @@ body {
 }
 .page_content .box ul{
 }
-.page_content .box li {
+.page_content .demo-box li {
     float: left;
     width: 460px;
     list-style: disc inside;
