@@ -83,6 +83,12 @@ table th .property {
     text-align: center;
     background-color: #b00;
 }
+.ua-no {
+    width: 50px;
+    font-weight: bold;
+    text-align: center;
+
+}
 .ua-browser {
     width: 150px;
     padding-left: 20px;

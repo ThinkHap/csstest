@@ -70,6 +70,12 @@
                     <li><a href="media-queries-grid.html">media-queries-grid</a></li>
                 </ul>
             </div>
+            <div class="box demo-box">
+                <h2>动画(Animation)</h2>
+                <ul class="clear-fix">
+                    <li><a href="animation.html">animation</a></li>
+                    <li><a href="animation-ux-logo.html">animation ux logo</a></li>
+                </ul>
         </div>
     </div>
     <?php include "../../uxcommon/footer.php" ?>

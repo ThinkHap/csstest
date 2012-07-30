@@ -31,9 +31,10 @@
         <div class="box clear-fix">
             <h2>Test Result & Demo</h2>
             <ol class="result">
-                <li><a href="properties/report.php">CSS Properties 测试结果</a></li>
-                <li><a href="selectors/report.php">CSS Selectors 测试结果</a></li>
-                <li><a href="selectors/result.php">CSS Selectors 测试结果集</a></li>
+                <li><a href="properties/result.php">CSS Properties 测试结果</a></li>
+                <li><a href="selectors/result.php">CSS Selectors 测试结果</a></li>
+                <li style="margin-top: 10px"><a href="properties/report.php">CSS Properties 测试结果报告</a></li>
+                <li><a href="selectors/report.php">CSS Selectors 测试结果报告</a></li>
             </ol>
             <ol class="demo">
                 <li><a href="demo/properties/index.php">CSS Properties Demo</a></li>
@@ -47,6 +48,8 @@
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties2" target="_blank">CSS属性说明文档 - 多栏(Multi-column)</a></li>
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transform" target="_blank">CSS属性说明文档 - 变形(transform)</a></li>
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3_-_transition" target="_blank">CSS属性说明文档 - 过渡(transition)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_propperties_media-queries" target="_blank">CSS属性说明文档 - 媒介查询(media-queries)</a></li>
+                <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:animation" target="_blank">CSS属性说明文档 - 动画(animation)</a></li>
             </ol>
             <ol class="selectors">
                 <li><a href="http://wiki.ued.taobao.net/doku.php?id=team:search:f2e:forum:standard:css_selector_guide" target="_blank">CSS选择器说明文档</a></li>
