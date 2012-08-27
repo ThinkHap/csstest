@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<title>CSS兼容性参考手册与使用指南</title>
-<?php include "uxcommon/assets.php" ?>
-<link rel="stylesheet" type="text/css" href="src/base.css" />
-<link rel="stylesheet" type="text/css" href="src/index.css" />
+    <meta charset="utf-8">
+    <title>CSS兼容性参考手册与使用指南</title>
+    <?php include "uxcommon/assets.php" ?>
+    <link rel="stylesheet" type="text/css" href="src/base.css" />
+    <link rel="stylesheet" type="text/css" href="src/index.css" />
 </head>
 <body>
 <?php include "uxcommon/header.php" ?>
