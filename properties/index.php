@@ -1,6 +1,5 @@
 <?php
-    //$con = mysql_connect("127.0.0.1","root","wanghao");
-    $con = mysql_connect("ux.etao.net","csstest","csstest");
+    $con = mysql_connect("127.0.0.1","root","wanghao");
 
     if (!$con) {
         die('Could not connect: ' . mysql_error());
